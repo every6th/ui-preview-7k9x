@@ -722,6 +722,272 @@
       color: #6b21a8;
     }
     .hidden { display: none !important; }
+  
+    /* === MOBILE CROSS-DEVICE ANTI-BREAK & TYPOGRAPHY HARDENING === */
+    html {
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      overflow-x: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif !important;
+      line-break: strict;
+      overflow-wrap: break-word;
+      word-break: normal;
+    }
+    .rpg-console {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif !important;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    /* Non-overlapping top bar inside viewport */
+    .vp-top-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px 8px;
+      padding: 6px 8px;
+      background: #090d1a;
+      border-bottom: 1.5px solid #334155;
+      position: relative;
+      z-index: 5;
+    }
+    .vp-top-strip .vp-badge {
+      position: static !important;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      font-size: clamp(10.5px, 2.9vw, 12px);
+      line-height: 1.35;
+      min-width: 0;
+      flex: 1 1 180px;
+    }
+    .vp-top-strip .vp-price-tag {
+      position: static !important;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-size: clamp(10px, 2.7vw, 11.5px);
+      padding: 2px 7px;
+    }
+    .vp-canvas-stage {
+      position: relative;
+      width: 100%;
+    }
+    .vp-hotspots {
+      inset: 8px !important;
+    }
+    .vp-hotspots:empty {
+      display: none !important;
+    }
+    /* Prevent flex/grid children from overflowing or wrapping Yen numbers mid-token */
+    .hud-grid > div,
+    .msg-body,
+    .rpg-cmd > span:last-child,
+    .receipt-row > span:first-child,
+    .coupon-toggle-bar > div {
+      min-width: 0;
+    }
+    .cmd-arrow {
+      flex-shrink: 0;
+    }
+    .rpg-cmd {
+      line-height: 1.42;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
+    .prod-pill,
+    .time-pill,
+    #meterPct,
+    #applyCouponBtn,
+    #toggleWaitModeBtn {
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .meter-wrap > div:first-child {
+      align-items: flex-start !important;
+      gap: 8px !important;
+    }
+    #meterTitle {
+      line-height: 1.38;
+      min-width: 0;
+    }
+    .receipt-row {
+      align-items: flex-start !important;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .receipt-row > span:last-child,
+    .receipt-total > span:last-child {
+      flex-shrink: 0;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .cast-spec {
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+      font-size: clamp(9px, 2.4vw, 10.5px) !important;
+    }
+    .msg-text {
+      line-height: 1.62;
+      line-break: strict;
+      overflow-wrap: break-word;
+    }
+
+    /* Smartphone-specific responsive adaptations (iPhone SE 320px ~ Pro Max 430px ~ Android) */
+    @media (max-width: 540px) {
+      body {
+        padding: 8px 6px 26px !important;
+      }
+      .rpg-console {
+        padding: 9px 8px !important;
+        gap: 8px !important;
+      }
+      /* Store & time-band tabs neatly aligned without awkward mid-button wrapping */
+      #storeTabs {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        gap: 4px !important;
+      }
+      #storeTabs .prod-pill,
+      #storeTabs .store-tab {
+        text-align: center;
+        padding: 6px 2px !important;
+        font-size: clamp(9.5px, 2.75vw, 11.5px) !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #timeTabs {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        gap: 4px !important;
+      }
+      #timeTabs .time-pill {
+        text-align: center;
+        padding: 5px 3px !important;
+        font-size: clamp(10px, 2.8vw, 11.5px) !important;
+      }
+      /* 6 steps -> clean 3x2 grid so no step title ever breaks mid-word */
+      .step-strip {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 4px !important;
+      }
+      .step-node {
+        font-size: clamp(9.5px, 2.65vw, 10.5px) !important;
+        padding: 4px 2px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      /* Allow HUD labels/badges to wrap cleanly instead of clipping or overflowing */
+      .hud-val {
+        font-size: 13px !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        line-height: 1.3;
+      }
+      .hud-sub {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        line-height: 1.32;
+      }
+      .wallet-badge {
+        white-space: normal !important;
+        line-height: 1.3;
+        font-size: 10px !important;
+      }
+      /* Dock interactive thought bubbles cleanly below canvas so they NEVER clip off right edge! */
+      .vp-hotspots {
+        position: static !important;
+        inset: auto !important;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 7px 7px;
+        background: rgba(9, 13, 26, 0.96);
+        border-top: 1.5px solid #334155;
+        pointer-events: auto !important;
+      }
+      .hotspot-chip {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        white-space: normal !important;
+        max-width: 100%;
+        text-align: left;
+        line-height: 1.35;
+        font-size: 11px !important;
+        padding: 5px 9px !important;
+        border-radius: 6px !important;
+        animation: none !important;
+      }
+      .hotspot-chip.promo {
+        animation: pulseGlow 2.2s infinite !important;
+      }
+      /* Dialogue window compact avatar so text gets maximum line width */
+      .msg-window {
+        padding: 8px 9px !important;
+        gap: 8px !important;
+      }
+      .speaker-face-box {
+        width: 52px !important;
+        height: 52px !important;
+        align-self: flex-start !important;
+        margin-top: 2px;
+      }
+      .msg-speaker {
+        font-size: 11.5px !important;
+        line-height: 1.35;
+      }
+      .msg-text {
+        font-size: 12.5px !important;
+        line-height: 1.58 !important;
+      }
+      /* Luxury cast panel header & card badges */
+      .lp-brand-title {
+        font-size: 14px !important;
+      }
+      .lp-price-main {
+        font-size: 16px !important;
+        white-space: nowrap;
+      }
+      .lp-nom-ribbon {
+        white-space: nowrap;
+        font-size: 9.5px !important;
+        padding: 1.5px 7px !important;
+      }
+      .rank-badge {
+        font-size: 10px !important;
+        padding: 1px 4px !important;
+      }
+      .status-pill {
+        font-size: 8.8px !important;
+        padding: 1.5px 5px !important;
+      }
+      .coupon-toggle-bar {
+        flex-direction: column;
+        align-items: stretch !important;
+      }
+      #applyCouponBtn {
+        width: 100%;
+        text-align: center;
+      }
+      .bizcard-top {
+        flex-wrap: wrap;
+      }
+      .bizcard-tag {
+        white-space: nowrap;
+      }
+    }
   </style>
 </head>
 <body data-band="night">
@@ -798,11 +1064,15 @@
 
       <!-- 384x216 Dynamic 60FPS Pixel Art Viewport + Floating Hotspots -->
       <div class="viewport">
-        <canvas id="gameCanvas" width="384" height="216" class="w-full h-auto block px-img"></canvas>
-        <div id="vpBadge" class="vp-badge">30秒で入店〜退店を動的体験！</div>
-        <div id="vpPriceTag" class="vp-price-tag">30分 ¥9,000 / 指名 +¥2,000</div>
-        <!-- Interactive Floating Anxiety / Promo Hotspots directly over the scene! -->
-        <div id="vpHotspots" class="vp-hotspots"></div>
+        <div class="vp-top-strip">
+          <div id="vpBadge" class="vp-badge">30秒で入店〜退店を動的体験！</div>
+          <div id="vpPriceTag" class="vp-price-tag">30分 ¥9,000 / 指名 +¥2,000</div>
+        </div>
+        <div class="vp-canvas-stage">
+          <canvas id="gameCanvas" width="384" height="216" class="w-full h-auto block px-img"></canvas>
+          <!-- Interactive Anxiety / Promo Hotspots (floats on wide screens, docks cleanly below canvas on mobile) -->
+          <div id="vpHotspots" class="vp-hotspots"></div>
+        </div>
       </div>
 
       <!-- JRPG Dialogue Window with Speaker Portrait -->
@@ -1749,10 +2019,10 @@
         ctx.fillStyle = "#fde047";
         ctx.font = "bold 13px sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText("🔒 お財布ロック完了！（完全前払い確定）", 192, 103);
+        ctx.fillText("🔒 お財布ロック完了！（完全前払い確定）", 192, 103, 282);
         ctx.fillStyle = "#a7f3d0";
         ctx.font = "bold 10.5px sans-serif";
-        ctx.fillText("退店するまで財布を出す場面は『物理的に0回』です", 192, 121);
+        ctx.fillText("退店するまで財布を出す場面は『物理的に0回』です", 192, 121, 282);
         ctx.textAlign = "start";
       }
 
@@ -1822,15 +2092,15 @@
 
       if (crit === "seiso") {
         unlockedTags.add("清楚派");
-        typeWrite("🌸 判断基準：清楚系で選ぶ！", "初来店で一番安心感がある王道の清楚系（No.6 美咲・No.35 結衣）！\n落ち着いた優しいリードで緊張をほぐしてくれます。気になるカードをタップしよう！", false, "face_seiso");
+        typeWrite("🌸 判断基準：清楚系で選ぶ！", "初来店で一番安心感がある王道の清楚系（No.6 美咲・No.35 結衣）！落ち着いた優しいリードで緊張をほぐしてくれます。気になるカードをタップしよう！", false, "face_seiso");
       } else if (crit === "gyaru") {
         unlockedTags.add("ギャル推し");
-        typeWrite("✨ 判断基準：ギャル系で選ぶ！", "実はリピーター人気が超高いギャル系（No.24 莉央）！\n明るくてノリが良く、入室3秒で距離が縮まるので『無言で気まずくなるのが怖い人』に大正解です！", false, "face_gyaru");
+        typeWrite("✨ 判断基準：ギャル系で選ぶ！", "実はリピーター人気が超高いギャル系（No.24 莉央）！明るくてノリが良く、入室3秒で距離が縮まるので『無言で気まずくなるのが怖い人』に大正解です！", false, "face_gyaru");
       } else if (crit === "size") {
         unlockedTags.add("スリーサイズ鑑定士");
-        typeWrite("📏 判断基準：スリーサイズ（T/B/W/H）で選ぶ！", "名前の下の『T(身長) B(バスト・カップ) W(ウエスト) H(ヒップ)』に注目！\n公式HPの『在籍一覧』ページなら全キャストのサイズや特徴を事前にじっくり見比べられます！", false, "face_glamour");
+        typeWrite("📏 判断基準：スリーサイズ（T/B/W/H）で選ぶ！", "名前の下の『T(身長) B(バスト・カップ) W(ウエスト) H(ヒップ)』に注目！公式HPの『在籍一覧』ページなら全キャストのサイズや特徴を事前にじっくり見比べられます！", false, "face_glamour");
       } else if (crit === "wait") {
-        typeWrite("⏳ 判断基準：『出勤（即案内）』と『接客（待ち時間あり）』の違い！", "右上が【出勤・オススメ】の子は待ち0分で即ご案内！【接客】の子は約15〜20分待ちです。\nもし待ち時間が長すぎて予定に合わなければ、会計前なので『0円』で遠慮なく帰れます！", false, "face_staff");
+        typeWrite("⏳ 判断基準：『出勤（即案内）』と『接客（待ち時間あり）』の違い！", "右上が【出勤・オススメ】の子は待ち0分で即ご案内！【接客】の子は約15〜20分待ちです。もし待ち時間が長すぎて予定に合わなければ、会計前なので『0円』で遠慮なく帰れます！", false, "face_staff");
       }
     }
 
@@ -1912,7 +2182,7 @@
 
       typeWrite(
         `【受付スタッフ ｜ ご指名の確認（${castObj.no} ${castObj.name}）】`,
-        `「かしこまりました、${castObj.no}の${castObj.name}ですね！\n確認いたしますので少々お待ちください……ちなみに、『この子と一度遊んだことはありますか？』」`,
+        `「かしこまりました、${castObj.no}の${castObj.name}ですね！確認いたしますので少々お待ちください……ちなみに、『この子と一度遊んだことはありますか？』」`,
         false,
         "face_staff"
       );
@@ -2293,7 +2563,7 @@
                 setupStage1Hotspots();
                 typeWrite(
                   "🛡️ 不安解消①：しつこい客引きゼロ＆丁寧なフロント対応！",
-                  "路上の怪しい客引き（キャッチ）とは一切無縁！長年地元で愛されている人気グループ店です。\n受付スタッフはホテルのフロントのような丁寧な敬語対応で、威圧や強引な勧誘は100%ありません。",
+                  "路上の怪しい客引き（キャッチ）とは一切無縁！長年地元で愛されている人気グループ店です。受付スタッフはホテルのフロントのような丁寧な敬語対応で、威圧や強引な勧誘は100%ありません。",
                   false, "face_staff"
                 );
               }
@@ -2312,7 +2582,7 @@
                 setupStage1Hotspots();
                 typeWrite(
                   "💴 不安解消②：外の看板と1円も違わない『完全前払い制』！",
-                  "30分基本料金は【朝¥7,000 / 夕¥8,000 / 夜¥9,000】（フリーなら指名料0円）！\n受付で決めた前払い料金から、勝手な自動延長や退店時の不明瞭な後出し請求が発生することは一切ありません。",
+                  "30分基本料金は【朝¥7,000 / 夕¥8,000 / 夜¥9,000】（フリーなら指名料0円）！受付で決めた前払い料金から、勝手な自動延長や退店時の不明瞭な後出し請求が発生することは一切ありません。",
                   false, null, "💴<br>SAFE"
                 );
               }
@@ -2331,7 +2601,7 @@
                 setupStage1Hotspots();
                 typeWrite(
                   `🎁 知らなきゃ損！${st.name}はHP＆LINE割引イベントが充実！`,
-                  `${st.eventSummary}\nこのあとの受付会計（STAGE 3）で割引適用を体験でき、最後のクリア画面で公式HPの全6コンテンツへ直接アクセスできます！`,
+                  `${st.eventSummary}このあとの受付会計（STAGE 3）で割引適用を体験でき、最後のクリア画面で公式HPの全6コンテンツへ直接アクセスできます！`,
                   false, null, "🎁<br>EVENT"
                 );
               }
@@ -2342,7 +2612,7 @@
 
         typeWrite(
           `【お店の入口前 ｜ ${st.name}】`,
-          `画面上の【😰 不安フキダシ】をタップして入店前のギモンを潰してみよう！\n納得できたら、扉を開けて明るいフロントロビーへ入ってみよう！`,
+          `画面上の【😰 不安フキダシ】をタップして入店前のギモンを潰してみよう！納得できたら、扉を開けて明るいフロントロビーへ入ってみよう！`,
           false, null, "🌃<br>ENTRY"
         );
 
@@ -2400,7 +2670,7 @@
               updateHUD();
               typeWrite(
                 "🛡️ 構造的にぼったくりが不可能な『完全前払い制』！",
-                "悪質店は『後払い』だから帰りに謎の料金を上乗せできますが、当店は入室前の『完全前払い制』！\n勝手な自動延長や強制オーダー、退店時の不明瞭な追加請求は一切ゼロ。受付でお財布をしまったらそのまま安心して遊べます！",
+                "悪質店は『後払い』だから帰りに謎の料金を上乗せできますが、当店は入室前の『完全前払い制』！勝手な自動延長や強制オーダー、退店時の不明瞭な追加請求は一切ゼロ。受付でお財布をしまったらそのまま安心して遊べます！",
                 false, "face_staff"
               );
             }
@@ -2527,7 +2797,7 @@
               cmdGrid.querySelectorAll("button").forEach(b => (b.disabled = true));
               typeWrite(
                 `💕 ${c.name}が優しくエスコート！`,
-                `${c.nervousReply}\n無理に面白い話をする必要はゼロ！正直に伝えるのが一番仲良くなれる秘訣です！`,
+                `${c.nervousReply}無理に面白い話をする必要はゼロ！正直に伝えるのが一番仲良くなれる秘訣です！`,
                 true, fKey
               );
             }
@@ -2553,7 +2823,7 @@
 
         typeWrite(
           `【お見送り・退店 ｜ ${c.name}から『感謝の名刺』を受け取った！】`,
-          `「今日は来てくれて本当にありがとう♡ これ、感謝の気持ちを書いた私の名刺です！また会えたら嬉しいな♪」\n受付で ${fmtYen(curP.total)} を前払いしてから退店まで『後出し請求 0円』で爽やかに退店完了！`,
+          `「今日は来てくれて本当にありがとう♡ これ、感謝の気持ちを書いた私の名刺です！また会えたら嬉しいな♪」受付で ${fmtYen(curP.total)} を前払いしてから退店まで『後出し請求 0円』で爽やかに退店完了！`,
           false, "face_" + c.id
         );
         cmdGrid.innerHTML = "";
@@ -2586,7 +2856,7 @@
         : "（通常シートでお席を確保しました！）";
       typeWrite(
         `🔒 お財布ロック完了！（前払い確定額：${fmtYen(curP.total)}）`,
-        `受付で ${fmtYen(curP.total)} をお支払い完了！${seatNote}\n勝手な自動延長や退店時の後出し請求は0円です。次は待合＆爪切りケアへ進もう！`,
+        `受付で ${fmtYen(curP.total)} をお支払い完了！${seatNote}勝手な自動延長や退店時の後出し請求は0円です。次は待合＆爪切りケアへ進もう！`,
         true, "face_staff"
       );
     }
@@ -2677,7 +2947,7 @@
       renderStage4Grooming();
       typeWrite(
         "✂️ 爪切りズーム確認！（キャスト好感度＋99！）",
-        "爪が伸びていたり角が尖っていると女の子がケガをしてしまうためプレイ制限の原因に！\n来店前や待合室の爪切りで指先を丸く整えるだけで、退店時の名刺メッセージでも特別に感謝されます！",
+        "爪が伸びていたり角が尖っていると女の子がケガをしてしまうためプレイ制限の原因に！来店前や待合室の爪切りで指先を丸く整えるだけで、退店時の名刺メッセージでも特別に感謝されます！",
         false, null, "✂️<br>GOOD"
       );
     }
@@ -2692,7 +2962,7 @@
       renderStage4Grooming();
       typeWrite(
         "🫧 マウスウォッシュ＆おしぼりで清潔感MAX！",
-        "ミントのマウスウォッシュで口元スッキリ＆温かいおしぼりで手や汗をリフレッシュ！\n鏡で髪型や襟元もサッと整えれば準備120%完璧です！",
+        "ミントのマウスウォッシュで口元スッキリ＆温かいおしぼりで手や汗をリフレッシュ！鏡で髪型や襟元もサッと整えれば準備120%完璧です！",
         false, null, "🫧<br>FRESH"
       );
     }
@@ -2725,7 +2995,7 @@
       const faceKey = "face_" + c.id;
       typeWrite(
         `🎊 ${st.name} 入店〜退店シミュレーション完全クリア！`,
-        `受付での指名・待ち時間確認や選び直し、完全前払いロック、そして${c.name}からの『感謝の名刺』まで体験完了！\n最後に下の『公式HP 6大コンテンツ図鑑』から、本日の出勤表や開催中の割引イベントを覗いてみてください！`,
+        `受付での指名・待ち時間確認や選び直し、完全前払いロック、そして${c.name}からの『感謝の名刺』まで体験完了！最後に下の『公式HP 6大コンテンツ図鑑』から、本日の出勤表や開催中の割引イベントを覗いてみてください！`,
         false, faceKey
       );
 
@@ -2779,7 +3049,7 @@
         const st = STORES[currentStoreKey];
         typeWrite(
           `🎁 割引シミュレーション適用！（-${fmtYen(st.simDiscount)} OFF！）`,
-          `お会計がリアルタイムに下がりました！${st.eventSummary}\n受付で「HPのイベント見ました」「LINE登録しました」とスマホ画面を見せるだけで初来店から堂々と使えます！`,
+          `お会計がリアルタイムに下がりました！${st.eventSummary}受付で「HPのイベント見ました」「LINE登録しました」とスマホ画面を見せるだけで初来店から堂々と使えます！`,
           false, "face_staff"
         );
       } else {
