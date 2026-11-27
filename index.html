@@ -4,59 +4,67 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow, noarchive" />
-  <title>スマホ実機プレビュー確認ページ</title>
+  <title>スマホ実機プレビュー</title>
   <style>
     * { box-sizing: border-box; }
     body {
-      margin: 0; padding: 20px 14px;
-      background: #0b1120; color: #f8fafc;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", Meiryo, sans-serif;
+      margin: 0; padding: 22px 14px;
+      background: linear-gradient(180deg, #fcfbfd 0%, #f4eff9 100%);
+      color: #332445;
+      min-height: 100vh;
+      font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+      -webkit-text-size-adjust: 100%;
     }
-    .wrap { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
-    .hdr { background: #151f32; border: 1px solid #293548; border-radius: 14px; padding: 18px 16px; text-align: center; }
-    .badge { display: inline-block; background: #334155; color: #cbd5e1; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 8px; }
-    h1 { margin: 0 0 6px; font-size: 18px; }
-    p { margin: 0; font-size: 12.5px; color: #94a3b8; line-height: 1.5; }
+    .wrap { max-width: 460px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    .hdr {
+      background: #ffffff; border: 1px solid #e8dff2; border-top: 2px solid #cbb07a;
+      border-radius: 12px; padding: 18px 16px; text-align: center;
+      box-shadow: 0 6px 20px rgba(51,36,69,0.05);
+    }
+    .badge {
+      display: inline-block; background: #f7f1e3; border: 1px solid rgba(206,178,118,0.55);
+      color: #9e7b3b; font-size: 10.5px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 8px;
+    }
+    h1 { margin: 0 0 6px; font-size: 18px; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; letter-spacing: 0.06em; }
+    p { margin: 0; font-size: 12px; color: #6c5d7c; line-height: 1.5; }
     .card {
-      display: block; text-decoration: none; color: #ffffff;
-      background: linear-gradient(135deg, #1e1b4b, #312e81);
-      border: 1.5px solid #6366f1; border-radius: 14px; padding: 18px 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      display: block; text-decoration: none; color: #332445;
+      background: #ffffff; border: 1px solid #e8dff2; border-radius: 12px; padding: 18px 16px;
+      box-shadow: 0 6px 22px rgba(51,36,69,0.055);
     }
-    .card.pink {
-      background: linear-gradient(135deg, #4a044e, #831843);
-      border-color: #ec4899;
-    }
-    .card-tag { font-size: 11px; font-weight: 800; color: #fde047; margin-bottom: 4px; }
-    .card-title { font-size: 16px; font-weight: 900; margin-bottom: 6px; }
-    .card-desc { font-size: 12px; color: #e2e8f0; line-height: 1.5; }
+    .card-tag { font-size: 10.5px; font-weight: 700; color: #9e7b3b; letter-spacing: 0.06em; margin-bottom: 4px; }
+    .card-title { font-size: 15.5px; font-weight: 700; margin-bottom: 6px; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; }
+    .card-desc { font-size: 12px; color: #6c5d7c; line-height: 1.55; }
     .btn {
-      margin-top: 12px; display: inline-block; width: 100%; text-align: center;
-      background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.3);
-      padding: 10px; border-radius: 8px; font-weight: 800; font-size: 13px;
+      margin-top: 12px; display: block; width: 100%; text-align: center;
+      background: linear-gradient(135deg, #8b67c4 0%, #6b4ca3 100%); color: #ffffff;
+      padding: 11px; border-radius: 8px; font-weight: 700; font-size: 12.5px; letter-spacing: 0.05em;
+    }
+    .btn.dark {
+      background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="hdr">
-      <div class="badge">🔒 検索避け(noindex)設定済・スマホ実機テスト用</div>
-      <h1>スマホ実機プレビュー</h1>
-      <p>タップすると各コンテンツの実機動作確認ができます</p>
+      <div class="badge">検索避け（noindex）設定済・実機確認用</div>
+      <h1>スマートフォン実機プレビュー</h1>
+      <p>確認したいコンテンツを選択してください（1画面完結仕様）</p>
     </div>
 
-    <a href="./simulator/" class="card">
-      <div class="card-tag">🎮 新規層・初来店不安解消ミニゲーム</div>
-      <div class="card-title">① はじめての来店体験シミュレーター</div>
-      <div class="card-desc">朝・夕・夜の背景切替、パネル選び直し・待ち時間案内、前払いお財布ロック、感謝の名刺まで体験できるドット絵RPG版</div>
-      <div class="btn">▶ 来店シミュレーターを開く</div>
+    <a href="./matcher/" class="card">
+      <div class="card-tag">OFFICIAL HP STYLE CONCIERGE</div>
+      <div class="card-title">キャスト相性診断コンシェルジュ</div>
+      <div class="card-desc">3店舗の公式HPデザインに合わせた上品なトーンで、7つの質問から相性の良い在籍キャスト・本日の出勤枠をご案内します。</div>
+      <div class="btn">キャスト相性診断を開く ›</div>
     </a>
 
-    <a href="./matcher/" class="card pink">
-      <div class="card-tag">🧬 3店舗HP（全89名・出勤表）連動プロトタイプ</div>
-      <div class="card-title">② MBTI風『隠れ甘え度＆相性98%キャスト診断』</div>
-      <div class="card-desc">7つの質問から16タイプ気質と隠れ甘え度を判定し、スリーサイズ・Q&amp;A・本日出勤枠から高相性の実在キャストを提案</div>
-      <div class="btn">▶ キャスト相性診断を開く</div>
+    <a href="./simulator/" class="card">
+      <div class="card-tag">FIRST VISIT RPG SIMULATOR</div>
+      <div class="card-title">はじめての来店体験シミュレーター</div>
+      <div class="card-desc">入店から受付パネル指名・前払い会計・退店までを1画面のドット絵RPG形式で疑似体験できる初来店ガイドです。</div>
+      <div class="btn dark">来店シミュレーターを開く ›</div>
     </a>
   </div>
 </body>
