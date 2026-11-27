@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <style>
+    :root {
+      --background: #0b1120;
+      --card: #151f32;
+      --foreground: #f8fafc;
+      --muted-foreground: #94a3b8;
+      --border: #293548;
+      --card-border: #293548;
+      --link: #f472b6;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      min-height: 100vh;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16タイプ精密解析｜あなたの隠れ甘え度＆相性98%の実在キャスト診断</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .fade-in { animation: fadeIn 0.28s ease-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .opt-card {
+      transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+    }
+    .opt-card:hover {
+      transform: translateY(-1px);
+      border-color: #ec4899;
+      box-shadow: 0 6px 18px rgba(236, 72, 153, 0.14);
+    }
+    .opt-card:active {
+      transform: scale(0.99);
+    }
+    .store-pill.active-gotanda {
+      background: linear-gradient(135deg, #6d28d9, #9333ea);
+      color: #ffffff;
+      border-color: #a855f7;
+    }
+    .store-pill.active-tachikawa {
+      background: linear-gradient(135deg, #1d4ed8, #0284c7);
+      color: #ffffff;
+      border-color: #38bdf8;
+    }
+    .store-pill.active-hachioji {
+      background: linear-gradient(135deg, #be185d, #ec4899);
+      color: #ffffff;
+      border-color: #f472b6;
+    }
+    .cast-photo-frame {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: rgba(148, 163, 184, 0.15);
+    }
+    .cast-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-3 sm:p-5">
+  <div class="max-w-3xl mx-auto space-y-4">
+
+    <!-- Top Store Selector & Live Sync Bar -->
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-2.5 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex flex-wrap items-center gap-1.5" id="storeSwitchBar">
+          <button type="button" data-store="gotanda" class="store-pill px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] transition cursor-pointer">
+            🍇 五反田シンデレラ
+          </button>
+          <button type="button" data-store="tachikawa" class="store-pill px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] transition cursor-pointer">
+            🌊 立川ビッグラブ
+          </button>
+          <button type="button" data-store="hachioji" class="store-pill px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] transition cursor-pointer">
+            🌸 八王子アリス
+          </button>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" id="toggleCatalogBtn" class="px-2.5 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] hover:opacity-80 transition cursor-pointer">
+            🗂️ 在籍MBTI図鑑を見る
+          </button>
+          <button type="button" id="restartTopBtn" class="hidden px-2.5 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition cursor-pointer">
+            ↺ もう一度診断
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border)] text-xs text-[var(--muted-foreground)]">
+        <span id="syncStatusLine">🔄 公式HPデータ自動同期済</span>
+        <span id="storeMetaLine" class="font-semibold"></span>
+      </div>
+    </div>
+
+    <!-- VIEW 1: INTRO SCREEN -->
+    <div id="introView" class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 sm:p-7 space-y-5 shadow-sm fade-in">
+      <div class="space-y-2 text-center">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold text-white" style="background:linear-gradient(135deg,#7c3aed,#ec4899);">
+          🧬 公式HPプロフィール × 出勤表 リアルタイム連動
+        </div>
+        <h1 class="text-xl sm:text-2xl font-black tracking-tight leading-snug">
+          あなたの『隠れ甘え度』＆<br class="sm:hidden" />相性98%の実在キャスト精密診断
+        </h1>
+        <p class="text-xs sm:text-sm text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed">
+          「在籍が多くて誰を指名すればいいか分からない…」を25秒で解決！<br />
+          7つの質問からあなたの<b class="text-[var(--foreground)]">16タイプ恋愛気質・隠れ甘え度（%）</b>を解析し、公式HPの<b class="text-[var(--foreground)]">スリーサイズ・紹介文・本人Q&amp;A・本日の出勤枠</b>から最高相性の実在キャストを導き出します。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+        <div class="p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="font-extrabold text-pink-500">① 隠れ甘え度＆16タイプ判定</div>
+          <div class="text-[var(--muted-foreground)]">普段は言えない「甘やかされたい／リードしたい」深層バランスを数値化。</div>
+        </div>
+        <div class="p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="font-extrabold text-purple-500">② 身長・カップ数×性格で照合</div>
+          <div class="text-[var(--muted-foreground)]">HP上の実測スリーサイズ・Q&amp;A・紹介文から全在籍キャストと精密マッチング。</div>
+        </div>
+        <div class="p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="font-extrabold text-emerald-500">③ 本日すぐ会える出勤枠も表示</div>
+          <div class="text-[var(--muted-foreground)]">「今日これから出勤している相性No.1」と「全在籍の運命No.1」を両方チェック！</div>
+        </div>
+      </div>
+
+      <div class="pt-1 text-center space-y-2">
+        <button type="button" id="startQuizBtn" class="w-full sm:w-auto px-8 py-3.5 rounded-xl text-sm font-black text-white shadow-md hover:opacity-95 transition cursor-pointer" style="background:linear-gradient(135deg,#7c3aed,#db2777);">
+          ▶ 精密診断をスタートする（全7問・約25秒）
+        </button>
+        <div class="text-xs text-[var(--muted-foreground)]">
+          ※診断結果は後から上部タブで「五反田・立川・八王子」どの店舗にもワンタップ切替できます
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 2: 7-QUESTION QUIZ SCREEN -->
+    <div id="quizView" class="hidden bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-6 space-y-4 shadow-sm fade-in">
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xs font-bold">
+          <span id="qStepBadge" class="px-2.5 py-0.5 rounded-full text-white" style="background:linear-gradient(135deg,#7c3aed,#ec4899);">QUESTION 1 / 7</span>
+          <button type="button" id="prevQBtn" class="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition cursor-pointer">
+            ← 1つ前の質問に戻る
+          </button>
+        </div>
+        <div class="w-full h-2 rounded-full bg-[var(--background)] overflow-hidden border border-[var(--border)]">
+          <div id="qProgressBar" class="h-full transition-all duration-300" style="width:14%;background:linear-gradient(90deg,#7c3aed,#ec4899);"></div>
+        </div>
+      </div>
+
+      <div class="space-y-1 pt-1">
+        <div id="qCategory" class="text-xs font-extrabold text-pink-500"></div>
+        <h2 id="qTitle" class="text-base sm:text-lg font-black leading-snug"></h2>
+      </div>
+
+      <div id="qOptionsList" class="space-y-2.5 pt-1"></div>
+    </div>
+
+    <!-- VIEW 3: DIAGNOSIS RESULT & MATCHED CASTS -->
+    <div id="resultView" class="hidden space-y-4 fade-in">
+
+      <!-- Card A: User's 16-Type & Hidden Spoil-Me Meter -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-6 space-y-4 shadow-sm">
+        <div class="flex flex-wrap items-start justify-between gap-3 border-b border-[var(--border)] pb-3.5">
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="resUserTypeBadge" class="px-2.5 py-0.5 rounded-md text-xs font-black text-white" style="background:linear-gradient(135deg,#6d28d9,#db2777);"></span>
+              <span id="resIdealPartnerBadge" class="px-2.5 py-0.5 rounded-md text-xs font-bold border border-[var(--border)] bg-[var(--background)]"></span>
+            </div>
+            <h2 id="resUserCatch" class="text-lg sm:text-xl font-black leading-snug pt-0.5"></h2>
+          </div>
+
+          <div class="px-3.5 py-2 rounded-xl border border-pink-500/30 text-center" style="background:rgba(236,72,153,0.08);">
+            <div class="text-xs font-bold text-pink-500">あなたの隠れ甘え度</div>
+            <div id="resSpoilPct" class="text-2xl font-black text-pink-500 tabular-nums">88%</div>
+          </div>
+        </div>
+
+        <p id="resUserDesc" class="text-xs sm:text-sm text-[var(--muted-foreground)] leading-relaxed"></p>
+
+        <!-- 4 Axis Mini Bars -->
+        <div id="resAxisBars" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs"></div>
+
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border)]">
+          <div class="text-xs text-[var(--muted-foreground)]">
+            💡 上の店舗ボタンで、同じ診断結果のまま他店舗の相性キャストも比較できます
+          </div>
+          <a id="shareXBtn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-extrabold text-white transition hover:opacity-90" style="background:#0f172a;">
+            𝕏 診断結果をポストする
+          </a>
+        </div>
+      </div>
+
+      <!-- Card B: Working Today / Tomorrow Top Matches -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 space-y-3 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <h3 id="todaySecTitle" class="text-sm sm:text-base font-black"></h3>
+            </div>
+            <p id="todaySecSub" class="text-xs text-[var(--muted-foreground)] mt-0.5"></p>
+          </div>
+          <a id="storeScheduleLink" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-bold underline text-[var(--link)]">
+            📅 公式HPの出勤表をすべて見る →
+          </a>
+        </div>
+
+        <div id="todayMatchesGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+      </div>
+
+      <!-- Card C: All-Roster Top 3 Soulmate Matches -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 space-y-3 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 id="overallSecTitle" class="text-sm sm:text-base font-black"></h3>
+            <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+              本日の出勤有無にかかわらず、スリーサイズ・紹介文・Q&amp;Aから算出した総合相性トップ3です
+            </p>
+          </div>
+          <a id="storeCastListLink" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-bold underline text-[var(--link)]">
+            👗 在籍一覧ページへ →
+          </a>
+        </div>
+
+        <div id="overallMatchesList" class="space-y-3"></div>
+      </div>
+
+      <!-- Card D: Store Price & First-Visit Relief Footer -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 space-y-2.5 shadow-sm text-xs">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div class="font-black text-sm" id="footerStoreTitle"></div>
+          <span id="footerPromoBadge" class="px-2.5 py-0.5 rounded-full font-bold text-pink-500 border border-pink-500/30" style="background:rgba(236,72,153,0.08);"></span>
+        </div>
+        <div id="footerStoreInfo" class="text-[var(--muted-foreground)] leading-relaxed"></div>
+        <div class="flex flex-wrap gap-2 pt-1">
+          <a id="footerTelBtn" href="#" class="px-4 py-2.5 rounded-xl font-black text-white text-xs" style="background:linear-gradient(135deg,#059669,#10b981);">
+            📞 空き状況・待ち時間を電話で確認する
+          </a>
+          <a id="footerTopBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl font-black text-white text-xs" style="background:linear-gradient(135deg,#6d28d9,#db2777);">
+            🏰 公式HPトップ・割引イベントを見る
+          </a>
+          <button type="button" id="retryBottomBtn" class="px-4 py-2.5 rounded-xl font-bold border border-[var(--border)] text-[var(--foreground)] text-xs cursor-pointer">
+            ↺ 条件を変えてもう一度診断する
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: ALL-ROSTER MBTI & SPEC DIRECTORY (Toggleable Inspector) -->
+    <div id="catalogView" class="hidden bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 space-y-4 shadow-sm fade-in">
+      <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border)] pb-3">
+        <div>
+          <h2 id="catTitle" class="text-base font-black"></h2>
+          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
+            ※現在はHPの紹介文・本人Q&amp;A・スリーサイズから自動推定中（管理画面でプロフィールに「ENFP」等の4文字を入れると自動で『公式MBTI』表記に切り替わります）
+          </p>
+        </div>
+        <button type="button" id="closeCatalogBtn" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] cursor-pointer">
+          ✕ 診断画面へ戻る
+        </button>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <label class="flex items-center gap-1.5 font-bold">
+          <span>絞り込み：</span>
+          <select id="catFilterShift" class="px-2 py-1 rounded border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+            <option value="all">全在籍を表示</option>
+            <option value="today">🟢 本日出勤のみ</option>
+            <option value="tomorrow">📅 明日出勤予定のみ</option>
+          </select>
+        </label>
+        <select id="catFilterCup" class="px-2 py-1 rounded border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+          <option value="all">すべてのカップ数</option>
+          <option value="glamour">Eカップ以上（グラマー）</option>
+          <option value="standard">C〜Dカップ（王道美乳）</option>
+          <option value="slender">A〜Bカップ（スレンダー）</option>
+        </select>
+        <select id="catFilterGroup" class="px-2 py-1 rounded border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+          <option value="all">すべての性格グループ</option>
+          <option value="E_F">☀️ 陽キャ・愛嬌・恋人系 (ESFP/ENFP/ESFJ/ENFJ)</option>
+          <option value="I_F">🌸 清楚・癒やし・ピュア系 (ISFP/ISFJ/INFP/INFJ)</option>
+          <option value="T">💎 クール・綺麗・モデル系 (ISTP/ISTJ/ESTP/ESTJ/INTP/ENTJ等)</option>
+        </select>
+      </div>
+
+      <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+    </div>
+
+  </div>
+
+  <script>
+    /*__CASTS_BUNDLE_START__*/
+    const EMBEDDED_DB = {"synced_at":"2026-11-27 14:56","stores":{"gotanda":{"meta":{"key":"gotanda","store_ja":"五反田","brand":"五反田シンデレラ","en_brand":"CINDERELLA GOTANDA","emoji":"🍇","base_url":"https://gotanda-cinderella.com","tel":"03-5791-5400","access":"JR五反田駅東口 徒歩3分（1階路面）","price_note":"30分 ¥7,000〜（夜¥9,000）／指名料 ¥2,000","line_promo":"公式LINE新規登録で2,000円OFF実施中"},"casts":[{"store_key":"gotanda","cno":"32","disp_no":"No.2","name":"華恋","size_text":"T155 B84(D) W59 H80","height":155,"bust":84,"cup":"D","waist":59,"hip":80,"tagline":"会えば会うほど彼女にしたい♡","today_shift":"12:00～19:00","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/32_2.jpg?v=1794057655","profile_url":"https://gotanda-cinderella.com/profile.php?cno=32","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/4730770/","qa":[],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":18},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","清楚・透明感","恋人イチャ感"],"highlight":"小柄で可愛らしい雰囲気が魅力の"},{"store_key":"gotanda","cno":"36","disp_no":"No.3","name":"川村","size_text":"T160 B88(D) W56 H89","height":160,"bust":88,"cup":"D","waist":56,"hip":89,"tagline":"圧倒的！五反田の看板エース！","today_shift":"","tomorrow_shift":"10:00-18:00","rank":null,"badges":["おすすめ","特別指名"],"photo_url":"https://gotanda-cinderella.com/img/c/36_2.jpg?v=1791350816","profile_url":"https://gotanda-cinderella.com/profile.php?cno=36","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5718174/","qa":[["チャームポイントは？","スタイル！"],["何フェチ？","声と腕"],["趣味は？","知らない土地を散歩すること！"],["好きな男性のタイプは？","\"漢\"らしい人"],["何をプレゼントされたら嬉しい？","来てくださるだけで嬉しいです！"],["お兄さんたちに一言！","一緒に楽しい時間過ごせたら嬉しいです♡"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":45,"n":18,"f":73,"j":88},"feature_tags":["美乳Dカップ","清楚・透明感","恋人イチャ感","お姉さんリード"],"highlight":"清楚でありながらSのエロスの雰囲気が漂う美女♪♪"},{"store_key":"gotanda","cno":"33","disp_no":"No.4","name":"星","size_text":"T161 B84(D) W56 H83","height":161,"bust":84,"cup":"D","waist":56,"hip":83,"tagline":"宝石のように美しく輝く","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/33_2.jpg?v=1785382861","profile_url":"https://gotanda-cinderella.com/profile.php?cno=33","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/4785957/","qa":[["チャームポイントは？","くびれ"],["何フェチ？","腕の血管、腹筋"],["趣味は？","カフェ巡り"],["好きな男性のタイプは？","清潔感のある人がタイプ♪"],["S度M度比率","ちょっとSかも❔"],["何をプレゼントされたら嬉しい？","チョコやマカロン"],["お兄さんたちに一言！","たくさん癒されに来てください♡"]],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":20,"n":88,"f":52,"j":60},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"目を奪われるほどの美貌と吸い込まれそうなキュートな瞳"},{"store_key":"gotanda","cno":"76","disp_no":"No.5","name":"綾瀬","size_text":"T148 B89(E) W58 H87","height":148,"bust":89,"cup":"E","waist":58,"hip":87,"tagline":"やはり、頂点は彼女のもの。","today_shift":"","tomorrow_shift":"","rank":null,"badges":["NEW"],"photo_url":"https://gotanda-cinderella.com/img/c/76_1.jpg?v=1793773827","profile_url":"https://gotanda-cinderella.com/profile.php?cno=76","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5918686/","qa":[["チャームポイントは？","えがおー！"],["何フェチ？","血管"],["趣味は？","ライブと読書"]],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":18,"n":54,"f":88,"j":88},"feature_tags":["小柄148cm","美巨乳Eカップ","恋人イチャ感"],"highlight":"この言葉が、これほど似合う女の子はなかなかいません。"},{"store_key":"gotanda","cno":"21","disp_no":"No.6","name":"新垣","size_text":"T153 B83(E) W54 H80","height":153,"bust":83,"cup":"E","waist":54,"hip":80,"tagline":"完全未経験のシンデレラ","today_shift":"","tomorrow_shift":"","rank":1,"badges":["おすすめ","特別指名"],"photo_url":"https://gotanda-cinderella.com/img/c/21_2.jpg?v=1790928110","profile_url":"https://gotanda-cinderella.com/profile.php?cno=21","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5568693/","qa":[["チャームポイントは？","肌がすべすべなところ♡"],["趣味は？","ゴルフと美味しいお店開拓です！ ゴルフトーク、美味しいお店紹介、お待ちしてます☺️"]],"mbti":"ISTP","mbti_label":"マイペースで色気漂うナチュラル美女","mbti_source":"inferred","axes":{"e":37,"n":18,"f":22,"j":18},"feature_tags":["小柄153cm","美巨乳Eカップ","清楚・透明感","守りたいピュア感"],"highlight":"当店スタッフが自信を持っておすすめしたい、完全未経験の女の子です。"},{"store_key":"gotanda","cno":"80","disp_no":"No.7","name":"静寂","size_text":"T163 B79(A) W54 H80","height":163,"bust":79,"cup":"A","waist":54,"hip":80,"tagline":"ブレイク確実艶やかの到達点","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/80_1.jpg?v=1795673923","profile_url":"https://gotanda-cinderella.com/profile.php?cno=80","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5968609/","qa":[],"mbti":"ISTJ","mbti_label":"礼儀正しく清楚な大和撫子タイプ","mbti_source":"inferred","axes":{"e":18,"n":18,"f":22,"j":88},"feature_tags":["高身長163cm","華奢スレンダー","清楚・透明感","お姉さんリード"],"highlight":"艶やかさ・スレンダー・清楚系・綺麗系"},{"store_key":"gotanda","cno":"13","disp_no":"No.8","name":"暁美","size_text":"T155 B85(E) W56 H83","height":155,"bust":85,"cup":"E","waist":56,"hip":83,"tagline":"ゆるふわ系かわいさ爆発","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/13_2.jpg?v=1789469444","profile_url":"https://gotanda-cinderella.com/profile.php?cno=13","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5233179/","qa":[["チャームポイントは？","白い肌"],["何フェチ？","香水フェチ"],["趣味は？","スロット"],["好きな男性のタイプは？","会話が上手な人"],["S度M度比率","5:5"],["何をプレゼントされたら嬉しい？","香水"],["お兄さんたちに一言！","一緒に素敵な時間を過ごしましょうね"]],"mbti":"ESTJ","mbti_label":"頼れるスマート綺麗系リード","mbti_source":"inferred","axes":{"e":85,"n":20,"f":36,"j":88},"feature_tags":["美巨乳Eカップ","愛嬌・笑顔◎","清楚・透明感","会話盛り上げ上手"],"highlight":"明るく元気で愛嬌抜群の暁美ちゃん。"},{"store_key":"gotanda","cno":"64","disp_no":"No.12","name":"草間","size_text":"T155 B85(B) W57 H67","height":155,"bust":85,"cup":"B","waist":57,"hip":67,"tagline":"一度では足りない癒しを貴方に","today_shift":"13:00～18:00","tomorrow_shift":"","rank":null,"badges":["おすすめ","NEW"],"photo_url":"https://gotanda-cinderella.com/img/c/64_2.jpg?v=1794057807","profile_url":"https://gotanda-cinderella.com/profile.php?cno=64","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5720708/","qa":[["チャームポイントは？","えがお>ᴗ<"],["何フェチ？","うで！"],["好きな男性のタイプは？","好きになった人がタイプです(,,- -,, )"],["S度M度比率","ひ み つ で す(⑉• •⑉)❤"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":73,"n":18,"f":88,"j":18},"feature_tags":["華奢スレンダー","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"155cmの小柄で可愛らしい雰囲気が魅力の、完全未経験の女の子が入店しました♪"},{"store_key":"gotanda","cno":"78","disp_no":"No.13","name":"花野","size_text":"T154 B84(D) W56 H79","height":154,"bust":84,"cup":"D","waist":56,"hip":79,"tagline":"まず可愛い！！が第一印象！！","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/78_2.jpg?v=1795439593","profile_url":"https://gotanda-cinderella.com/profile.php?cno=78","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5930726/","qa":[],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":18},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"愛くるしい！！思わず守りたくなる！！"},{"store_key":"gotanda","cno":"75","disp_no":"No.14","name":"長島","size_text":"T166 B90(G) W56 H86","height":166,"bust":90,"cup":"G","waist":56,"hip":86,"tagline":"理性吹き飛ぶプロポーション♪","today_shift":"15:30～18:30","tomorrow_shift":"","rank":3,"badges":["NEW"],"photo_url":"https://gotanda-cinderella.com/img/c/75_2.jpg?v=1795071194","profile_url":"https://gotanda-cinderella.com/profile.php?cno=75","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5871168/","qa":[],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":18,"n":88,"f":61,"j":54},"feature_tags":["高身長166cm","迫力Gカップ","清楚・透明感","恋人イチャ感"],"highlight":"黒髪ロングが印象的で大人の色気が漂う彼女。"},{"store_key":"gotanda","cno":"73","disp_no":"No.16","name":"北条","size_text":"T163 B84(D) W56 H82","height":163,"bust":84,"cup":"D","waist":56,"hip":82,"tagline":"未経験なのでお兄さんたちをいっぱい癒せるよう頑張ります♪","today_shift":"18:00～24:00","tomorrow_shift":"18:00-24:00","rank":1,"badges":["NEW"],"photo_url":"https://gotanda-cinderella.com/img/c/73_2.jpg?v=1791531576","profile_url":"https://gotanda-cinderella.com/profile.php?cno=73","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5849783/","qa":[],"mbti":"ENFP","mbti_label":"天真爛漫な愛嬌ムードメーカー","mbti_source":"inferred","axes":{"e":50,"n":88,"f":88,"j":18},"feature_tags":["高身長163cm","美乳Dカップ","癒やし包み込み","守りたいピュア感"],"highlight":"一度出会ったら思わず視線が釘付けになる可愛さに、ふんわりとした女の子らしい雰囲気。"},{"store_key":"gotanda","cno":"34","disp_no":"No.17","name":"涼宮","size_text":"T160 B84(C) W58 H83","height":160,"bust":84,"cup":"C","waist":58,"hip":83,"tagline":"ピュアな王道妹系美少女","today_shift":"18:00～23:00","tomorrow_shift":"","rank":3,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/34_2.jpg?v=1794057869","profile_url":"https://gotanda-cinderella.com/profile.php?cno=34","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5686744/","qa":[],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":21},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","癒やし包み込み","会話盛り上げ上手"],"highlight":"ふんわり可愛い雰囲気と甘えん坊な性格が魅力の涼宮ちゃんです！"},{"store_key":"gotanda","cno":"70","disp_no":"No.18","name":"村上","size_text":"T160 B86(C) W56 H87","height":160,"bust":86,"cup":"C","waist":56,"hip":87,"tagline":"おっとりふんわり完全未経験美女","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/70_2.jpg?v=1794057930","profile_url":"https://gotanda-cinderella.com/profile.php?cno=70","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5048265/","qa":[["チャームポイントは？","ほっぺ"],["何フェチ？","方言"],["趣味は？","野球観戦"],["好きな男性のタイプは？","見た目いかついけど優しい人"],["S度M度比率","2:8"],["何をプレゼントされたら嬉しい？","甘いもの"],["お兄さんたちに一言！","一緒に甘い時間を過ごしましょう♡"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":18,"n":36,"f":88,"j":24},"feature_tags":["美乳Cカップ","清楚・透明感","癒やし包み込み","恋人イチャ感"],"highlight":"当店が自信を持っておすすめする、圧倒的美少女キャストです。"},{"store_key":"gotanda","cno":"77","disp_no":"No.19","name":"天使","size_text":"T150 B90(G) W59 H82","height":150,"bust":90,"cup":"G","waist":59,"hip":82,"tagline":"♡可愛さがエンジェル級♡","today_shift":"","tomorrow_shift":"","rank":null,"badges":["NEW"],"photo_url":"https://gotanda-cinderella.com/img/c/77_1.jpg?v=1794632365","profile_url":"https://gotanda-cinderella.com/profile.php?cno=77","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5929624/","qa":[["チャームポイントは？","笑顔"],["何フェチ？","匂い"],["趣味は？","カフェ巡り"]],"mbti":"ENFP","mbti_label":"天真爛漫な愛嬌ムードメーカー","mbti_source":"inferred","axes":{"e":62,"n":88,"f":88,"j":45},"feature_tags":["小柄150cm","迫力Gカップ","愛嬌・笑顔◎"],"highlight":"まさに…天使！！可愛い笑顔が印象的な美少女♪♪"},{"store_key":"gotanda","cno":"44","disp_no":"No.22","name":"神楽","size_text":"T154 B83(D) W55 H80","height":154,"bust":83,"cup":"D","waist":55,"hip":80,"tagline":"芸能人レベルの圧倒的美しさ","today_shift":"","tomorrow_shift":"","rank":2,"badges":["おすすめ","特別指名"],"photo_url":"https://gotanda-cinderella.com/img/c/44_2.jpg?v=1794057982","profile_url":"https://gotanda-cinderella.com/profile.php?cno=44","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/4771796/","qa":[["チャームポイントは？","目です！"],["趣味は？","散歩が好きです！"],["好きな男性のタイプは？","言葉選びが素敵な人"],["S度M度比率","S:75 M:35"],["何をプレゼントされたら嬉しい？","お酒に合うもの"],["お兄さんたちに一言！","メロメロにします❤"]],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":45,"n":88,"f":88,"j":88},"feature_tags":["美乳Dカップ","清楚・透明感","恋人イチャ感"],"highlight":"入店以来歴代最高レベルのリピート率の実績"},{"store_key":"gotanda","cno":"74","disp_no":"No.23","name":"水沢","size_text":"T157 B86(D) W54 H87","height":157,"bust":86,"cup":"D","waist":54,"hip":87,"tagline":"大和撫子清楚美女！","today_shift":"10:00～18:00","tomorrow_shift":"12:00-20:00","rank":2,"badges":["NEW"],"photo_url":"https://gotanda-cinderella.com/img/c/74_2.jpg?v=1795501363","profile_url":"https://gotanda-cinderella.com/profile.php?cno=74","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5867024/","qa":[],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":18,"n":38,"f":82,"j":88},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"清楚で上品、どこか懐かしさを感じさせる大和撫子のような美少女。"},{"store_key":"gotanda","cno":"66","disp_no":"No.24","name":"桜井","size_text":"T150 B84(C) W56 H83","height":150,"bust":84,"cup":"C","waist":56,"hip":83,"tagline":"お目目パチッとギャル系美女","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/66_2.jpg?v=1789469818","profile_url":"https://gotanda-cinderella.com/profile.php?cno=66","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/4635505/","qa":[["チャームポイントは？","目です！"],["何フェチ？","香水フェチ"],["趣味は？","飲み歩き"],["好きな男性のタイプは？","イケメンで優しい人‼"],["S度M度比率","Ｓ90/Ｍ10"],["何をプレゼントされたら嬉しい？","キティちゃんグッズ！"],["お兄さんたちに一言！","明るいギャルに会いに来てください！"]],"mbti":"ISTJ","mbti_label":"礼儀正しく清楚な大和撫子タイプ","mbti_source":"inferred","axes":{"e":45,"n":45,"f":45,"j":88},"feature_tags":["小柄150cm","美乳Cカップ","清楚・透明感","癒やし包み込み"],"highlight":"華やかなギャル系の雰囲気が目を引く、綺麗系の桜井ちゃんです！"},{"store_key":"gotanda","cno":"37","disp_no":"No.25","name":"西","size_text":"T158 B81(C) W59 H83","height":158,"bust":81,"cup":"C","waist":59,"hip":83,"tagline":"純粋無垢美少女","today_shift":"17:00～24:00","tomorrow_shift":"10:00-24:00","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/37_2.jpg?v=1789469972","profile_url":"https://gotanda-cinderella.com/profile.php?cno=37","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5519931/","qa":[["チャームポイントは？","目元です！"],["何フェチ？","️匂い"],["趣味は？","料理"],["好きな男性のタイプは？","清潔感のある人"],["S度M度比率","️8:2"],["何をプレゼントされたら嬉しい？","たべっ子どうぶつ"],["お兄さんたちに一言！","未経験ですが楽しんで貰えるように頑張ります♪♪"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":18,"n":18,"f":68,"j":39},"feature_tags":["美乳Cカップ","癒やし包み込み","守りたいピュア感","お姉さんリード"],"highlight":"業界完全未経験で入店した西ちゃんです。"},{"store_key":"gotanda","cno":"69","disp_no":"No.27","name":"如月","size_text":"T162 B85(D) W58 H86","height":162,"bust":85,"cup":"D","waist":58,"hip":86,"tagline":"会って分かるいい女！","today_shift":"","tomorrow_shift":"10:00-15:00","rank":null,"badges":["NEW"],"photo_url":"https://gotanda-cinderella.com/img/c/69_2.jpg?v=1791872927","profile_url":"https://gotanda-cinderella.com/profile.php?cno=69","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5795845/","qa":[],"mbti":"ISTP","mbti_label":"マイペースで色気漂うナチュラル美女","mbti_source":"inferred","axes":{"e":45,"n":34,"f":42,"j":48},"feature_tags":["高身長162cm","美乳Dカップ","愛嬌・笑顔◎"],"highlight":"実際に会ったらもっと良かった！"},{"store_key":"gotanda","cno":"14","disp_no":"No.28","name":"一条","size_text":"T162 B100(I) W62 H98","height":162,"bust":100,"cup":"I","waist":62,"hip":98,"tagline":"愛嬌抜群のハーフ美少女降臨","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/14_2.jpg?v=1794058025","profile_url":"https://gotanda-cinderella.com/profile.php?cno=14","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5642468/","qa":[["チャームポイントは？","ぎゃんぎゃんまつ毛と目"],["何フェチ？","鎖骨"],["趣味は？","爆飲み"],["好きな男性のタイプは？","よく笑う人"],["S度M度比率","S"],["何をプレゼントされたら嬉しい？","キティちゃん"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":88},"feature_tags":["高身長162cm","迫力Iカップ","愛嬌・笑顔◎","清楚・透明感"],"highlight":"シンデレラが自信を持ってお勧めする、当店初のハーフ美少女"},{"store_key":"gotanda","cno":"15","disp_no":"No.31","name":"桃井","size_text":"T157 B86(C) W56 H83","height":157,"bust":86,"cup":"C","waist":56,"hip":83,"tagline":"スレンダー清楚系少女","today_shift":"10:00～24:00","tomorrow_shift":"10:00-24:00","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/15_2.jpg?v=1794058061","profile_url":"https://gotanda-cinderella.com/profile.php?cno=15","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/4897328/","qa":[],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":34,"n":28,"f":77,"j":49},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"スラッとしたスレンダースタイルに、"},{"store_key":"gotanda","cno":"45","disp_no":"No.32","name":"竹下","size_text":"T160 B88(G) W56 H86","height":160,"bust":88,"cup":"G","waist":56,"hip":86,"tagline":"沼レベルのドハマりにご注意","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/45_2.jpg?v=1791531727","profile_url":"https://gotanda-cinderella.com/profile.php?cno=45","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/4635621/","qa":[],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":88,"n":47,"f":84,"j":88},"feature_tags":["迫力Gカップ","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"明るい！可愛い！愛嬌抜群！"},{"store_key":"gotanda","cno":"43","disp_no":"No.34","name":"愛川","size_text":"T149 B88(C) W59 H89","height":149,"bust":88,"cup":"C","waist":59,"hip":89,"tagline":"癒し系エッチなお姉さん","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/43_2.jpg?v=1794058114","profile_url":"https://gotanda-cinderella.com/profile.php?cno=43","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5716067/","qa":[["チャームポイントは？","目"],["何フェチ？","匂い、寝癖"],["趣味は？","ちいかわ集め♡"],["好きな男性のタイプは？","甘えん坊な人♡"],["S度M度比率","S寄りです"],["何をプレゼントされたら嬉しい？","お菓子、ちいかわグッズ♡"],["お兄さんたちに一言！","沢山甘えて下さい♡"]],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":18,"n":64,"f":88,"j":65},"feature_tags":["小柄149cm","美乳Cカップ","愛嬌・笑顔◎","清楚・透明感"],"highlight":"透明感あふれる色白肌と、"},{"store_key":"gotanda","cno":"46","disp_no":"No.35","name":"佐藤","size_text":"T163 B88(D) W56 H89","height":163,"bust":88,"cup":"D","waist":56,"hip":89,"tagline":"癒しの極み気品漂う美少女","today_shift":"20:00～24:00","tomorrow_shift":"20:00-24:00","rank":null,"badges":["おすすめ"],"photo_url":"https://gotanda-cinderella.com/img/c/46_2.jpg?v=1789470412","profile_url":"https://gotanda-cinderella.com/profile.php?cno=46","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5106855/","qa":[["チャームポイントは？","笑顔です！ニコニコしてるねってよく言われますっ"],["何フェチ？","声フェチです♡ 落ち着いた声や、優しい話し方に惹かれます！"],["趣味は？","カフェ巡りや旅行、あとは可愛いものを集めることです！"],["好きな男性のタイプは？","優しくて、一緒にいて落ち着ける人です！"],["S度M度比率","S 30：M 70くらいかな？ どちらかというとM寄りです♡"],["何をプレゼントされたら嬉しい？","自分のことを考えて選んでくれたものなら何でも嬉しいです♡ 可愛いものや甘いものも嬉しいです！"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":55,"n":18,"f":65,"j":88},"feature_tags":["高身長163cm","美乳Dカップ","愛嬌・笑顔◎","清楚・透明感"],"highlight":"上品で落ち着いた雰囲気の中に、隠しきれない大人の色気。"},{"store_key":"gotanda","cno":"65","disp_no":"No.37","name":"日向","size_text":"T148 B87(D) W60 H92","height":148,"bust":87,"cup":"D","waist":60,"hip":92,"tagline":"心奪われる愛しい存在","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/65_2.jpg?v=1793531011","profile_url":"https://gotanda-cinderella.com/profile.php?cno=65","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5560573/","qa":[],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":49,"n":18,"f":88,"j":18},"feature_tags":["小柄148cm","美乳Dカップ","愛嬌・笑顔◎","清楚・透明感"],"highlight":"小柄で可愛らしい雰囲気に、思わず目を奪われるサラサラの黒髪。"},{"store_key":"gotanda","cno":"16","disp_no":"No.38","name":"林","size_text":"T157 B82(C) W59 H81","height":157,"bust":82,"cup":"C","waist":59,"hip":81,"tagline":"スラっとした清楚系美少女","today_shift":"12:00～20:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/16_2.jpg?v=1789470578","profile_url":"https://gotanda-cinderella.com/profile.php?cno=16","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5149043/","qa":[],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":35,"n":18,"f":60,"j":40},"feature_tags":["美乳Cカップ","清楚・透明感","恋人イチャ感","守りたいピュア感"],"highlight":"派手髪美女が、まさかの「僕っ子」！？"},{"store_key":"gotanda","cno":"17","disp_no":"No.41","name":"井上","size_text":"T148 B95(G) W59 H86","height":148,"bust":95,"cup":"G","waist":59,"hip":86,"tagline":"抱き心地抜群ご奉仕系巨乳美少女","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/17_2.jpg?v=1789470663","profile_url":"https://gotanda-cinderella.com/profile.php?cno=17","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/4953256/","qa":[],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":18,"n":21,"f":86,"j":88},"feature_tags":["小柄148cm","迫力Gカップ","癒やし包み込み","恋人イチャ感"],"highlight":"身長148cmの小柄な見た目からは想像できない、存在感たっぷりのGカップ。"},{"store_key":"gotanda","cno":"35","disp_no":"No.52","name":"五月","size_text":"T154 B85(C) W58 H83","height":154,"bust":85,"cup":"C","waist":58,"hip":83,"tagline":"愛嬌抜群清楚系少女","today_shift":"10:00～18:00","tomorrow_shift":"10:00-18:00","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/35_2.jpg?v=1789470802","profile_url":"https://gotanda-cinderella.com/profile.php?cno=35","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5177174/","qa":[],"mbti":"INFP","mbti_label":"守ってあげたい純粋ピュア天使","mbti_source":"inferred","axes":{"e":38,"n":88,"f":76,"j":18},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"街ですれ違うと振り向いてしまう清楚系のきれいでかわいい美少女"},{"store_key":"gotanda","cno":"71","disp_no":"No.69","name":"皇","size_text":"T150 B88(E) W59 H86","height":150,"bust":88,"cup":"E","waist":59,"hip":86,"tagline":"クール系巨乳ロリッ娘ちゃん","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://gotanda-cinderella.com/img/c/71_2.jpg?v=1791128437","profile_url":"https://gotanda-cinderella.com/profile.php?cno=71","detail_url":"https://ranking-deli.jp/tokyo/area26/style4/45947/5044482/","qa":[["チャームポイントは？","おしり"],["何フェチ？","ないしょ♡"],["趣味は？","飲酒"],["好きな男性のタイプは？","一緒に楽しく飲める人"],["S度M度比率","８０％／２０％"],["何をプレゼントされたら嬉しい？","お酒が好きで今は芋焼酎にはまってます♡"],["お兄さんたちに一言！","ドMなお兄さんだーい好き！"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":45,"f":70,"j":18},"feature_tags":["小柄150cm","美巨乳Eカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"ぱちっと目が合った瞬間にノックアウト"}]},"tachikawa":{"meta":{"key":"tachikawa","store_ja":"立川","brand":"立川ビッグラブ","en_brand":"BIG LOVE TACHIKAWA","emoji":"🌊","base_url":"https://tachikawa-biglove.com","tel":"042-521-6226","access":"JR立川駅南口 徒歩2分","price_note":"30分 ¥7,000〜（夜¥9,000）／指名料 ¥2,000","line_promo":"HP限定特別割引＆月替わりイベント開催中"},"casts":[{"store_key":"tachikawa","cno":"1","disp_no":"No.6","name":"赤名","size_text":"T160 B86(C) W55 H85","height":160,"bust":86,"cup":"C","waist":55,"hip":85,"tagline":"最高な時間にします♡","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ","特別指名"],"photo_url":"https://tachikawa-biglove.com/img/c/1_2.jpg?v=1793801184","profile_url":"https://tachikawa-biglove.com/profile.php?cno=1","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/4992199/","qa":[["趣味は？","ドラマ見ること"],["好きな食べ物は？","マカロン、洋菓子"],["チャームポイントは？","目"],["男性のここがフェチ！","筋肉"],["デートしたい場所は？","家！！"],["休日はなにしてる？","カフェに行く"],["旅行に行ってみたい場所は？","イタリア"]],"mbti":"INFP","mbti_label":"守ってあげたい純粋ピュア天使","mbti_source":"inferred","axes":{"e":18,"n":88,"f":78,"j":18},"feature_tags":["美乳Cカップ","清楚・透明感","癒やし包み込み","恋人イチャ感"],"highlight":"清らかで気品あふれるオーラをまとった"},{"store_key":"tachikawa","cno":"2","disp_no":"No.7","name":"青葉","size_text":"T157 B83(B) W53 H80","height":157,"bust":83,"cup":"B","waist":53,"hip":80,"tagline":"あんまり経験ないけど頑張るよ！","today_shift":"","tomorrow_shift":"","rank":1,"badges":["おすすめ"],"photo_url":"https://tachikawa-biglove.com/img/c/2_2.jpg?v=1793801511","profile_url":"https://tachikawa-biglove.com/profile.php?cno=2","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5354572/","qa":[["趣味は？","温泉、食べること"],["好きな食べ物は？","ポテト"],["チャームポイントは？","笑った時のエクボ"],["男性のここがフェチ！","匂い、手、声"],["デートしたい場所は？","海にドライブ"],["休日はなにしてる？","家でゴロゴロ"],["旅行に行ってみたい場所は？","韓国、北海道！"]],"mbti":"INFP","mbti_label":"守ってあげたい純粋ピュア天使","mbti_source":"inferred","axes":{"e":41,"n":85,"f":88,"j":18},"feature_tags":["華奢スレンダー","愛嬌・笑顔◎","守りたいピュア感"],"highlight":"「え、アイドルですか？」と"},{"store_key":"tachikawa","cno":"14","disp_no":"No.11","name":"森","size_text":"T156 B85(A) W52 H80","height":156,"bust":85,"cup":"A","waist":52,"hip":80,"tagline":"たくさん会いに来てね♪","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://tachikawa-biglove.com/img/c/14_1.jpg?v=1790240234","profile_url":"https://tachikawa-biglove.com/profile.php?cno=14","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5952478/","qa":[["趣味は？","たくさん食べること"],["好きな食べ物は？","おすし"],["チャームポイントは？","脚"],["男性のここがフェチ！","におい"],["デートしたい場所は？","温泉"],["休日はなにしてる？","旅行か寝てる"],["旅行に行ってみたい場所は？","ヨーロッパ"]],"mbti":"ENFJ","mbti_label":"包み込む愛情深きヒロイン","mbti_source":"inferred","axes":{"e":88,"n":76,"f":52,"j":88},"feature_tags":["華奢スレンダー"],"highlight":"スレンダー体型が映える、アイドル感たっぷりの美女です。"},{"store_key":"tachikawa","cno":"15","disp_no":"No.16","name":"音羽","size_text":"T151 B82(C) W53 H80","height":151,"bust":82,"cup":"C","waist":53,"hip":80,"tagline":"楽しい時間を一緒に過ごせたらうれしいです","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://tachikawa-biglove.com/img/c/15_2.jpg?v=1786091021","profile_url":"https://tachikawa-biglove.com/profile.php?cno=15","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5067221/","qa":[["趣味は？","音楽聴く"],["好きな食べ物は？","チョコ"],["チャームポイントは？","目"],["男性のここがフェチ！","腕、手"],["デートしたい場所は？","水族館"],["休日はなにしてる？","アニメ見るか友達と飲み行く"],["旅行に行ってみたい場所は？","ハワイ"]],"mbti":"ENTJ","mbti_label":"凛として導くカリスマお姉さん","mbti_source":"inferred","axes":{"e":72,"n":63,"f":23,"j":88},"feature_tags":["小柄151cm","美乳Cカップ","愛嬌・笑顔◎","恋人イチャ感"],"highlight":"クールビューティーな彼女の魅力に、きっと夢中になるお客様急増中？！"},{"store_key":"tachikawa","cno":"17","disp_no":"No.20","name":"綾波","size_text":"T151 B84(B) W52 H80","height":151,"bust":84,"cup":"B","waist":52,"hip":80,"tagline":"頑張ります！ よろしくお願いします！","today_shift":"16:00～24:00","tomorrow_shift":"17:00-24:00","rank":null,"badges":["おすすめ"],"photo_url":"https://tachikawa-biglove.com/img/c/17_2.jpg?v=1793801737","profile_url":"https://tachikawa-biglove.com/profile.php?cno=17","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/4877746/","qa":[["趣味は？","寝ること"],["好きな食べ物は？","牛タン"],["チャームポイントは？","右の眉毛"],["男性のここがフェチ！","血管フェチ"],["デートしたい場所は？","シンガポール"],["休日はなにしてる？","家でゴロゴロ"],["旅行に行ってみたい場所は？","スイス"]],"mbti":"ENFJ","mbti_label":"包み込む愛情深きヒロイン","mbti_source":"inferred","axes":{"e":79,"n":82,"f":88,"j":51},"feature_tags":["小柄151cm","華奢スレンダー","愛嬌・笑顔◎","恋人イチャ感"],"highlight":"超が付くほどの人見知りなので、初めは緊張で口数少なめですが"},{"store_key":"tachikawa","cno":"4","disp_no":"No.22","name":"岡本","size_text":"T163 B87(C) W56 H85","height":163,"bust":87,"cup":"C","waist":56,"hip":85,"tagline":"初心者だけど頑張るよ！あんまり経験ないけど","today_shift":"","tomorrow_shift":"15:00-19:30","rank":null,"badges":["おすすめ"],"photo_url":"https://tachikawa-biglove.com/img/c/4_2.jpg?v=1793801828","profile_url":"https://tachikawa-biglove.com/profile.php?cno=4","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/4974254/","qa":[["趣味は？","アニメ鑑賞"],["好きな食べ物は？","いちご"],["チャームポイントは？","まつ毛が長い"],["男性のここがフェチ！","そでまくった時の腕の血管"],["デートしたい場所は？","ディズニー"],["休日はなにしてる？","アニメ鑑賞"],["旅行に行ってみたい場所は？","箱根で温泉旅行"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":74,"n":18,"f":88,"j":18},"feature_tags":["高身長163cm","美乳Cカップ","愛嬌・笑顔◎","清楚・透明感"],"highlight":"よくある褒め言葉に聞こえるかもしれませんが"},{"store_key":"tachikawa","cno":"44","disp_no":"No.24","name":"齋藤","size_text":"T160 B87(E) W58 H86","height":160,"bust":87,"cup":"E","waist":58,"hip":86,"tagline":"◇ロリ顔×大人ボディ！反則級のギャップ◇","today_shift":"","tomorrow_shift":"","rank":null,"badges":["NEW"],"photo_url":"https://tachikawa-biglove.com/img/c/44_1.jpg?v=1795499570","profile_url":"https://tachikawa-biglove.com/profile.php?cno=44","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5964194/","qa":[["趣味は？","旅行"],["好きな食べ物は？","甘いものだいたい好きです！"],["チャームポイントは？","目"],["男性のここがフェチ！","うでとか？"],["デートしたい場所は？","カフェとかお買い物出来るところ"],["休日はなにしてる？","お買いもの・カフェめぐり"],["旅行に行ってみたい場所は？","ロンドン！！"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":20,"n":28,"f":88,"j":45},"feature_tags":["美巨乳Eカップ"],"highlight":"愛らしいロリ顔が印象的な女の子。"},{"store_key":"tachikawa","cno":"18","disp_no":"No.26","name":"木原","size_text":"T146 B88(F) W52 H82","height":146,"bust":88,"cup":"F","waist":52,"hip":82,"tagline":"甘やかすの得意だよ♡ でも翻弄するのはもっと得意！","today_shift":"","tomorrow_shift":"10:00-19:00","rank":3,"badges":["おすすめ","特別指名"],"photo_url":"https://tachikawa-biglove.com/img/c/18_2.jpg?v=1786091068","profile_url":"https://tachikawa-biglove.com/profile.php?cno=18","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5021755/","qa":[["趣味は？","ハロプロ、舞台・ミュージカル鑑賞"],["好きな食べ物は？","ミルクチョコ、マカロン、フィナンシェ、しょっぱいお菓子！"],["チャームポイントは？","目と右目の下にある泣きぼくろ"],["男性のここがフェチ！","前腕のすじ、スーツ"],["デートしたい場所は？","でっかい公園、ディズニー"],["休日はなにしてる？","ライブや舞台を見るか、仕事してる！"],["旅行に行ってみたい場所は？","景色が綺麗で食べ物がおいしいところ"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":88,"n":45,"f":54,"j":88},"feature_tags":["小柄146cm","迫力Fカップ","愛嬌・笑顔◎","恋人イチャ感"],"highlight":"これほどまでにエロさと可愛さが"},{"store_key":"tachikawa","cno":"5","disp_no":"No.28","name":"桃瀬","size_text":"T160 B88(E) W58 H89","height":160,"bust":88,"cup":"E","waist":58,"hip":89,"tagline":"東日本No.1！私か、私以外か。","today_shift":"13:00～24:00","tomorrow_shift":"10:00-19:00","rank":1,"badges":["おすすめ","特別指名"],"photo_url":"https://tachikawa-biglove.com/img/c/5_2.jpg?v=1790772135","profile_url":"https://tachikawa-biglove.com/profile.php?cno=5","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/4879675/","qa":[["趣味は？","アニメ鑑賞、ソファで寝る！"],["好きな食べ物は？","チーズ、ハンバーグ、お寿司！"],["チャームポイントは？","笑顔と、目！"],["男性のここがフェチ！","腕の血管♡"],["デートしたい場所は？","イルミネーションばちばちの所！"],["休日はなにしてる？","Netflixを見る！"],["旅行に行ってみたい場所は？","オーロラ見に行きたい♡"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":57,"n":18,"f":88,"j":18},"feature_tags":["美巨乳Eカップ","愛嬌・笑顔◎"],"highlight":"写真や文章だけじゃ伝わりきりません。"},{"store_key":"tachikawa","cno":"43","disp_no":"No.31","name":"芳賀","size_text":"T162 B86(F) W59 H87","height":162,"bust":86,"cup":"F","waist":59,"hip":87,"tagline":"頑張って癒します♡","today_shift":"18:00～24:00","tomorrow_shift":"18:00-24:00","rank":null,"badges":["NEW"],"photo_url":"https://tachikawa-biglove.com/img/c/43_1.jpg?v=1795047641","profile_url":"https://tachikawa-biglove.com/profile.php?cno=43","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5954540/","qa":[["趣味は？","ゲーム"],["好きな食べ物は？","チョコ"],["チャームポイントは？","笑顔"],["男性のここがフェチ！","手"],["デートしたい場所は？","水族館"],["休日はなにしてる？","お家でゲーム"],["旅行に行ってみたい場所は？","京都"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":32,"n":47,"f":88,"j":62},"feature_tags":["高身長162cm","迫力Fカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"「私生活では邪魔だから…」と隠していた"},{"store_key":"tachikawa","cno":"6","disp_no":"No.32","name":"保科","size_text":"T161 B86(D) W54 H84","height":161,"bust":86,"cup":"D","waist":54,"hip":84,"tagline":"初めてですが一生懸命頑張ります♡","today_shift":"12:00～21:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/6_2.jpg?v=1786088157","profile_url":"https://tachikawa-biglove.com/profile.php?cno=6","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/4879684/","qa":[["趣味は？","マンガ読むこと"],["好きな食べ物は？","ゼリー"],["チャームポイントは？","髪の毛"],["男性のここがフェチ！","手"],["デートしたい場所は？","水族館"],["休日はなにしてる？","読書、アニメ見てる"],["旅行に行ってみたい場所は？","イギリス"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":24,"n":18,"f":60,"j":88},"feature_tags":["美乳Dカップ","恋人イチャ感"],"highlight":"「和」を象徴するほど美しい顔立ちと"},{"store_key":"tachikawa","cno":"7","disp_no":"No.33","name":"土肥","size_text":"T158 B91(E) W58 H91","height":158,"bust":91,"cup":"E","waist":58,"hip":91,"tagline":"えっちなこと大好きでドMでドSで… いろんな私を引き出してね","today_shift":"11:00～18:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/7_2.jpg?v=1793802034","profile_url":"https://tachikawa-biglove.com/profile.php?cno=7","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5166134/","qa":[["趣味は？","サッカー観戦"],["好きな食べ物は？","ネギトロの細巻"],["チャームポイントは？","胸のほくろ"],["男性のここがフェチ！","ちんちん❤"],["デートしたい場所は？","味の素スタジアム"],["休日はなにしてる？","豆苗のお世話"],["旅行に行ってみたい場所は？","モリコロパーク"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":28,"f":88,"j":29},"feature_tags":["美巨乳Eカップ","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"色香あふれる豊満スタイルに加え、"},{"store_key":"tachikawa","cno":"36","disp_no":"No.34","name":"片瀬","size_text":"T160 B78(C) W50 H75","height":160,"bust":78,"cup":"C","waist":50,"hip":75,"tagline":"頑張っていやします！是非来てください！","today_shift":"","tomorrow_shift":"19:00-24:00","rank":null,"badges":["NEW"],"photo_url":"https://tachikawa-biglove.com/img/c/36_2.jpg?v=1792599108","profile_url":"https://tachikawa-biglove.com/profile.php?cno=36","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5847403/","qa":[["趣味は？","アニメ"],["好きな食べ物は？","焼肉"],["チャームポイントは？","声"],["男性のここがフェチ！","手"],["デートしたい場所は？","江の島"],["休日はなにしてる？","アフターヌーンティー"],["旅行に行ってみたい場所は？","北海道"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":18,"n":18,"f":88,"j":48},"feature_tags":["美乳Cカップ","清楚・透明感","癒やし包み込み","恋人イチャ感"],"highlight":"中国ハーフの美少女を、ここ西東京エリアで発掘！！"},{"store_key":"tachikawa","cno":"20","disp_no":"No.35","name":"伊佐美","size_text":"T160 B87(D) W58 H86","height":160,"bust":87,"cup":"D","waist":58,"hip":86,"tagline":"楽しい時間にしましょう♪","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://tachikawa-biglove.com/img/c/20_2.jpg?v=1786091111","profile_url":"https://tachikawa-biglove.com/profile.php?cno=20","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5296259/","qa":[["趣味は？","散歩"],["好きな食べ物は？","チョコ"],["チャームポイントは？","右のほっぺのえくぼ"],["男性のここがフェチ！","腕"],["デートしたい場所は？","水族館"],["休日はなにしてる？","お家で映画鑑賞"],["旅行に行ってみたい場所は？","フランス"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":41,"n":19,"f":88,"j":88},"feature_tags":["美乳Dカップ","癒やし包み込み","お姉さんリード"],"highlight":"ふんわり柔らかな空気感と、透き通るような色白肌。"},{"store_key":"tachikawa","cno":"22","disp_no":"No.39","name":"茅島","size_text":"T160 B83(B) W53 H82","height":160,"bust":83,"cup":"B","waist":53,"hip":82,"tagline":"楽しい１日にしよ❤","today_shift":"10:00～20:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/22_2.jpg?v=1791166393","profile_url":"https://tachikawa-biglove.com/profile.php?cno=22","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/4879944/","qa":[["趣味は？","音楽聞くこと"],["好きな食べ物は？","チョコとラーメン"],["チャームポイントは？","笑顔"],["男性のここがフェチ！","血管、匂い"],["デートしたい場所は？","お家デート"],["休日はなにしてる？","ショッピング"],["旅行に行ってみたい場所は？","沖縄"]],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":37,"n":70,"f":77,"j":88},"feature_tags":["華奢スレンダー","愛嬌・笑顔◎","恋人イチャ感","守りたいピュア感"],"highlight":"華奢なスレンダーボディに、思わず目を奪われる圧倒的な幼さ感。"},{"store_key":"tachikawa","cno":"40","disp_no":"No.42","name":"黒瀬","size_text":"T151 B87(B) W58 H88","height":151,"bust":87,"cup":"B","waist":58,"hip":88,"tagline":"一生懸命がんばります！","today_shift":"","tomorrow_shift":"","rank":null,"badges":["NEW"],"photo_url":"https://tachikawa-biglove.com/img/c/40_1.jpg?v=1793098439","profile_url":"https://tachikawa-biglove.com/profile.php?cno=40","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5890692/","qa":[["趣味は？","料理"],["好きな食べ物は？","パンケーキ"],["チャームポイントは？","笑顔"],["男性のここがフェチ！","うで"],["デートしたい場所は？","水族館"],["休日はなにしてる？","ねてるかゲームしてます"],["旅行に行ってみたい場所は？","関西"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":52},"feature_tags":["小柄151cm","華奢スレンダー","愛嬌・笑顔◎","恋人イチャ感"],"highlight":"スタイリッシュな細身スタイルが目を惹く、超キュートなギャル系女の子の登場です！"},{"store_key":"tachikawa","cno":"8","disp_no":"No.45","name":"岩崎","size_text":"T147 B86(C) W54 H82","height":147,"bust":86,"cup":"C","waist":54,"hip":82,"tagline":"たくさんイチャイチャしたいです！","today_shift":"20:00～23:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/8_2.jpg?v=1795074778","profile_url":"https://tachikawa-biglove.com/profile.php?cno=8","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5153524/","qa":[["趣味は？","カフェ巡り、コスメ集め"],["好きな食べ物は？","チョコレート、マカロン"],["チャームポイントは？","目"],["男性のここがフェチ！","腹筋"],["デートしたい場所は？","お台場"],["休日はなにしてる？","ねてます"],["旅行に行ってみたい場所は？","京都"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":86,"n":18,"f":88,"j":18},"feature_tags":["小柄147cm","美乳Cカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"ふと息抜きしたくなった。"},{"store_key":"tachikawa","cno":"23","disp_no":"No.46","name":"空木","size_text":"T160 B84(F) W56 H86","height":160,"bust":84,"cup":"F","waist":56,"hip":86,"tagline":"一生懸命がんばります！ 会いに来てください！","today_shift":"15:00～24:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/23_2.jpg?v=1793802150","profile_url":"https://tachikawa-biglove.com/profile.php?cno=23","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5531986/","qa":[["趣味は？","音楽"],["好きな食べ物は？","オムライス"],["チャームポイントは？","目"],["男性のここがフェチ！","手"],["デートしたい場所は？","すいぞくかん"],["休日はなにしてる？","ねてます"],["旅行に行ってみたい場所は？","タイ"]],"mbti":"INFP","mbti_label":"守ってあげたい純粋ピュア天使","mbti_source":"inferred","axes":{"e":35,"n":83,"f":59,"j":36},"feature_tags":["迫力Fカップ","愛嬌・笑顔◎","恋人イチャ感"],"highlight":"おしとやか、ふわふわ、まるでシナモロールのような彼女!!"},{"store_key":"tachikawa","cno":"35","disp_no":"No.47","name":"棗","size_text":"T156 B83(G) W55 H85","height":156,"bust":83,"cup":"G","waist":55,"hip":85,"tagline":"分からないことたくさんあるけど頑張ります！","today_shift":"19:00～24:00","tomorrow_shift":"20:00-24:00","rank":null,"badges":["NEW"],"photo_url":"https://tachikawa-biglove.com/img/c/35_1.jpg?v=1793098478","profile_url":"https://tachikawa-biglove.com/profile.php?cno=35","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5842044/","qa":[["趣味は？","映画"],["好きな食べ物は？","カップラーメン、アイス"],["チャームポイントは？","目"],["男性のここがフェチ！","手"],["デートしたい場所は？","ディズニー"],["休日はなにしてる？","バイト"],["旅行に行ってみたい場所は？","北海道"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":21,"f":88,"j":47},"feature_tags":["迫力Gカップ","愛嬌・笑顔◎","恋人イチャ感"],"highlight":"まず会った瞬間に目を惹かれるのが、なんといっても可愛らしい笑顔♡"},{"store_key":"tachikawa","cno":"24","disp_no":"No.50","name":"田中","size_text":"T150 B75(B) W50 H78","height":150,"bust":75,"cup":"B","waist":50,"hip":78,"tagline":"皆様に会えるのを楽しみにしております！","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/24_2.jpg?v=1786091157","profile_url":"https://tachikawa-biglove.com/profile.php?cno=24","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/4877750/","qa":[],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":18},"feature_tags":["小柄150cm","華奢スレンダー","愛嬌・笑顔◎","恋人イチャ感"],"highlight":"出会った瞬間、「今日は当たりだ…！」と思わずガッツポーズしたくなる。"},{"store_key":"tachikawa","cno":"33","disp_no":"No.51","name":"吉岡","size_text":"T164 B81(D) W60 H88","height":164,"bust":81,"cup":"D","waist":60,"hip":88,"tagline":"たくさん会いに来て♡","today_shift":"","tomorrow_shift":"10:00-17:00","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/33_2.jpg?v=1788842912","profile_url":"https://tachikawa-biglove.com/profile.php?cno=33","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5730773/","qa":[["趣味は？","ネイル アイドル"],["好きな食べ物は？","いちご"],["チャームポイントは？","笑顔って言われてます"],["男性のここがフェチ！","筋肉"],["デートしたい場所は？","すいぞくかん"],["休日はなにしてる？","ご飯食べる"],["旅行に行ってみたい場所は？","沖縄"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":49,"n":45,"f":88,"j":18},"feature_tags":["高身長164cm","美乳Dカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"少し天然混じりな女の子で、ほんわかとした雰囲気に包まれており"},{"store_key":"tachikawa","cno":"25","disp_no":"No.55","name":"藤井","size_text":"T157 B87(C) W59 H88","height":157,"bust":87,"cup":"C","waist":59,"hip":88,"tagline":"にこにこがんばります！","today_shift":"13:00～24:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/25_2.jpg?v=1793802192","profile_url":"https://tachikawa-biglove.com/profile.php?cno=25","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/5406788/","qa":[["趣味は？","おでかけとお買い物！"],["好きな食べ物は？","ふわふわプリプリのお肉！"],["チャームポイントは？","えくぼ！"],["男性のここがフェチ！","手と胸筋と僧帽筋！"],["デートしたい場所は？","お家でのんびりしたい！"],["休日はなにしてる？","ゲームしたりアニメ見たり好きなことしてる！"],["旅行に行ってみたい場所は？","イタリアで美味しいピザ食べたい"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":45,"n":41,"f":73,"j":88},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","清楚・透明感","恋人イチャ感"],"highlight":"上品で華やかな雰囲気を纏いながら、どこか親しみやすさも感じさせる彼女。"},{"store_key":"tachikawa","cno":"26","disp_no":"No.56","name":"冬月","size_text":"T156 B84(B) W55 H84","height":156,"bust":84,"cup":"B","waist":55,"hip":84,"tagline":"未経験なので優しくしてください！","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/26_2.jpg?v=1790816036","profile_url":"https://tachikawa-biglove.com/profile.php?cno=26","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/5235096/","qa":[["趣味は？","映画鑑賞"],["好きな食べ物は？","オムライス"],["チャームポイントは？","目のほくろ"],["男性のここがフェチ！","血管"],["デートしたい場所は？","ディズニー"],["休日はなにしてる？","ドラマ見てます"],["旅行に行ってみたい場所は？","沖縄"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":44,"n":25,"f":77,"j":24},"feature_tags":["華奢スレンダー","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"清楚で可愛らしい雰囲気が印象的な、妹系スレンダーさん。"},{"store_key":"tachikawa","cno":"27","disp_no":"No.57","name":"小枝","size_text":"T155 B81(B) W63 H82","height":155,"bust":81,"cup":"B","waist":63,"hip":82,"tagline":"楽しい時間になるように頑張ります♪","today_shift":"10:00～18:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/27_2.jpg?v=1790923967","profile_url":"https://tachikawa-biglove.com/profile.php?cno=27","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/5068956/","qa":[["趣味は？","カフェ巡り"],["好きな食べ物は？","オムライス♡"],["チャームポイントは？","胸元のほくろ"],["男性のここがフェチ！","腕の血管！"],["デートしたい場所は？","水族館"],["休日はなにしてる？","友達と遊ぶ！"],["旅行に行ってみたい場所は？","自然がいっぱいのところ"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":44,"n":18,"f":88,"j":50},"feature_tags":["華奢スレンダー","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"清楚で上品な雰囲気が印象的な、癒やし度抜群のお嬢様系。"},{"store_key":"tachikawa","cno":"9","disp_no":"No.59","name":"音成","size_text":"T158 B101(H) W64 H94","height":158,"bust":101,"cup":"H","waist":64,"hip":94,"tagline":"たくさん気持ちよくなろうね♡","today_shift":"12:00～20:00","tomorrow_shift":"","rank":2,"badges":["おすすめ","特別指名"],"photo_url":"https://tachikawa-biglove.com/img/c/9_2.jpg?v=1790247391","profile_url":"https://tachikawa-biglove.com/profile.php?cno=9","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/5131283/","qa":[["趣味は？","お料理"],["好きな食べ物は？","もやし"],["チャームポイントは？","笑顔、八重歯"],["男性のここがフェチ！","内もも、匂い"],["デートしたい場所は？","水族館"],["休日はなにしてる？","うさぎとあそんでる"],["旅行に行ってみたい場所は？","京都"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":53,"n":18,"f":88,"j":88},"feature_tags":["迫力Hカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"まず目に入るのは、思わず息を呑むほどの圧巻スタイル。"},{"store_key":"tachikawa","cno":"42","disp_no":"No.61","name":"服部","size_text":"T159 B81(D) W63 H86","height":159,"bust":81,"cup":"D","waist":63,"hip":86,"tagline":"業界完全未経験、純粋無垢","today_shift":"","tomorrow_shift":"","rank":null,"badges":["NEW"],"photo_url":"https://tachikawa-biglove.com/img/c/42_1.jpg?v=1794402421","profile_url":"https://tachikawa-biglove.com/profile.php?cno=42","detail_url":"https://ranking-deli.jp/tokyo/area39/style4/47020/5939936/","qa":[["趣味は？","ゲーム"],["好きな食べ物は？","雪見だいふく"],["チャームポイントは？","元気"],["男性のここがフェチ！","頭皮"],["デートしたい場所は？","ディズニー"],["休日はなにしてる？","寝てるか食べてる"],["旅行に行ってみたい場所は？","ディズニー"]],"mbti":"ENFP","mbti_label":"天真爛漫な愛嬌ムードメーカー","mbti_source":"inferred","axes":{"e":60,"n":77,"f":76,"j":18},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","恋人イチャ感","守りたいピュア感"],"highlight":"この度...完全未経験の女の子が新しく入店しました♡"},{"store_key":"tachikawa","cno":"29","disp_no":"No.73","name":"瀬戸内","size_text":"T149 B83(B) W51 H79","height":149,"bust":83,"cup":"B","waist":51,"hip":79,"tagline":"いっぱい遊ぼ","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ","特別指名"],"photo_url":"https://tachikawa-biglove.com/img/c/29_2.jpg?v=1790915558","profile_url":"https://tachikawa-biglove.com/profile.php?cno=29","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/4881268/","qa":[["趣味は？","絵を描くこととバスケをすること"],["好きな食べ物は？","ラーメンとお菓子"],["チャームポイントは？","背が低い"],["男性のここがフェチ！","手とか、胸板！"],["デートしたい場所は？","海 一緒に見に行きたい"],["休日はなにしてる？","アニメ見る いっぱい寝る"],["旅行に行ってみたい場所は？","沖縄"]],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":44,"n":88,"f":88,"j":52},"feature_tags":["小柄149cm","華奢スレンダー","愛嬌・笑顔◎","清楚・透明感"],"highlight":"清楚な制服が完璧にハマる"},{"store_key":"tachikawa","cno":"10","disp_no":"No.76","name":"佐久間","size_text":"T164 B82(B) W52 H84","height":164,"bust":82,"cup":"B","waist":52,"hip":84,"tagline":"楽しい時間と癒しをお届けします","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/10_2.jpg?v=1791180683","profile_url":"https://tachikawa-biglove.com/profile.php?cno=10","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/4881295/","qa":[["趣味は？","ミセス・筋トレ・ディズニー"],["好きな食べ物は？","チョコといちご"],["チャームポイントは？","唇と脚"],["男性のここがフェチ！","香りと筋肉"],["デートしたい場所は？","お兄様のおすすめの場所かなぁ～？会った時教えてください"],["休日はなにしてる？","バレエ・筋トレしたりしてます"],["旅行に行ってみたい場所は？","ハウステンボス"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":49,"n":18,"f":88,"j":45},"feature_tags":["高身長164cm","華奢スレンダー","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"おっとりとした雰囲気に、柔らかな笑顔。"},{"store_key":"tachikawa","cno":"11","disp_no":"No.77","name":"星野","size_text":"T172 B90(F) W58 H88","height":172,"bust":90,"cup":"F","waist":58,"hip":88,"tagline":"いっぱい気持ちよくさせます！","today_shift":"","tomorrow_shift":"10:00-20:00","rank":null,"badges":["おすすめ"],"photo_url":"https://tachikawa-biglove.com/img/c/11_2.jpg?v=1794044716","profile_url":"https://tachikawa-biglove.com/profile.php?cno=11","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/5606005/","qa":[["好きな食べ物は？","チャンジャ"],["チャームポイントは？","肌"],["男性のここがフェチ！","腕"],["デートしたい場所は？","2人きりになれる場所"],["休日はなにしてる？","お買い物"],["旅行に行ってみたい場所は？","モルディブ"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":18,"n":18,"f":88,"j":88},"feature_tags":["高身長172cm","迫力Fカップ","清楚・透明感","癒やし包み込み"],"highlight":"スラッと伸びた高身長に、清楚で落ち着いた雰囲気。"},{"store_key":"tachikawa","cno":"12","disp_no":"No.87","name":"坂倉","size_text":"T155 B77(B) W52 H79","height":155,"bust":77,"cup":"B","waist":52,"hip":79,"tagline":"一緒に楽しい時間を過ごしましょう！","today_shift":"","tomorrow_shift":"12:00-24:00","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/12_2.jpg?v=1792599191","profile_url":"https://tachikawa-biglove.com/profile.php?cno=12","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/5119760/","qa":[["趣味は？","ギター"],["好きな食べ物は？","いちご"],["チャームポイントは？","笑顔"],["男性のここがフェチ！","筋肉"],["デートしたい場所は？","ディズニーで制服デート"],["休日はなにしてる？","ショッピング"],["旅行に行ってみたい場所は？","ハワイ"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":75,"n":18,"f":88,"j":88},"feature_tags":["華奢スレンダー","愛嬌・笑顔◎","恋人イチャ感","守りたいピュア感"],"highlight":"思わず「大丈夫かな…？」と守ってあげたくなるような、儚い空気感。"},{"store_key":"tachikawa","cno":"30","disp_no":"No.98","name":"南","size_text":"T145 B86(D) W53 H82","height":145,"bust":86,"cup":"D","waist":53,"hip":82,"tagline":"たくさん甘やかしてほしい","today_shift":"10:00～19:00","tomorrow_shift":"10:00-19:00","rank":null,"badges":[],"photo_url":"https://tachikawa-biglove.com/img/c/30_2.jpg?v=1786093375","profile_url":"https://tachikawa-biglove.com/profile.php?cno=30","detail_url":"https://ranking-deli.jp/fuzoku/style4/8/shop/47020/5021754/","qa":[["趣味は？","お笑い鑑賞"],["好きな食べ物は？","サーモンのお寿司"],["チャームポイントは？","小柄"],["男性のここがフェチ！","スーツとメガネが似合う男性"],["デートしたい場所は？","テーマパーク"],["休日はなにしてる？","好みの音楽を探してる"],["旅行に行ってみたい場所は？","景色がきれいで非現実的な場所"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":53},"feature_tags":["小柄145cm","美乳Dカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"低身長で可愛らしいルックスが目を惹く、ロリ系の雰囲気たっぷりな女の子。"}]},"hachioji":{"meta":{"key":"hachioji","store_ja":"八王子","brand":"八王子アリス","en_brand":"ALICE HACHIOJI","emoji":"🌸","base_url":"https://alice-hachiouji.com","tel":"042-628-7015","access":"JR八王子駅北口 徒歩1分","price_note":"30分 ¥7,000〜（夜¥9,000）／指名料 ¥2,000","line_promo":"公式LINE新規登録キャンペーン＆月間イベント開催中"},"casts":[{"store_key":"hachioji","cno":"8","disp_no":"No.4","name":"南条","size_text":"T152 B79(B) W55 H65","height":152,"bust":79,"cup":"B","waist":55,"hip":65,"tagline":"小さな天使可愛すぎ注意","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/8_2.jpg?v=1790313258","profile_url":"https://alice-hachiouji.com/profile.php?cno=8","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5022560/","qa":[["好きな食べ物、飲み物は?","ドライフルーツ､ヨーグルト､梅干し 飲み物はジュースだったらなんでも"],["嫌いな食べ物は、飲み物は?","野菜､肉､チョコ 飲み物は牛乳"],["自分の性格は?","元気､素直です！！"],["チャームポイントは?(自慢のパーツは?)","みんなから顔が小さいって言ってもらえます♪"],["趣味や特技を教えて下さい！","趣味→美味しいご飯屋さん探し 特技→スノーボード"],["好きな男性(理想のタイプ⁉)","色黒､マッチョ､芯が通ってる人"],["何フェチですか？","胸筋！！！！"],["貴方はどんな時にエッチになりますか？","お酒を飲んだら"],["SかMどちらですか？","中間"],["初体験の年齢は？","14歳か15歳のとき"]],"mbti":"ENFP","mbti_label":"天真爛漫な愛嬌ムードメーカー","mbti_source":"inferred","axes":{"e":83,"n":67,"f":57,"j":18},"feature_tags":["小柄152cm","華奢スレンダー","愛嬌・笑顔◎","清楚・透明感"],"highlight":"出逢った瞬間に誰もが「自分だけのものにしたい」"},{"store_key":"hachioji","cno":"10","disp_no":"No.10","name":"白石","size_text":"T161 B85(D) W58 H83","height":161,"bust":85,"cup":"D","waist":58,"hip":83,"tagline":"誰も目を奪われる究極アイドル","today_shift":"11:00～15:00","tomorrow_shift":"","rank":null,"badges":["おすすめ","特別指名"],"photo_url":"https://alice-hachiouji.com/img/c/10_2.jpg?v=1785582298","profile_url":"https://alice-hachiouji.com/profile.php?cno=10","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/4631552/","qa":[["好きな食べ物、飲み物は?","甘いもの、チョコとかクッキー、紅茶♡"],["嫌いな食べ物は、飲み物は?","パクチー、すっぱい飲み物"],["自分の性格は?","優しい、楽観的"],["チャームポイントは?(自慢のパーツは?)","目かな〜♡"],["趣味や特技を教えて下さい！","動画鑑賞とかカフェ巡りとかショッピングが好きだよ〜♡"],["好きな男性(理想のタイプ⁉)","いっぱい褒めてくれて優しい人"],["何フェチですか？","匂いかな〜香水とかじゃなくて柔軟剤の匂いが好きー♡"],["貴方はどんな時にエッチになりますか？","イチャイチャしたとき♡"],["SかMどちらですか？","Mよりかな〜♡"],["初体験の年齢は？","恥ずかしいから会った時聞いてね♡"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":24,"n":37,"f":80,"j":18},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"誰もが目を奪われてく完璧で究極のアイドル入店！"},{"store_key":"hachioji","cno":"32","disp_no":"No.11","name":"羽生","size_text":"T159 B79(C) W53 H65","height":159,"bust":79,"cup":"C","waist":53,"hip":65,"tagline":"楽しい時間を過ごしてもらえるように頑張るので会いに来てくださ","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ","NEW"],"photo_url":"https://alice-hachiouji.com/img/c/32_2.jpg?v=1794736940","profile_url":"https://alice-hachiouji.com/profile.php?cno=32","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5880058/","qa":[["好きな食べ物、飲み物は?","ぶどうジュース、餃子"],["嫌いな食べ物は、飲み物は?","納豆"],["自分の性格は?","目とホクロ"],["チャームポイントは?(自慢のパーツは?)","目とホクロ"],["趣味や特技を教えて下さい！","趣味、カフェ巡り 特技、卓球"],["好きな男性(理想のタイプ⁉)","包容力がある人"],["何フェチですか？","目フェチ"],["貴方はどんな時にエッチになりますか？","キスした時"],["SかMどちらですか？","分からない！"],["初体験の年齢は？","18才"]],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":43,"n":79,"f":88,"j":88},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"♡可愛さＭＡＸ!!磨かれ始めたダイヤの原石♡"},{"store_key":"hachioji","cno":"31","disp_no":"No.12","name":"百合","size_text":"T151 B96(F) W60 H85","height":151,"bust":96,"cup":"F","waist":60,"hip":85,"tagline":"えがおでたのしくさせます！たくさん会いに来てください♡","today_shift":"","tomorrow_shift":"10:00-20:00","rank":null,"badges":["おすすめ","NEW"],"photo_url":"https://alice-hachiouji.com/img/c/31_2.jpg?v=1794798545","profile_url":"https://alice-hachiouji.com/profile.php?cno=31","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5876567/","qa":[["好きな食べ物、飲み物は?","梅系のお菓子！グリーンダカラ♡"],["嫌いな食べ物は、飲み物は?","ないです！"],["自分の性格は?","愛嬌があるってよく言われます笑めっちゃめんどくさがり屋です"],["チャームポイントは?(自慢のパーツは?)","愛嬌とちょっと小さい唇！"],["趣味や特技を教えて下さい！","最近ラテアート挑戦中で上達してきてる♪"],["好きな男性(理想のタイプ⁉)","好きな男性 優しくて、一途に好きでいてくれる人が好きです"],["何フェチですか？","フェイスライン綺麗な人とか鼻筋綺麗な人はよく見ちゃいます"],["貴方はどんな時にエッチになりますか？","ハグしてキスしたら！"],["SかMどちらですか？","Mかなーー？"],["初体験の年齢は？","高校二年生の夏くらい！"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":18},"feature_tags":["小柄151cm","迫力Fカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"思わず二度見してしまうほどの圧倒的なビジュアルを持った百合さん♡"},{"store_key":"hachioji","cno":"4","disp_no":"No.15","name":"鏡","size_text":"T160 B84(C) W54 H80","height":160,"bust":84,"cup":"C","waist":54,"hip":80,"tagline":"マジで恋する5秒前!!","today_shift":"12:00～19:00","tomorrow_shift":"","rank":1,"badges":["おすすめ"],"photo_url":"https://alice-hachiouji.com/img/c/4_2.jpg?v=1790920768","profile_url":"https://alice-hachiouji.com/profile.php?cno=4","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5300464/","qa":[],"mbti":"INTP","mbti_label":"クールに見えてギャップ沼な美少女","mbti_source":"inferred","axes":{"e":34,"n":51,"f":39,"j":49},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"街ですれ違った瞬間、無意識で振り返ってしまうような"},{"store_key":"hachioji","cno":"13","disp_no":"No.16","name":"如月","size_text":"T150 B95(I) W53 H65","height":150,"bust":95,"cup":"I","waist":53,"hip":65,"tagline":"ロリかわホスピタリティ","today_shift":"18:00～24:00","tomorrow_shift":"18:00-24:00","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/13_2.jpg?v=1786081406","profile_url":"https://alice-hachiouji.com/profile.php?cno=13","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5415633/","qa":[["好きな食べ物、飲み物は?","マドレーヌとオレンジジュースが好きです！"],["嫌いな食べ物は、飲み物は?","甘いものとコーヒーが苦手です"],["自分の性格は?","とっても負けず嫌いです"],["チャームポイントは?(自慢のパーツは?)","クビレにあるホクロがチャームポイントです"],["趣味や特技を教えて下さい！","趣味はFPSゲームです"],["好きな男性(理想のタイプ⁉)","優しい人がタイプです"],["何フェチですか？","手フェチです"],["貴方はどんな時にエッチになりますか？","お酒飲んだ時にえっちな気分になります…///"],["SかMどちらですか？","相手にあわせがちです"],["初体験の年齢は？","16歳です"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":42,"n":18,"f":58,"j":18},"feature_tags":["小柄150cm","迫力Iカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"モデル並みのスタイルに巨乳をみたら惚れること間違いなし"},{"store_key":"hachioji","cno":"15","disp_no":"No.23","name":"海野","size_text":"T158 B85(C) W53 H65","height":158,"bust":85,"cup":"C","waist":53,"hip":65,"tagline":"正統派癒し系お姉さん","today_shift":"","tomorrow_shift":"18:00-24:00","rank":null,"badges":["おすすめ"],"photo_url":"https://alice-hachiouji.com/img/c/15_2.jpg?v=1790323227","profile_url":"https://alice-hachiouji.com/profile.php?cno=15","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5222025/","qa":[["好きな食べ物、飲み物は?","いちごチョコとポテトチップス、コーン茶"],["嫌いな食べ物は、飲み物は?","アーモンドナッツ系、苦いお酒"],["自分の性格は?","人見知りだけど慣れたらたくさん話します♡"],["チャームポイントは?(自慢のパーツは?)","笑ったときの笑顔♡ 仲良くなるとたくさん笑うので見つけてもらえたら嬉しいです(՞ ܸ. .ܸ՞)"],["趣味や特技を教えて下さい！","優しくて思いやりがある人です♡"],["好きな男性(理想のタイプ⁉)","腕"],["何フェチですか？","酔った時"],["貴方はどんな時にエッチになりますか？","どっちかというとSです(⸝⸝⸝› ‹⸝⸝⸝)♡"],["SかMどちらですか？","18"],["初体験の年齢は？","サンリオ好きです♡"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":34,"n":18,"f":88,"j":88},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"透明感あふれる笑顔がまぶしい、まさに癒し系美人。"},{"store_key":"hachioji","cno":"16","disp_no":"No.29","name":"秋山","size_text":"T158 B85(C) W53 H68","height":158,"bust":85,"cup":"C","waist":53,"hip":68,"tagline":"天使のような唯一無二の可愛さ","today_shift":"16:00～24:00","tomorrow_shift":"","rank":2,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/16_2.jpg?v=1786083038","profile_url":"https://alice-hachiouji.com/profile.php?cno=16","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5230727/","qa":[["好きな食べ物、飲み物は?","ラーメン、お寿司、スイーツ、さつまいも系のドリンク♡"],["嫌いな食べ物は、飲み物は?","トマト、セロリが苦手です・・・"],["自分の性格は?","優柔不断かな？"],["チャームポイントは?(自慢のパーツは?)","笑顔♡"],["趣味や特技を教えて下さい！","推し活、岩盤浴！"],["好きな男性(理想のタイプ⁉)","優しい、笑顔が素敵"],["何フェチですか？","匂いとか腕かな？でも特にないかも！"],["貴方はどんな時にエッチになりますか？","お酒飲んだり、暗いとこに男女二人でいたら！"],["SかMどちらですか？","どっちにもなれます！"],["初体験の年齢は？","18！"]],"mbti":"ENFJ","mbti_label":"包み込む愛情深きヒロイン","mbti_source":"inferred","axes":{"e":84,"n":61,"f":88,"j":50},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"☀️笑顔で元気をくれる癒しガール☀️"},{"store_key":"hachioji","cno":"5","disp_no":"No.30","name":"叶","size_text":"T152 B89(E) W58 H87","height":152,"bust":89,"cup":"E","waist":58,"hip":87,"tagline":"可愛いの到達地点愛嬌マシマシ","today_shift":"15:00～19:00","tomorrow_shift":"12:00-17:00","rank":3,"badges":["おすすめ"],"photo_url":"https://alice-hachiouji.com/img/c/5_1.jpg?v=1794909438","profile_url":"https://alice-hachiouji.com/profile.php?cno=5","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5951434/","qa":[["好きな食べ物、飲み物は?","お肉、生牡蠣ブラックコーヒー、ピンクのモンスターが大好きです！！"],["嫌いな食べ物は、飲み物は?","甘い物、甘い飲み物…"],["自分の性格は?","明るいと思います！！"],["チャームポイントは?(自慢のパーツは?)","笑顔だと思います♪"],["趣味や特技を教えて下さい！","アニメ鑑賞かな？？"],["好きな男性(理想のタイプ⁉)","面白い人が好きです♡"],["何フェチですか？","脚フェチです笑"],["貴方はどんな時にエッチになりますか？","イチャイチャしてる時…///"],["SかMどちらですか？","どっちにでもなれるよ♡"],["初体験の年齢は？","18"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":86,"n":18,"f":88,"j":88},"feature_tags":["小柄152cm","美巨乳Eカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"元気いっぱいの笑顔が魅力の叶ちゃん♡"},{"store_key":"hachioji","cno":"30","disp_no":"No.32","name":"朝比奈","size_text":"T167 B92(E) W62 H85","height":167,"bust":92,"cup":"E","waist":62,"hip":85,"tagline":"見た目はクール中身はふんわり","today_shift":"10:00～24:00","tomorrow_shift":"10:00-17:00","rank":null,"badges":["おすすめ"],"photo_url":"https://alice-hachiouji.com/img/c/30_2.jpg?v=1792038197","profile_url":"https://alice-hachiouji.com/profile.php?cno=30","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5838586/?ofc=1","qa":[["好きな食べ物、飲み物は?","リンゴ、うどんが好きです♡三ツ矢サイダーが好きです♡"],["嫌いな食べ物は、飲み物は?","ピーマン、パプリカ嫌いです お茶飲めないです"],["自分の性格は?","おとなしめって言われるけど仲良くなったらめっちゃ喋ります^^"],["チャームポイントは?(自慢のパーツは?)","目かな！"],["趣味や特技を教えて下さい！","アニメ、漫画、アイドル鑑賞です！ 特技はパ〇ズリですかね！"],["好きな男性(理想のタイプ⁉)","ドSの人です♡"],["何フェチですか？","首筋と手です♡"],["貴方はどんな時にエッチになりますか？","常にです♡"],["SかMどちらですか？","Mです♡"],["初体験の年齢は？","中学生の時です♡(*/∇＼*)ｷｬｰ"]],"mbti":"INFP","mbti_label":"守ってあげたい純粋ピュア天使","mbti_source":"inferred","axes":{"e":18,"n":60,"f":55,"j":18},"feature_tags":["高身長167cm","美巨乳Eカップ","恋人イチャ感","会話盛り上げ上手"],"highlight":"167cmのスラッとした高身長に、女性らしいスタイルも目を引くポイント♪"},{"store_key":"hachioji","cno":"7","disp_no":"No.38","name":"五木","size_text":"T151 B83(D) W56 H79","height":151,"bust":83,"cup":"D","waist":56,"hip":79,"tagline":"ふわっと癒して、気づけば夢中","today_shift":"10:00～16:00","tomorrow_shift":"14:00-24:00","rank":1,"badges":["おすすめ"],"photo_url":"https://alice-hachiouji.com/img/c/7_2.jpg?v=1792632504","profile_url":"https://alice-hachiouji.com/profile.php?cno=7","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5501189/","qa":[["好きな食べ物、飲み物は?","お菓子全般！チョコ！堅揚げポテト！！笑 ココア！！甘いお酒！"],["嫌いな食べ物は、飲み物は?","緑の葉っぱ系野菜 、苦いお酒"],["自分の性格は?","気まぐれ元気っ子です"],["チャームポイントは?(自慢のパーツは?)","声かなーっ？分かりやすいっていちばん言われる！！"],["趣味や特技を教えて下さい！","眼鏡が似合う静かで真面目な人"],["好きな男性(理想のタイプ⁉)","眼鏡フェチ！！です！！あと白いスラッとした手が好き"],["何フェチですか？","ぎゅーっ！あと頭なでなで"],["貴方はどんな時にエッチになりますか？","M！でも意地悪する楽しさも覚えました♡"],["SかMどちらですか？","秘密♡"],["初体験の年齢は？","寝ること！カフェ巡り！最近はちいかわにハマってますっ"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":73,"n":18,"f":75,"j":18},"feature_tags":["小柄151cm","美乳Dカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"未経験とは思えない愛嬌の良さで 初日から自然と場を和ませてくれる新星が登場☆"},{"store_key":"hachioji","cno":"1","disp_no":"No.39","name":"城田","size_text":"T165 B85(C) W59 H80","height":165,"bust":85,"cup":"C","waist":59,"hip":80,"tagline":"クールな外見とは","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/1_2.jpg?v=1791097125","profile_url":"https://alice-hachiouji.com/profile.php?cno=1","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5811768/","qa":[],"mbti":"ISTP","mbti_label":"マイペースで色気漂うナチュラル美女","mbti_source":"inferred","axes":{"e":19,"n":18,"f":18,"j":46},"feature_tags":["高身長165cm","美乳Cカップ","愛嬌・笑顔◎","清楚・透明感"],"highlight":"スレンダーで洗練された魅力が光る城田さん♡"},{"store_key":"hachioji","cno":"18","disp_no":"No.40","name":"東条","size_text":"T158 B85(D) W55 H85","height":158,"bust":85,"cup":"D","waist":55,"hip":85,"tagline":"会わない理由が見つからない。","today_shift":"14:00～24:00","tomorrow_shift":"10:00-24:00","rank":2,"badges":["おすすめ"],"photo_url":"https://alice-hachiouji.com/img/c/18_2.jpg?v=1795160375","profile_url":"https://alice-hachiouji.com/profile.php?cno=18","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5375125/","qa":[["好きな食べ物、飲み物は?","梨が大好物だけど、チョコとかの甘いものも大好き♡めちゃめちゃ弱いけどお酒も大好きです！"],["嫌いな食べ物は、飲み物は?","食べ物も飲み物も、苦いものや酸っぱいものが苦手です…！"],["自分の性格は?","実は結構甘えん坊です‎‎꒰՞ ܸ. .ܸ՞꒱"],["チャームポイントは?(自慢のパーツは?)","目が特徴的って言われます♡"],["趣味や特技を教えて下さい！","ゲームとパチンコですっ！お休みの日は絶対どっちかはやってます₍ᐢ..ᐢ₎♡ イチャイチャとサービスには自信があります♪♪"],["好きな男性(理想のタイプ⁉)","イチャイチャが好きなのでたくさんイチャイチャして甘やかしてくれる人です"],["何フェチですか？","手と声です！どんなのが好きかはないしょです♡♡"],["貴方はどんな時にエッチになりますか？","いっぱいちゅーしてイチャイチャした時です♡♡"],["SかMどちらですか？","結構Mだけど、ご奉仕が好きなのでお兄さんに合わせてSにもなれます꒰ᐢ⸝⸝⸝⸝ᐢ꒱"],["初体験の年齢は？","高校1年生の時です♪♪"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":29,"n":18,"f":88,"j":18},"feature_tags":["美乳Dカップ","恋人イチャ感","守りたいピュア感"],"highlight":"落ち着いた空気をまとった、完全未経験の女の子"},{"store_key":"hachioji","cno":"19","disp_no":"No.43","name":"水瀬","size_text":"T156 B85(D) W61 H85","height":156,"bust":85,"cup":"D","waist":61,"hip":85,"tagline":"気づいたらハマってるタイプ！！","today_shift":"10:00～17:00","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/19_2.jpg?v=1793591581","profile_url":"https://alice-hachiouji.com/profile.php?cno=19","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5481342/","qa":[["好きな食べ物、飲み物は?","抹茶系のスイーツが好きです( ´艸｀)"],["嫌いな食べ物は、飲み物は?","海鮮が苦手…甘すぎるお酒も苦手"],["自分の性格は?","はちゃめちゃ元気！"],["チャームポイントは?(自慢のパーツは?)","おめめ一択(*¯꒳¯*)ﾄﾞﾔｯ"],["趣味や特技を教えて下さい！","スポーツを見ることが好き〜♡♡"],["好きな男性(理想のタイプ⁉)","どんな時でも優しくしてくれる人"],["何フェチですか？","匂い"],["貴方はどんな時にエッチになりますか？","それは会ってからのお楽しみ♡♡"],["SかMどちらですか？","会いに来てくれたら教えてあげる♡♡"],["初体験の年齢は？","多分高校生の時だと思う！"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":18},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"初めてでもアナタの心を温めてくれるステキな水瀬さんです！！"},{"store_key":"hachioji","cno":"20","disp_no":"No.45","name":"平野","size_text":"T152 B85(B) W58 H84","height":152,"bust":85,"cup":"B","waist":58,"hip":84,"tagline":"恵比寿系お姉さん","today_shift":"","tomorrow_shift":"22:00-24:00","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/20_2.jpg?v=1786084724","profile_url":"https://alice-hachiouji.com/profile.php?cno=20","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/4032902/","qa":[["好きな食べ物、飲み物は?","甘いもの！チョコとミルクティーがすき♡"],["嫌いな食べ物は、飲み物は?","特にないかな？"],["自分の性格は?","ツンデレかな？猫っぽいって言われます笑"],["チャームポイントは?(自慢のパーツは?)","目！！二重がポイントです"],["趣味や特技を教えて下さい！","お出かけが好きです！ 最近はプロジェクターでネトフリめっちゃみます！"],["好きな男性(理想のタイプ⁉)","塩顔のちょっとS気味な､､､"],["何フェチですか？","匂いフェチ"],["貴方はどんな時にエッチになりますか？","お酒飲んでいちゃいちゃしてる時？？"],["SかMどちらですか？","M寄りだけどSになったりも､､､"],["初体験の年齢は？","高校生"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":43,"n":18,"f":88,"j":88},"feature_tags":["小柄152cm","華奢スレンダー","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"落ち着いた雰囲気と自然な可愛らしさが魅力の平野さん♡"},{"store_key":"hachioji","cno":"2","disp_no":"No.46","name":"皐月","size_text":"T156 B87(C) W59 H88","height":156,"bust":87,"cup":"C","waist":59,"hip":88,"tagline":"癒し系頑張りっ娘","today_shift":"10:00～18:00","tomorrow_shift":"10:00-18:00","rank":3,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/2_2.jpg?v=1794801369","profile_url":"https://alice-hachiouji.com/profile.php?cno=2","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5183154/","qa":[["好きな食べ物、飲み物は?","プロテインバー、ブラックコーヒー"],["嫌いな食べ物は、飲み物は?","大葉、甘すぎる飲み物は苦手です…"],["自分の性格は?","結構サバサバしてます！笑 でも、仲良くなったら甘えん坊です！"],["チャームポイントは?(自慢のパーツは?)","目力は強いとよく言われます！"],["趣味や特技を教えて下さい！","可愛いものを集めるのが好きです♡ 特技は身体が柔らかくて、色んな体勢ができること！"],["好きな男性(理想のタイプ⁉)","真面目が服きて歩いているような堅物さんが割とタイプです笑"],["何フェチですか？","手(というより指かな) 手が綺麗な人はキュンとします"],["貴方はどんな時にエッチになりますか？","相手がエッチになったとき♡"],["SかMどちらですか？","Sです♡ 反応が可愛い人はデロデロにいじめたくなっちゃいます笑"],["初体験の年齢は？","内緒♡"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":18,"n":18,"f":88,"j":23},"feature_tags":["美乳Cカップ","清楚・透明感","癒やし包み込み","恋人イチャ感"],"highlight":"まさに「初々しい」という言葉がピッタリな未経験嬢。"},{"store_key":"hachioji","cno":"21","disp_no":"No.49","name":"花野","size_text":"T155 B84(D) W56 H79","height":155,"bust":84,"cup":"D","waist":56,"hip":79,"tagline":"可愛さ全振り愛嬌満点の妹系","today_shift":"","tomorrow_shift":"12:00-20:00","rank":null,"badges":["おすすめ"],"photo_url":"https://alice-hachiouji.com/img/c/21_2.jpg?v=1786083651","profile_url":"https://alice-hachiouji.com/profile.php?cno=21","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5607205/","qa":[["好きな食べ物、飲み物は?","甘いものが大好きです♡ 飲み物はココアがお気に入り(՞ ܸ. .ܸ՞)"],["嫌いな食べ物は、飲み物は?","牛乳がちょっぴり苦手です…！"],["自分の性格は?","くちびるかな？♡ 柔らかいねって褒めてもらえることが多いです♪"],["チャームポイントは?(自慢のパーツは?)","スーツ姿フェチです♡ いつもと違う大人っぽい雰囲気にドキッとしちゃいます！"],["趣味や特技を教えて下さい！","スーツ姿フェチです♡ いつもと違う大人っぽい雰囲気にドキッとしちゃいます！"],["好きな男性(理想のタイプ⁉)","M寄りかな？♡ でも仲良くなったら、ちょっぴりSな一面もあるかも…？"],["何フェチですか？","実はまだなんです…♡ ちょっぴり恥ずかしいっ(ˆ. .⸝⸝ˆ)՞ ՞"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":88,"n":18,"f":67,"j":18},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","恋人イチャ感","守りたいピュア感"],"highlight":"小動物みたいな可愛らしさと、思わず甘やかしたくなる愛嬌を兼ね備えた妹系キャストが入店しました✨"},{"store_key":"hachioji","cno":"22","disp_no":"No.52","name":"姫宮","size_text":"T153 B82(C) W59 H85","height":153,"bust":82,"cup":"C","waist":59,"hip":85,"tagline":"この世界が愛で満ちたらいいのに","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/22_2.jpg?v=1794797045","profile_url":"https://alice-hachiouji.com/profile.php?cno=22","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5286511/","qa":[["好きな食べ物、飲み物は?","いちご！！お酒！！"],["嫌いな食べ物は、飲み物は?","ありません！なんでも大好き！"],["自分の性格は?","明るくて素直！"],["チャームポイントは?(自慢のパーツは?)","笑うと糸目になるおめめ！"],["趣味や特技を教えて下さい！","アニメが好きで、たまーにコスプレしたりしてます！きっと特技！"],["好きな男性(理想のタイプ⁉)","私のことをお姫様扱いしてくれる優しい人♡"],["何フェチですか？","髪、手フェチです！"],["貴方はどんな時にエッチになりますか？","常にえっちなことしか考えてません…♡"],["SかMどちらですか？","どちらかと言えばM？"],["初体験の年齢は？","秘密です♡"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":82,"n":18,"f":88,"j":18},"feature_tags":["小柄153cm","美乳Cカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"可愛らしさと明るさが溢れる姫宮ちゃん♡"},{"store_key":"hachioji","cno":"3","disp_no":"No.53","name":"小鳥遊","size_text":"T155 B93(E) W63 H87","height":155,"bust":93,"cup":"E","waist":63,"hip":87,"tagline":"お姉さんと濃密な時間を","today_shift":"10:00～24:00","tomorrow_shift":"10:00-24:00","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/3_2.jpg?v=1784965371","profile_url":"https://alice-hachiouji.com/profile.php?cno=3","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5355454/","qa":[["好きな食べ物、飲み物は?","食べ物は餃子！甘いものだとチョコ関係！飲み物はミルクティーが好きᐡᴗ͈ ᴗ͈ᐡ"],["嫌いな食べ物は、飲み物は?","野菜‎(ᐡ⩌⩊⩌ᐡ)、飲み物は特になし！"],["自分の性格は?","ドがつくポジティブ(ᐢᴖ ·̫ ᴖᐢ)嫌なことは寝たら忘れちゃう！"],["チャームポイントは?(自慢のパーツは?)","笑顔！笑ったら目がなくなっちゃう（՞>⩊<՞）"],["趣味や特技を教えて下さい！","旅行！色んなところ行っちゃうぞ〜‎( * ֦ơωơ֦)"],["好きな男性(理想のタイプ⁉)","笑顔が素敵な人！笑うと目が線になるのが大好き！"],["何フェチですか？","ほどよく筋肉のついたシュッとした綺麗な足が好きです！"],["貴方はどんな時にエッチになりますか？","イチャイチャしてる時 ՞⸝⸝> <⸝⸝՞"],["SかMどちらですか？","どちらの才能もアリ、、！"],["初体験の年齢は？","20歳越えてから^ᴗ.ᴗ^"]],"mbti":"ESFJ","mbti_label":"気遣い満点の王道彼女タイプ","mbti_source":"inferred","axes":{"e":88,"n":18,"f":88,"j":88},"feature_tags":["美巨乳Eカップ","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"ふんわり笑顔が魅力の小鳥遊ちゃん♡"},{"store_key":"hachioji","cno":"27","disp_no":"No.54","name":"遠坂","size_text":"T165 B96(E) W58 H90","height":165,"bust":96,"cup":"E","waist":58,"hip":90,"tagline":"いっぱいイチャイチャして楽しい時間を過ごしましょう♡","today_shift":"14:00～20:00","tomorrow_shift":"14:00-20:00","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/27_2.jpg?v=1793950973","profile_url":"https://alice-hachiouji.com/profile.php?cno=27","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5797921/","qa":[["好きな食べ物、飲み物は?","甘いもの(特にチョコ)、飲み物はスッキリしたもの"],["嫌いな食べ物は、飲み物は?","パクチーが唯一苦手"],["自分の性格は?","冷静で落ち着いてるけど、楽しむ時は楽しむ"],["チャームポイントは?(自慢のパーツは?)","柔らかい唇"],["趣味や特技を教えて下さい！","映画や動画、音楽聴いたり本読んだり運動したりいろいろ！"],["好きな男性(理想のタイプ⁉)","筋肉質で一緒にいて楽しい人"],["何フェチですか？","筋肉フェチ"],["貴方はどんな時にエッチになりますか？","濃厚なキスしてる時"],["SかMどちらですか？","両刀だけど、ややS寄りかも？"],["初体験の年齢は？","ご想像にお任せします♡"]],"mbti":"INFJ","mbti_label":"神秘的な透明感の深愛ミューズ","mbti_source":"inferred","axes":{"e":43,"n":72,"f":76,"j":88},"feature_tags":["高身長165cm","美巨乳Eカップ","清楚・透明感","恋人イチャ感"],"highlight":"ぱっと目を惹く綺麗なルックスに、上品な色気も兼ね備えた魅力的な女の子です♪"},{"store_key":"hachioji","cno":"23","disp_no":"No.58","name":"雨宮","size_text":"T158 B83(C) W60 H84","height":158,"bust":83,"cup":"C","waist":60,"hip":84,"tagline":"可愛さと透明感そのすべてを","today_shift":"","tomorrow_shift":"10:00-19:00","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/23_2.jpg?v=1787298021","profile_url":"https://alice-hachiouji.com/profile.php?cno=23","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5718470/","qa":[["好きな食べ物、飲み物は?","和菓子と緑茶"],["嫌いな食べ物は、飲み物は?","辛いもの"],["自分の性格は?","マイペース？"],["チャームポイントは?(自慢のパーツは?)","お目目と髪の毛〜！"],["趣味や特技を教えて下さい！","指が柔らかい"],["好きな男性(理想のタイプ⁉)","素敵な紳士様♡"],["何フェチですか？","おへそ…♡"],["貴方はどんな時にエッチになりますか？","ハグしたとき"],["SかMどちらですか？","M…？かも！"],["初体験の年齢は？","秘密♡"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":29,"n":18,"f":88,"j":18},"feature_tags":["美乳Cカップ","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"思わず「守ってあげたい」と感じてしまうような、透明感あふれる女の子が入店しました♡"},{"store_key":"hachioji","cno":"24","disp_no":"No.71","name":"石原","size_text":"T159 B80(B) W60 H80","height":159,"bust":80,"cup":"B","waist":60,"hip":80,"tagline":"安心感に身を委ねる","today_shift":"","tomorrow_shift":"10:00-14:00","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/24_2.jpg?v=1786088187","profile_url":"https://alice-hachiouji.com/profile.php?cno=24","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5418987/","qa":[["好きな食べ物、飲み物は?","お茶とチョコレート♡"],["嫌いな食べ物は、飲み物は?","和菓子"],["自分の性格は?","気まぐれだと思います！"],["チャームポイントは?(自慢のパーツは?)","分からないので教えてください♪"],["趣味や特技を教えて下さい！","癒すこと"],["好きな男性(理想のタイプ⁉)","優しい人"],["何フェチですか？","口"],["貴方はどんな時にエッチになりますか？","寝る時"],["SかMどちらですか？","どちらでもいけます♪"],["初体験の年齢は？","秘密"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":48,"n":18,"f":82,"j":18},"feature_tags":["華奢スレンダー","愛嬌・笑顔◎","清楚・透明感","癒やし包み込み"],"highlight":"色白で透き通るような美肌は"},{"store_key":"hachioji","cno":"25","disp_no":"No.93","name":"国仲","size_text":"T162 B86(B) W54 H82","height":162,"bust":86,"cup":"B","waist":54,"hip":82,"tagline":"スレンダーな初心少女","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/25_2.jpg?v=1786088851","profile_url":"https://alice-hachiouji.com/profile.php?cno=25","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5356734/","qa":[["好きな食べ物、飲み物は?","甘い物、オレンジジュースが好きです！！"],["嫌いな食べ物は、飲み物は?","苦いものや辛いものは…"],["自分の性格は?","甘えたがりでマイペース♡"],["チャームポイントは?(自慢のパーツは?)","声とおしり！！"],["趣味や特技を教えて下さい！","絵を描くこと！イラストから絵画まで幅広くやってます！"],["好きな男性(理想のタイプ⁉)","優しくて甘やかしてくれる人"],["何フェチですか？","声と手"],["貴方はどんな時にエッチになりますか？","たくさん甘やかしてくれたときとか……？？"],["SかMどちらですか？","どちらかといえばM……？"],["初体験の年齢は？","20超えてからだったはず(覚えてない)"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":18,"n":18,"f":88,"j":18},"feature_tags":["高身長162cm","華奢スレンダー","癒やし包み込み","恋人イチャ感"],"highlight":"完全業界未経験のスタイル抜群女の子が入店しました。"},{"store_key":"hachioji","cno":"35","disp_no":"No.13","name":"立花","size_text":"T164 B78(B) W53 H65","height":164,"bust":78,"cup":"B","waist":53,"hip":65,"tagline":"♡誰もが振り返る魅惑の美脚♡","today_shift":"10:00～19:00","tomorrow_shift":"","rank":null,"badges":["NEW"],"photo_url":"https://alice-hachiouji.com/img/c/35_1.jpg?v=1793367025","profile_url":"https://alice-hachiouji.com/profile.php?cno=35","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5912752/","qa":[["好きな食べ物、飲み物は?","お寿司、りんごジュースが好きです♡"],["嫌いな食べ物は、飲み物は?","かぼちゃ、牛乳"],["自分の性格は?","人見知りだけど心を開くと明るくてよく喋ります！"],["チャームポイントは?(自慢のパーツは?)","まつ毛、小顔が自慢です♡"],["趣味や特技を教えて下さい！","趣味は韓国ドラマを見ること、特技はスポーツ"],["好きな男性(理想のタイプ⁉)","余裕があって自然体でいられる人。"],["何フェチですか？","血管フェチ♡"],["貴方はどんな時にエッチになりますか？","お酒を飲んだ時…///"],["SかMどちらですか？","Mです♡"],["初体験の年齢は？","18歳"]],"mbti":"ESTP","mbti_label":"ノリ抜群の華やかギャルマインド","mbti_source":"inferred","axes":{"e":54,"n":44,"f":49,"j":26},"feature_tags":["高身長164cm","華奢スレンダー","癒やし包み込み","恋人イチャ感"],"highlight":"スラッとした高身長にスレンダーなスタイル、そして小顔がとっても魅力的な美人さん♡"},{"store_key":"hachioji","cno":"14","disp_no":"No.17","name":"姫野","size_text":"T153 B75(E) W57 H85","height":153,"bust":75,"cup":"E","waist":57,"hip":85,"tagline":"いじめられたいやつは全員集合","today_shift":"","tomorrow_shift":"","rank":null,"badges":[],"photo_url":"https://alice-hachiouji.com/img/c/14_1.jpg?v=1792388667","profile_url":"https://alice-hachiouji.com/profile.php?cno=14","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/4693643/","qa":[["好きな食べ物、飲み物は?","生牡蠣、カフェラテが好きです"],["嫌いな食べ物は、飲み物は?","セロリ・・・"],["自分の性格は?","見た目以上に優しいって言われます"],["チャームポイントは?(自慢のパーツは?)","指が長いことかな？"],["趣味や特技を教えて下さい！","趣味はネイルすること"],["好きな男性(理想のタイプ⁉)","EXILEみたいな男くさい人！"],["何フェチですか？","匂い、筋肉！"],["貴方はどんな時にエッチになりますか？","お酒飲んだ時"],["SかMどちらですか？","どっちもいけちゃう"],["初体験の年齢は？","高一"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":30,"n":18,"f":58,"j":48},"feature_tags":["小柄153cm","美巨乳Eカップ","癒やし包み込み"],"highlight":"落ち着いた雰囲気とミステリアスな魅力を兼ね備えた、クール系の姫野ちゃん。"},{"store_key":"hachioji","cno":"33","disp_no":"No.31","name":"久下","size_text":"T157 B84(D) W55 H80","height":157,"bust":84,"cup":"D","waist":55,"hip":80,"tagline":"甘えさせるのが好きなので甘えに来てください♡","today_shift":"10:00～16:00","tomorrow_shift":"","rank":null,"badges":["おすすめ","NEW"],"photo_url":"https://alice-hachiouji.com/img/c/33_1.jpg?v=1792388748","profile_url":"https://alice-hachiouji.com/profile.php?cno=33","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5880606/","qa":[["好きな食べ物、飲み物は?","甘いもの、塩っぱいもの大好き！"],["嫌いな食べ物は、飲み物は?","好き嫌いないです"],["自分の性格は?","人とお話しするのが大好きな性格です♡ 仲良くなると結構懐いちゃいます♪"],["チャームポイントは?(自慢のパーツは?)","笑顔！ぜひ実際に会って見つけてほしいな♡"],["趣味や特技を教えて下さい！","優しくて思いやりがあって、たくさん笑わせてくれる人！"],["好きな男性(理想のタイプ⁉)","声フェチ♡ 落ち着いた声や優しい話し方にキュンとしちゃいます♪"],["何フェチですか？","優しくされたり、甘い雰囲気になったりすると、ついつい甘えたくなっちゃいます…♡"],["貴方はどんな時にエッチになりますか？","ちょっぴりM寄りかな？優しくリードされると嬉しいです！"],["SかMどちらですか？","15歳♡"],["初体験の年齢は？","美容、映画鑑賞"]],"mbti":"ISFJ","mbti_label":"一途に尽くす献身清楚マドンナ","mbti_source":"inferred","axes":{"e":35,"n":18,"f":88,"j":88},"feature_tags":["美乳Dカップ","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"小柄で可愛らしい見た目からは想像もつかないほどの包容力を持った女の子が入店しました！"},{"store_key":"hachioji","cno":"26","disp_no":"No.37","name":"井上","size_text":"T165 B84(B) W58 H87","height":165,"bust":84,"cup":"B","waist":58,"hip":87,"tagline":"緊張まで可愛い一生懸命な姿にキュン♡","today_shift":"","tomorrow_shift":"","rank":null,"badges":["おすすめ"],"photo_url":"https://alice-hachiouji.com/img/c/26_1.jpg?v=1790575032","profile_url":"https://alice-hachiouji.com/profile.php?cno=26","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5777405/","qa":[["好きな食べ物、飲み物は?","麻辣湯、炭酸ジュース♡"],["嫌いな食べ物は、飲み物は?","きのこ、コーヒーが嫌いです…"],["自分の性格は?","きまぐれねこ(=^・^=)"],["チャームポイントは?(自慢のパーツは?)","目です♡"],["趣味や特技を教えて下さい！","香水あつめ！！"],["好きな男性(理想のタイプ⁉)","甘やかしてくれる人♡"],["何フェチですか？","におい！"],["貴方はどんな時にエッチになりますか？","甘やかされた時♡"],["SかMどちらですか？","どっちにでもなれちゃうます( ･´ｰ･｀)"],["初体験の年齢は？","19さい…///"]],"mbti":"ISFP","mbti_label":"自然体で寄り添う癒やし系小動物","mbti_source":"inferred","axes":{"e":21,"n":18,"f":88,"j":18},"feature_tags":["高身長165cm","華奢スレンダー","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"完全未経験の新人さんが入店しました♪"},{"store_key":"hachioji","cno":"34","disp_no":"No.24","name":"島雄","size_text":"T155 B89(F) W58 H88","height":155,"bust":89,"cup":"F","waist":58,"hip":88,"tagline":"笑顔がかわいい癒しの天使","today_shift":"10:00～20:00","tomorrow_shift":"10:00-20:00","rank":null,"badges":["おすすめ","NEW"],"photo_url":"https://alice-hachiouji.com/img/c/34_1.jpg?v=1792500451","profile_url":"https://alice-hachiouji.com/profile.php?cno=34","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5885491/","qa":[["好きな食べ物、飲み物は?","お寿司と甘いものっ ミルクティーがすきっ"],["嫌いな食べ物は、飲み物は?","苦いものはちょっぴり苦手(；；)"],["自分の性格は?","人見知りだけど仲良くなると甘えん坊♡ 好きになったら一途な忠犬ハチ公ですっ"],["チャームポイントは?(自慢のパーツは?)","もちもちのやわらかいお肌と声♡ 直接確かめてほしいなっ"],["趣味や特技を教えて下さい！","優しくて包容力のある人♡ ちょっぴり意地悪なおにいさんにも弱いですっ"],["好きな男性(理想のタイプ⁉)","声と匂いフェチ"],["何フェチですか？","ぎゅーってされたり、優しく触れられたとき"],["貴方はどんな時にエッチになりますか？","断然M♡ いじめられるのがすきっ"],["SかMどちらですか？","ひみつ♡ 会ったときに聞いてみてっ"],["初体験の年齢は？","映画鑑賞、旅行、サウナ、読書"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":73,"n":42,"f":88,"j":46},"feature_tags":["迫力Fカップ","愛嬌・笑顔◎","癒やし包み込み","恋人イチャ感"],"highlight":"笑顔がかわいい♡癒しの天使が入店しました♪"},{"store_key":"hachioji","cno":"36","disp_no":"No.14","name":"鈴森","size_text":"T167 B92(E) W71 H98","height":167,"bust":92,"cup":"E","waist":71,"hip":98,"tagline":"高身長！！アニメボディ！！","today_shift":"","tomorrow_shift":"","rank":null,"badges":["NEW"],"photo_url":"https://alice-hachiouji.com/img/c/36_1.jpg?v=1794618365","profile_url":"https://alice-hachiouji.com/profile.php?cno=36","detail_url":"https://ranking-deli.jp/tokyo/area220/style4/41760/5943454/","qa":[["好きな食べ物、飲み物は?","酸っぱくないフルーツ系！とお茶！"],["嫌いな食べ物は、飲み物は?","レバーと嫌いではないけどお酒苦手(´;ω;｀)"],["自分の性格は?","よくまわりからはマイペースだねって言われます笑"],["チャームポイントは?(自慢のパーツは?)","髪の毛！"],["趣味や特技を教えて下さい！","最近はドラマや映画にハマってます！"],["好きな男性(理想のタイプ⁉)","ごはんを美味しそうにたくさん食べる人"],["何フェチですか？","おしりと筋肉、唇がだいすき♡"],["貴方はどんな時にエッチになりますか？","キスしてるとき⸝⸝⸝՞ ՞"],["SかMどちらですか？","Mかも…♡"],["初体験の年齢は？","ひみつ！"]],"mbti":"ESFP","mbti_label":"笑顔はじける太陽系アイドル","mbti_source":"inferred","axes":{"e":62,"n":34,"f":75,"j":18},"feature_tags":["高身長167cm","美巨乳Eカップ","愛嬌・笑顔◎","癒やし包み込み"],"highlight":"高身長でスタイル抜群！！まるで二次元の世界からそのまま飛び出してきたかのような、"}]}}};
+    /*__CASTS_BUNDLE_END__*/
+
+    const QUESTIONS = [
+      {
+        cat: "STEP 1 ｜ 初対面の空気感",
+        q: "ブースに入って最初の30秒、一番ホッとする空気感はどれ？",
+        opts: [
+          {
+            icon: "☀️",
+            title: "向こうからニコッと明るく話しかけて、緊張を吹き飛ばしてほしい",
+            sub: "愛嬌・笑顔・フレンドリーさ重視",
+            eff: { targetE: 85, targetF: 75, spoil: 12, userE: 35 }
+          },
+          {
+            icon: "🌸",
+            title: "おっとり優しい笑顔で、ゆっくり穏やかに距離を縮めたい",
+            sub: "清楚感・落ち着き・聞き上手重視",
+            eff: { targetE: 25, targetF: 82, spoil: 14, userE: 25 }
+          },
+          {
+            icon: "💎",
+            title: "凛とした大人っぽい雰囲気で、スマートに迎えてほしい",
+            sub: "綺麗系・洗練スタイル重視",
+            eff: { targetE: 45, targetF: 35, spoil: 8, userE: 65 }
+          }
+        ]
+      },
+      {
+        cat: "STEP 2 ｜ 深層・隠れ甘え度チェック",
+        q: "仕事でクタクタに疲れた夜、本音ではどう過ごしたい？",
+        opts: [
+          {
+            icon: "🫠",
+            title: "「毎日えらいね」と全肯定されて、とことん甘やかされたい",
+            sub: "包容力・母性・癒やしMAX希望",
+            eff: { targetF: 92, targetJ: 75, spoil: 32, userF: 85 }
+          },
+          {
+            icon: "🐣",
+            title: "守ってあげたくなるピュア・初々しい子を前に自分が癒やされたい",
+            sub: "未経験感・小動物系・あどけなさ希望",
+            eff: { targetF: 72, targetJ: 20, spoil: 8, userF: 60 }
+          },
+          {
+            icon: "💑",
+            title: "気を使わない本当の彼女と会うように、ゼロ距離でイチャイチャしたい",
+            sub: "リアル恋人感・人懐っこさ希望",
+            eff: { targetF: 88, targetN: 25, spoil: 22, userF: 75 }
+          }
+        ]
+      },
+      {
+        cat: "STEP 3 ｜ リード（主導権）の相性",
+        q: "2人きりの空間での「主導権バランス」はどれが理想？",
+        opts: [
+          {
+            icon: "👑",
+            title: "積極的なお姉さん・小悪魔タイプに身を委ねてリードされたい",
+            sub: "リード上手・S気質寄りの子と高相性",
+            eff: { targetJ: 88, spoil: 26, userP: 80 }
+          },
+          {
+            icon: "🎀",
+            title: "素直に感じてくれる受け身・M気質な子を、自分のペースで愛でたい",
+            sub: "M気質・素直・控えめな子と高相性",
+            eff: { targetJ: 18, spoil: 6, userP: 20 }
+          },
+          {
+            icon: "⚖️",
+            title: "どちらが上でもなく、その場の空気で自然に求め合いたい",
+            sub: "自然体・バランス型の子と高相性",
+            eff: { targetJ: 50, spoil: 16, userP: 50 }
+          }
+        ]
+      },
+      {
+        cat: "STEP 4 ｜ 会話と距離感",
+        q: "接客中の「会話のテンポ」はどっちが心地いい？",
+        opts: [
+          {
+            icon: "😆",
+            title: "冗談を言い合ったり楽しくおしゃべりして、一緒に笑いたい",
+            sub: "トーク力・ノリの良さ重視",
+            eff: { targetE: 88, userE: 75, spoil: 8 }
+          },
+          {
+            icon: "🤫",
+            title: "言葉は少なめでも気まずくならない、密着＆耳元ささやき派",
+            sub: "しっとり密着・ぬくもり重視",
+            eff: { targetE: 22, targetF: 86, userE: 25, spoil: 18 }
+          },
+          {
+            icon: "☕",
+            title: "最初は少し雑談して緊張をほぐし、徐々に甘い雰囲気に入りたい",
+            sub: "丁寧な気遣い・王道進行重視",
+            eff: { targetE: 52, targetN: 30, userE: 50, spoil: 13 }
+          }
+        ]
+      },
+      {
+        cat: "STEP 5 ｜ 惹かれるヒロイン像",
+        q: "パネル写真や紹介文を見たとき、一番ドキッとする魅力は？",
+        opts: [
+          {
+            icon: "✨",
+            title: "アイドルや高嶺の花のような「非日常の華やかさ・特別感」",
+            sub: "圧倒的ビジュアル・オーラ系",
+            eff: { targetN: 86, userN: 80 }
+          },
+          {
+            icon: "🍀",
+            title: "休日に一緒に家デートやカフェに行けそうな「素直な親しみやすさ」",
+            sub: "自然体・リアル彼女・安心感系",
+            eff: { targetN: 20, userN: 25 }
+          },
+          {
+            icon: "🔥",
+            title: "清楚でおとなしそうなのに、2人きりだと大胆になる「ギャップ」",
+            sub: "清楚×秘めた色気・沼系",
+            eff: { targetE: 30, targetN: 72, userN: 68 }
+          }
+        ]
+      },
+      {
+        cat: "STEP 6 ｜ 好みの身長・シルエット",
+        q: "パッと見で一番グッとくる「身長・サイズ感」は？",
+        opts: [
+          {
+            icon: "🧸",
+            title: "ぎゅっと抱きしめたくなる『小柄・ミニマム系（〜154cm）』",
+            sub: "小動物感・コンパクトな可愛さ",
+            eff: { prefHeight: "petite" }
+          },
+          {
+            icon: "👗",
+            title: "制服が一番映える王道バランス『ミディアム系（155〜160cm）』",
+            sub: "程よい身長感・彼女感バランス",
+            eff: { prefHeight: "medium" }
+          },
+          {
+            icon: "👠",
+            title: "スラッと脚長・大人っぽい『高身長・モデル系（161cm〜）』",
+            sub: "モデルシルエット・綺麗なお姉さん感",
+            eff: { prefHeight: "tall" }
+          },
+          {
+            icon: "🙌",
+            title: "身長にはこだわらない（性格や雰囲気の相性を最優先！）",
+            sub: "全身長帯からベスト相性を選出",
+            eff: { prefHeight: "any" }
+          }
+        ]
+      },
+      {
+        cat: "STEP 7 ｜ プロポーションのこだわり",
+        q: "最後に、スタイル（カップ数・ライン）で一番重視するのは？",
+        opts: [
+          {
+            icon: "🍑",
+            title: "やっぱり包容力と迫力のある『グラマー・美巨乳（Eカップ〜）』",
+            sub: "豊かなバスト・女性らしい曲線美",
+            eff: { prefCup: "glamour", spoil: 6 }
+          },
+          {
+            icon: "💖",
+            title: "全体のシルエットが綺麗な『王道美乳バランス（C〜Dカップ）』",
+            sub: "見た目も触れ心地も黄金バランス",
+            eff: { prefCup: "standard", spoil: 4 }
+          },
+          {
+            icon: "🌿",
+            title: "華奢でキュッと引き締まった『スレンダー・美少女体型（A〜B／くびれ）』",
+            sub: "華奢ライン・ウエストの細さ重視",
+            eff: { prefCup: "slender", spoil: 2 }
+          },
+          {
+            icon: "✨",
+            title: "スタイルも問わない（お顔・愛嬌・フィーリング最優先！）",
+            sub: "全タイプから内面シンクロ率で選出",
+            eff: { prefCup: "any", spoil: 4 }
+          }
+        ]
+      }
+    ];
+
+    const USER_TYPE_PERSONAS = {
+      ENFP: { title: "全肯定されたい『隠れ甘えん坊の情熱ロマンチスト』", desc: "普段は気配り上手で明るく振る舞っていますが、2人きりになると一気に甘えたくなるギャップの持ち主。ノリ良く笑顔で受け止めつつ、ゼロ距離でイチャイチャしてくれる子と組むと幸福度が爆発します。" },
+      ENFJ: { title: "愛し愛されたい『恋人ムード至上主義の共感リーダー』", desc: "相手の反応や笑顔を見るのが好きで、機械的な接客よりも「心の通った恋人感」を重視するタイプ。丁寧なおもてなしと愛情表現が豊かな王道ヒロインと抜群の相性を誇ります。" },
+      ENTP: { title: "ギャップに弱い『刺激と会話を楽しむスマート冒険家』", desc: "退屈な時間よりも、ちょっとした冗談や小悪魔的な駆け引きにグッとくるタイプ。トークセンスが良く愛嬌のある子や、清楚に見えて大胆なギャップを持つ子に深く沼ります。" },
+      ENTJ: { title: "ON/OFF切り替え『日常の鎧を脱ぎたいエリート甘えんぼ』", desc: "普段の仕事や生活で気を張って決断している分、プライベートな30分だけは頭を空っぽにして癒やされたいタイプ。包容力のあるお姉さん系や、気品ある美女と極上の相性です。" },
+      ESFP: { title: "笑顔とノリ重視『今この瞬間を全力で楽しむハッピー気質』", desc: "堅苦しい空気よりも、会った瞬間からニコニコ笑い合える明るい空間が大好きなタイプ。人懐っこくて元気いっぱいな太陽系キャストと入ると、あっという間に時間が溶けます。" },
+      ESFJ: { title: "ぬくもり最優先『リアル彼女感に癒やされる王道ジェントル』", desc: "過激さよりも「一緒にいてホッとする親しみやすさ・礼儀正しさ・優しい密着」に一番満足感を得るタイプ。素直で気遣い上手な子を選ぶと間違いありません。" },
+      ESTP: { title: "直感ド真ん中『華やかビジュアル＆ノリ重視のストレート派』", desc: "理屈よりもパッと見の華やかさやスタイルの良さ、テンポの良い空気感を直感で楽しむタイプ。華のある人気キャストや明るいギャルマインドの子と相性抜群です。" },
+      ESTJ: { title: "ハズレたくない『安心・清潔感・実力重視のスマート紳士』", desc: "礼儀や清潔感、丁寧な対応を大切にする堅実派。お店が太鼓判を押す看板キャストや、上品で落ち着いた綺麗系・清楚系キャストと高いシンクロ率を示します。" },
+      INFP: { title: "優しさ120%『繊細で一途なピュア癒やしハンター』", desc: "ガツガツした空気よりも、穏やかで優しい時間が何よりの栄養になるタイプ。おっとりした清楚系や、初々しくて素直な美少女と2人きりになると最高の癒やしを得られます。" },
+      INFJ: { title: "深い包容を求める『秘密の隠れ家ロマンチスト』", desc: "表面的なノリよりも、目線や指先の優しさなど「丁寧に向き合ってくれる空気感」を敏感に感じ取るタイプ。透明感のある癒やし系や、聞き上手で献身的な子と運命的な相性です。" },
+      INTP: { title: "マイペースに浸りたい『観察眼鋭いギャップ愛好家』", desc: "無理にテンションを合わせる必要がない、自然体で落ち着いた空間を好むタイプ。控えめで透明感のある子や、ふとした瞬間に見せる可愛い素顔がある子に強く惹かれます。" },
+      INTJ: { title: "妥協なき審美眼『ワンランク上の美女を求める孤高タイプ』", desc: "数より質を重視し、シルエットの美しさや上品な佇まい・プロ意識に惹かれるタイプ。モデル系スレンダー美女や、リピート率の高い実力派ランカーと好相性です。" },
+      ISFP: { title: "言葉いらずの密着派『ぬくもりと肌感で癒やされる感覚派』", desc: "おしゃべりを頑張るより、ゆったり寄り添って甘い空気を味わいたいタイプ。小動物のような可愛らしさや、柔らかな包容力を持つキャストと組むと心底リラックスできます。" },
+      ISFJ: { title: "一途に推したい『守ってあげたい庇護欲＆安心感タイプ』", desc: "一生懸命に頑張る素直な子を見ると応援したくなり、一度気に入ると長く指名したくなる一途派。未経験・新人系や、礼儀正しい清楚系キャストと相性98%超えになりやすい気質です。" },
+      ISTP: { title: "気楽さ一番『自然体でスッキリ癒やされたいクール職人肌』", desc: "ベタベタしすぎず、かといって冷たくない「ちょうどいい心地よい距離感」を好むタイプ。自然体で親しみやすい子や、スタイル抜群の綺麗系キャストとスムーズに噛み合います。" },
+      ISTJ: { title: "誠実さ重視『礼儀正しく丁寧な大和撫子に弱い堅実派』", desc: "時間やマナーを大切にし、落ち着いた丁寧な接客をしてくれる女性に最も好感を持つタイプ。育ちの良さがにじみ出る清楚系や、安定感抜群のおすすめキャストがベストマッチです。" }
+    };
+
+    let db = EMBEDDED_DB;
+    let currentStore = "gotanda";
+    let stepIdx = 0;
+    let answers = [];
+    let hasFinishedQuiz = false;
+
+    async function boot() {
+      try { const r = await fetch('./casts_data.json', { cache: 'no-store' }); if (r.ok) db = await r.json(); } catch (_) {}
+      if (!db) {
+        try {
+          const resp = await fetch("./casts_data.json", { cache: "no-store" });
+          if (resp.ok) db = await resp.json();
+        } catch (e) {
+          console.warn("Local fetch fallback:", e);
+        }
+      }
+      if (!db || !db.stores) return;
+
+      bindEvents();
+      refreshTopBar();
+    }
+
+    function bindEvents() {
+      document.querySelectorAll("#storeSwitchBar button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          currentStore = btn.dataset.store;
+          refreshTopBar();
+          if (!document.getElementById("catalogView").classList.contains("hidden")) {
+            renderCatalog();
+          } else if (hasFinishedQuiz) {
+            renderResults();
+          }
+        });
+      });
+
+      document.getElementById("startQuizBtn").addEventListener("click", () => {
+        stepIdx = 0;
+        answers = [];
+        showView("quizView");
+        renderQuestion();
+      });
+
+      document.getElementById("prevQBtn").addEventListener("click", () => {
+        if (stepIdx > 0) {
+          stepIdx--;
+          answers.pop();
+          renderQuestion();
+        } else {
+          showView("introView");
+        }
+      });
+
+      const resetFn = () => {
+        hasFinishedQuiz = false;
+        stepIdx = 0;
+        answers = [];
+        document.getElementById("restartTopBtn").classList.add("hidden");
+        showView("introView");
+      };
+      document.getElementById("restartTopBtn").addEventListener("click", resetFn);
+      document.getElementById("retryBottomBtn").addEventListener("click", resetFn);
+
+      document.getElementById("toggleCatalogBtn").addEventListener("click", () => {
+        const catEl = document.getElementById("catalogView");
+        if (catEl.classList.contains("hidden")) {
+          showView("catalogView");
+          renderCatalog();
+        } else {
+          showView(hasFinishedQuiz ? "resultView" : "introView");
+        }
+      });
+      document.getElementById("closeCatalogBtn").addEventListener("click", () => {
+        showView(hasFinishedQuiz ? "resultView" : "introView");
+      });
+
+      ["catFilterShift", "catFilterCup", "catFilterGroup"].forEach(id => {
+        document.getElementById(id).addEventListener("change", renderCatalog);
+      });
+    }
+
+    function showView(viewId) {
+      ["introView", "quizView", "resultView", "catalogView"].forEach(id => {
+        document.getElementById(id).classList.toggle("hidden", id !== viewId);
+      });
+    }
+
+    function refreshTopBar() {
+      const st = db.stores[currentStore];
+      const casts = st.casts || [];
+      const todayCnt = casts.filter(c => c.today_shift).length;
+
+      document.querySelectorAll("#storeSwitchBar button").forEach(btn => {
+        const k = btn.dataset.store;
+        const sObj = db.stores[k];
+        btn.classList.remove("active-gotanda", "active-tachikawa", "active-hachioji");
+        if (k === currentStore) {
+          btn.classList.add("active-" + k);
+        }
+        btn.textContent = `${sObj.meta.emoji} ${sObj.meta.brand} (${sObj.casts.length}名)`;
+      });
+
+      const totalAll = Object.values(db.stores).reduce((acc, s) => acc + s.casts.length, 0);
+      document.getElementById("syncStatusLine").textContent =
+        `🔄 HP自動同期：${db.synced_at} ｜ 3店舗計 ${totalAll}名解析済`;
+      document.getElementById("storeMetaLine").textContent =
+        `${st.meta.emoji} 現在選択中：${st.meta.brand}（在籍${casts.length}名・本日出勤${todayCnt}名）`;
+    }
+
+    function renderQuestion() {
+      const item = QUESTIONS[stepIdx];
+      document.getElementById("qStepBadge").textContent = `QUESTION ${stepIdx + 1} / ${QUESTIONS.length}`;
+      document.getElementById("qProgressBar").style.width = `${Math.round(((stepIdx + 1) / QUESTIONS.length) * 100)}%`;
+      document.getElementById("qCategory").textContent = item.cat;
+      document.getElementById("qTitle").textContent = item.q;
+      document.getElementById("prevQBtn").textContent = stepIdx === 0 ? "← トップへ戻る" : "← 1つ前の質問に戻る";
+
+      const list = document.getElementById("qOptionsList");
+      list.innerHTML = "";
+      item.opts.forEach((opt, oIdx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "opt-card w-full text-left p-3.5 sm:p-4 rounded-xl border border-[var(--border)] bg-[var(--background)] flex items-start gap-3 cursor-pointer";
+        btn.innerHTML = `
+          <span class="text-2xl leading-none pt-0.5">${opt.icon}</span>
+          <span class="flex-1 space-y-0.5">
+            <span class="block text-xs sm:text-sm font-extrabold text-[var(--foreground)] leading-snug">${opt.title}</span>
+            <span class="block text-xs text-[var(--muted-foreground)]">${opt.sub}</span>
+          </span>
+        `;
+        btn.addEventListener("click", () => {
+          answers[stepIdx] = opt.eff;
+          if (stepIdx + 1 < QUESTIONS.length) {
+            stepIdx++;
+            renderQuestion();
+          } else {
+            hasFinishedQuiz = true;
+            document.getElementById("restartTopBtn").classList.remove("hidden");
+            showView("resultView");
+            renderResults();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        });
+        list.appendChild(btn);
+      });
+    }
+
+    function computeUserProfile() {
+      let tE = [], tN = [], tF = [], tJ = [];
+      let uE = [], uN = [], uF = [], uP = [];
+      let spoilSum = 12;
+      let prefHeight = "any";
+      let prefCup = "any";
+
+      answers.forEach(ef => {
+        if (!ef) return;
+        if (ef.targetE !== undefined) tE.push(ef.targetE);
+        if (ef.targetN !== undefined) tN.push(ef.targetN);
+        if (ef.targetF !== undefined) tF.push(ef.targetF);
+        if (ef.targetJ !== undefined) tJ.push(ef.targetJ);
+        if (ef.userE !== undefined) uE.push(ef.userE);
+        if (ef.userN !== undefined) uN.push(ef.userN);
+        if (ef.userF !== undefined) uF.push(ef.userF);
+        if (ef.userP !== undefined) uP.push(ef.userP);
+        if (ef.spoil !== undefined) spoilSum += ef.spoil;
+        if (ef.prefHeight) prefHeight = ef.prefHeight;
+        if (ef.prefCup) prefCup = ef.prefCup;
+      });
+
+      const avg = (arr, def = 50) => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : def;
+      const target = {
+        e: avg(tE, 50),
+        n: avg(tN, 50),
+        f: avg(tF, 70),
+        j: avg(tJ, 50),
+      };
+      const uScores = {
+        e: avg(uE, 48),
+        n: avg(uN, 52),
+        f: avg(uF, 68),
+        p: avg(uP, 55),
+      };
+
+      const userMbti =
+        (uScores.e >= 50 ? "E" : "I") +
+        (uScores.n >= 50 ? "N" : "S") +
+        (uScores.f >= 50 ? "F" : "T") +
+        (uScores.p >= 50 ? "P" : "J");
+
+      const idealPartnerMbti =
+        (target.e >= 50 ? "E" : "I") +
+        (target.n >= 50 ? "N" : "S") +
+        (target.f >= 50 ? "F" : "T") +
+        (target.j >= 50 ? "J" : "P");
+
+      const spoilPct = Math.max(24, Math.min(98, spoilSum));
+
+      return { userMbti, idealPartnerMbti, spoilPct, target, prefHeight, prefCup };
+    }
+
+    function scoreCastForUser(cast, up) {
+      const ax = cast.axes || { e: 50, n: 50, f: 65, j: 50 };
+      const dE = Math.abs(up.target.e - ax.e);
+      const dN = Math.abs(up.target.n - ax.n);
+      const dF = Math.abs(up.target.f - ax.f);
+      const dJ = Math.abs(up.target.j - ax.j);
+
+      // Personality proximity (0..52 pts)
+      const psychScore = 52 * (1 - (dE * 0.28 + dN * 0.20 + dF * 0.26 + dJ * 0.26) / 100);
+
+      // Height match (0..18 pts)
+      let hScore = 14;
+      let hReason = "";
+      const h = cast.height;
+      if (up.prefHeight === "any" || !h) {
+        hScore = 15;
+        if (h) hReason = `身長${h}cmのバランスシルエット`;
+      } else if (up.prefHeight === "petite") {
+        if (h <= 154) { hScore = 18; hReason = `希望通りの小柄ミニマム（T${h}cm）`; }
+        else if (h <= 157) { hScore = 12; hReason = `抱き心地の良いT${h}cmサイズ感`; }
+        else { hScore = 5; }
+      } else if (up.prefHeight === "medium") {
+        if (h >= 155 && h <= 160) { hScore = 18; hReason = `希望通りの王道バランス身長（T${h}cm）`; }
+        else if (h >= 152 && h <= 163) { hScore = 12; }
+        else { hScore = 6; }
+      } else if (up.prefHeight === "tall") {
+        if (h >= 161) { hScore = 18; hReason = `希望通りの高身長モデル系（T${h}cm）`; }
+        else if (h >= 158) { hScore = 12; hReason = `スラッと映えるT${h}cmスタイル`; }
+        else { hScore = 5; }
+      }
+
+      // Cup / Body match (0..20 pts)
+      let cScore = 15;
+      let cReason = "";
+      const cup = (cast.cup || "").toUpperCase();
+      const bust = cast.bust || 0;
+      const waist = cast.waist || 60;
+      const isGlamour = ["E", "F", "G", "H", "I", "J"].includes(cup) || bust >= 88;
+      const isStandard = ["C", "D"].includes(cup);
+      const isSlender = ["A", "B"].includes(cup) || waist <= 55;
+
+      if (up.prefCup === "any" || !cup) {
+        cScore = 16;
+        if (cup) cReason = `${cup}カップ（W${waist || "-"}）の美ボディライン`;
+      } else if (up.prefCup === "glamour") {
+        if (isGlamour) { cScore = 20; cReason = `理想のグラマー美巨乳（B${bust || "-"}・${cup}カップ）`; }
+        else if (cup === "D") { cScore = 13; cReason = `女性らしいDカップ美乳ライン`; }
+        else { cScore = 5; }
+      } else if (up.prefCup === "standard") {
+        if (isStandard) { cScore = 20; cReason = `理想の王道美乳バランス（${cup}カップ・W${waist || "-"}）`; }
+        else { cScore = 11; }
+      } else if (up.prefCup === "slender") {
+        if (isSlender) { cScore = 20; cReason = `理想の華奢スレンダー（W${waist || "-"}cm・${cup}カップ）`; }
+        else if (waist <= 58) { cScore = 13; cReason = `キュッと締まったくびれ（W${waist}cm）`; }
+        else { cScore = 6; }
+      }
+
+      // Reliability & Q&A richness bonus (0..10 pts)
+      let bonus = 3;
+      if (cast.rank && cast.rank <= 5) bonus += 3;
+      if ((cast.badges || []).includes("おすすめ")) bonus += 2;
+      if ((cast.qa || []).length >= 3) bonus += 2;
+
+      const rawTotal = psychScore + hScore + cScore + bonus;
+      const matchPct = Math.max(78, Math.min(99, Math.round(62 + rawTotal * 0.38)));
+
+      // Build concrete human-readable match reasons grounded in HP data
+      const reasons = [];
+      const specParts = [hReason, cReason].filter(Boolean);
+      if (specParts.length) {
+        reasons.push(`📏 ${specParts.join(" × ")}`);
+      } else {
+        reasons.push(`📏 実測スペック：${cast.size_text}`);
+      }
+
+      const mbtiTag = cast.mbti_source === "explicit" ? `公式MBTI:${cast.mbti}` : `推定${cast.mbti}`;
+      reasons.push(`🧬 ${mbtiTag}（${cast.mbti_label}）の気質があなたの理想と高シンクロ`);
+
+      // Pick best Q&A quote if present, else tagline/highlight
+      const qaList = cast.qa || [];
+      const niceQa = qaList.find(([q, a]) =>
+        a && a.length >= 2 && a.length <= 28 &&
+        /(性格|タイプ|フェチ|一言|デート|S|M|チャーム)/.test(q)
+      );
+      if (niceQa) {
+        reasons.push(`💬 本人Q&A『${niceQa[0]}』➔「${niceQa[1]}」`);
+      } else if (cast.tagline) {
+        reasons.push(`✨ 店舗評：「${cast.tagline}」`);
+      } else if (cast.highlight) {
+        reasons.push(`✨ 「${cast.highlight}」`);
+      }
+
+      return { cast, matchPct, reasons };
+    }
+
+    function getPhotoSrc(cast) {
+      return cast.thumb_data || cast.photo_url || "";
+    }
+
+    function buildCompactCastCard(item, rankIdx, isTodayCard) {
+      const c = item.cast;
+      const imgSrc = getPhotoSrc(c);
+      const shiftBadge = c.today_shift
+        ? `<span class="px-2 py-0.5 rounded text-[11px] font-extrabold bg-emerald-500 text-white">🟢 本日 ${c.today_shift}</span>`
+        : (c.tomorrow_shift
+            ? `<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-sky-600 text-white">📅 明日 ${c.tomorrow_shift}</span>`
+            : `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-600 text-white">次回出勤はHP確認</span>`);
+
+      const mbtiBadgeTxt = c.mbti_source === "explicit" ? `公式 ${c.mbti}` : `推定 ${c.mbti}`;
+
+      if (isTodayCard) {
+        return `
+          <div class="rounded-xl border border-[var(--border)] bg-[var(--background)] overflow-hidden flex flex-col justify-between shadow-sm">
+            <div>
+              <div class="relative cast-photo-frame">
+                <img src="${imgSrc}" data-live="${c.photo_url}" alt="${c.name}" loading="lazy" />
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded-md text-xs font-black text-white shadow" style="background:linear-gradient(135deg,#db2777,#7c3aed);">
+                  相性 ${item.matchPct}%
+                </div>
+                <div class="absolute bottom-2 left-2 right-2 flex flex-wrap gap-1">
+                  ${shiftBadge}
+                </div>
+              </div>
+              <div class="p-3 space-y-1.5">
+                <div class="flex items-center justify-between gap-1">
+                  <div class="font-black text-sm truncate">${c.disp_no} ${c.name}</div>
+                  <span class="px-1.5 py-0.5 rounded text-[11px] font-extrabold border border-purple-500/40 text-purple-500">${mbtiBadgeTxt}</span>
+                </div>
+                <div class="text-xs font-bold text-[var(--muted-foreground)]">${c.size_text}</div>
+                <div class="text-xs text-[var(--foreground)] leading-snug line-clamp-2">${item.reasons[1]}</div>
+              </div>
+            </div>
+            <div class="px-3 pb-3">
+              <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2 rounded-lg text-xs font-extrabold text-white transition hover:opacity-90" style="background:linear-gradient(135deg,#059669,#10b981);">
+                👤 プロフィール・空き確認
+              </a>
+            </div>
+          </div>
+        `;
+      }
+
+      const rankMedal = rankIdx === 0 ? "👑 総合相性 No.1" : (rankIdx === 1 ? "🥈 総合相性 No.2" : "🥉 総合相性 No.3");
+      const tagsHtml = (c.feature_tags || []).map(t =>
+        `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold border border-[var(--border)] bg-[var(--card)]">${t}</span>`
+      ).join("");
+
+      return `
+        <div class="rounded-xl border border-[var(--border)] bg-[var(--background)] p-3 sm:p-4 flex flex-col sm:flex-row gap-3.5 shadow-sm">
+          <div class="w-32 sm:w-36 shrink-0 mx-auto sm:mx-0">
+            <div class="relative cast-photo-frame rounded-lg border border-[var(--border)]">
+              <img src="${imgSrc}" data-live="${c.photo_url}" alt="${c.name}" loading="lazy" />
+              <div class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded text-xs font-black text-white" style="background:linear-gradient(135deg,#7c3aed,#db2777);">
+                ${item.matchPct}%
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-black text-pink-500">${rankMedal}</span>
+                <h4 class="text-base font-black">${c.disp_no} ${c.name}</h4>
+                ${c.rank ? `<span class="px-2 py-0.5 rounded text-[11px] font-black bg-amber-500 text-white">人気No.${c.rank}</span>` : ""}
+              </div>
+              ${shiftBadge}
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 text-xs">
+              <span class="font-extrabold text-[var(--foreground)]">${c.size_text}</span>
+              <span class="px-2 py-0.5 rounded font-bold border border-purple-500/40 text-purple-500">${mbtiBadgeTxt}｜${c.mbti_label}</span>
+            </div>
+
+            ${tagsHtml ? `<div class="flex flex-wrap gap-1.5">${tagsHtml}</div>` : ""}
+
+            <ul class="space-y-1 text-xs text-[var(--muted-foreground)] bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
+              ${item.reasons.map(r => `<li class="leading-relaxed">${r}</li>`).join("")}
+            </ul>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg text-xs font-extrabold text-white transition hover:opacity-90" style="background:linear-gradient(135deg,#6d28d9,#db2777);">
+                👤 公式HPプロフィール＆週間シフトを見る
+              </a>
+              ${c.detail_url && c.detail_url !== c.profile_url ? `
+                <a href="${c.detail_url}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg text-xs font-bold border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:opacity-80">
+                  📹 動画・写メ日記を見る
+                </a>
+              ` : ""}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function upgradeLivePhotos(container) {
+      // When opened in a standard browser with internet access, smoothly upgrade thumbnails to full-res HP photos
+      container.querySelectorAll("img[data-live]").forEach(img => {
+        const liveUrl = img.getAttribute("data-live");
+        if (!liveUrl || img.src === liveUrl) return;
+        const probe = new Image();
+        probe.onload = () => { img.src = liveUrl; };
+        probe.src = liveUrl;
+      });
+    }
+
+    function renderResults() {
+      const st = db.stores[currentStore];
+      const meta = st.meta;
+      const up = computeUserProfile();
+      const persona = USER_TYPE_PERSONAS[up.userMbti] || USER_TYPE_PERSONAS.ENFP;
+
+      document.getElementById("resUserTypeBadge").textContent = `あなたの気質：${up.userMbti}型`;
+      document.getElementById("resIdealPartnerBadge").textContent = `最高相性ヒロイン：${up.idealPartnerMbti}系`;
+      document.getElementById("resUserCatch").textContent = persona.title;
+      document.getElementById("resSpoilPct").textContent = `${up.spoilPct}%`;
+      document.getElementById("resUserDesc").textContent = persona.desc;
+
+      const bars = [
+        { lbl: "求めるテンション（おっとり清楚 ⇔ 陽キャ愛嬌）", val: up.target.e, col: "#ec4899" },
+        { lbl: "求める距離感（スマート綺麗 ⇔ 密着甘やかし）", val: up.target.f, col: "#8b5cf6" },
+        { lbl: "主導権の好み（自分が愛でたい ⇔ リードされたい）", val: up.target.j, col: "#06b6d4" },
+        { lbl: "世界観の好み（自然体リアル彼女 ⇔ アイドル特別感）", val: up.target.n, col: "#f59e0b" },
+      ];
+      document.getElementById("resAxisBars").innerHTML = bars.map(b => `
+        <div class="p-2.5 rounded-lg border border-[var(--border)] bg-[var(--background)] space-y-1">
+          <div class="flex justify-between font-bold">
+            <span class="text-[var(--muted-foreground)]">${b.lbl}</span>
+            <span class="tabular-nums">${b.val}%</span>
+          </div>
+          <div class="w-full h-1.5 rounded-full bg-slate-500/20 overflow-hidden">
+            <div class="h-full rounded-full" style="width:${b.val}%;background:${b.col};"></div>
+          </div>
+        </div>
+      `).join("");
+
+      const rankedAll = (st.casts || [])
+        .map(c => scoreCastForUser(c, up))
+        .sort((a, b) => b.matchPct - a.matchPct);
+
+      const topMatch = rankedAll[0];
+      const shareText = `私の隠れ甘え度は【${up.spoilPct}%】（${up.userMbti}型：${persona.title}）でした！\n${meta.brand}で一番相性が良いタイプは『${up.idealPartnerMbti}系（相性${topMatch ? topMatch.matchPct : 98}%）』✨\n#16タイプ相性診断 #${meta.brand}`;
+      document.getElementById("shareXBtn").href =
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(meta.base_url + "/top.php")}`;
+
+      // Today / Tomorrow working matches
+      const todayList = rankedAll.filter(x => x.cast.today_shift);
+      const tomorrowList = rankedAll.filter(x => !x.cast.today_shift && x.cast.tomorrow_shift);
+      const todayEl = document.getElementById("todayMatchesGrid");
+
+      document.getElementById("storeScheduleLink").href = `${meta.base_url}/schedule.php`;
+      document.getElementById("storeCastListLink").href = `${meta.base_url}/cast.php`;
+
+      if (todayList.length > 0) {
+        document.getElementById("todaySecTitle").textContent =
+          `${meta.emoji} ${meta.brand}｜本日これから会える高相性キャスト TOP${Math.min(3, todayList.length)}`;
+        document.getElementById("todaySecSub").textContent =
+          `本日出勤中の ${todayList.length}名 の中から、あなたと最も相性が高い順に表示しています`;
+        todayEl.innerHTML = todayList.slice(0, 3).map((it, idx) => buildCompactCastCard(it, idx, true)).join("");
+      } else if (tomorrowList.length > 0) {
+        document.getElementById("todaySecTitle").textContent =
+          `${meta.emoji} ${meta.brand}｜明日出勤予定の高相性キャスト TOP${Math.min(3, tomorrowList.length)}`;
+        document.getElementById("todaySecSub").textContent =
+          `本日の出勤枠終了のため、明日出勤予定のキャストから相性順に表示しています`;
+        todayEl.innerHTML = tomorrowList.slice(0, 3).map((it, idx) => buildCompactCastCard(it, idx, true)).join("");
+      } else {
+        document.getElementById("todaySecTitle").textContent = `${meta.emoji} ${meta.brand}｜最新の出勤情報`;
+        document.getElementById("todaySecSub").textContent = `最新のリアルタイム出勤枠は公式HPスケジュールをご確認ください`;
+        todayEl.innerHTML = "";
+      }
+
+      // Overall Top 3
+      document.getElementById("overallSecTitle").textContent =
+        `👑 ${meta.brand} 全在籍${st.casts.length}名から厳選！運命の相性ランキング TOP3`;
+      const overallEl = document.getElementById("overallMatchesList");
+      overallEl.innerHTML = rankedAll.slice(0, 3).map((it, idx) => buildCompactCastCard(it, idx, false)).join("");
+
+      // Footer
+      document.getElementById("footerStoreTitle").textContent = `${meta.emoji} ${meta.brand}（${meta.access}）`;
+      document.getElementById("footerPromoBadge").textContent = `🎁 ${meta.line_promo}`;
+      document.getElementById("footerStoreInfo").textContent =
+        `営業時間 10:00〜24:00 ｜ 料金目安：${meta.price_note}（受付完全前払い制・追加料金一切なし）。気になった子がいたら、お電話または受付で「${topMatch ? topMatch.cast.disp_no + "の" + topMatch.cast.name + "ちゃん" : "指名"}」とお伝えいただくだけでスムーズにご案内可能です。`;
+      document.getElementById("footerTelBtn").href = `tel:${meta.tel}`;
+      document.getElementById("footerTelBtn").textContent = `📞 電話で空き確認（${meta.tel}）`;
+      document.getElementById("footerTopBtn").href = `${meta.base_url}/top.php`;
+
+      upgradeLivePhotos(document.getElementById("resultView"));
+    }
+
+    function renderCatalog() {
+      const st = db.stores[currentStore];
+      const fShift = document.getElementById("catFilterShift").value;
+      const fCup = document.getElementById("catFilterCup").value;
+      const fGrp = document.getElementById("catFilterGroup").value;
+
+      const filtered = (st.casts || []).filter(c => {
+        if (fShift === "today" && !c.today_shift) return false;
+        if (fShift === "tomorrow" && !c.tomorrow_shift) return false;
+
+        const cup = (c.cup || "").toUpperCase();
+        if (fCup === "glamour" && !(["E", "F", "G", "H", "I", "J"].includes(cup) || (c.bust || 0) >= 88)) return false;
+        if (fCup === "standard" && !["C", "D"].includes(cup)) return false;
+        if (fCup === "slender" && !(["A", "B"].includes(cup) || (c.waist || 99) <= 55)) return false;
+
+        if (fGrp === "E_F" && !(c.mbti.startsWith("E") && c.mbti.includes("F"))) return false;
+        if (fGrp === "I_F" && !(c.mbti.startsWith("I") && c.mbti.includes("F"))) return false;
+        if (fGrp === "T" && !c.mbti.includes("T")) return false;
+        return true;
+      });
+
+      document.getElementById("catTitle").textContent =
+        `${st.meta.emoji} ${st.meta.brand}｜在籍キャスト 自動推定MBTI＆スペック図鑑（該当 ${filtered.length} / 全${st.casts.length}名）`;
+
+      const grid = document.getElementById("catalogGrid");
+      grid.innerHTML = filtered.map(c => {
+        const imgSrc = getPhotoSrc(c);
+        const qaSample = (c.qa || []).slice(0, 2).map(([q, a]) => `${q}「${a}」`).join(" ／ ");
+        return `
+          <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] flex gap-3 hover:border-pink-500 transition">
+            <div class="w-20 shrink-0 cast-photo-frame rounded-lg border border-[var(--border)]">
+              <img src="${imgSrc}" data-live="${c.photo_url}" alt="${c.name}" loading="lazy" />
+            </div>
+            <div class="flex-1 min-w-0 space-y-1 text-xs">
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-black text-sm truncate">${c.disp_no} ${c.name}</span>
+                <span class="px-1.5 py-0.5 rounded font-extrabold border border-purple-500/40 text-purple-500 shrink-0">
+                  ${c.mbti_source === "explicit" ? "公式 " : "推定 "}${c.mbti}
+                </span>
+              </div>
+              <div class="font-bold text-[var(--muted-foreground)]">${c.size_text}</div>
+              <div class="text-[11px] font-bold text-pink-500">${c.mbti_label}</div>
+              ${c.today_shift ? `<div class="text-[11px] font-extrabold text-emerald-500">🟢 本日出勤：${c.today_shift}</div>` : (c.tomorrow_shift ? `<div class="text-[11px] font-bold text-sky-500">📅 明日：${c.tomorrow_shift}</div>` : "")}
+              ${qaSample ? `<div class="text-[11px] text-[var(--muted-foreground)] truncate">💬 ${qaSample}</div>` : (c.tagline ? `<div class="text-[11px] text-[var(--muted-foreground)] truncate">✨ ${c.tagline}</div>` : "")}
+            </div>
+          </a>
+        `;
+      }).join("");
+
+      upgradeLivePhotos(grid);
+    }
+
+    boot();
+  </script>
+</body>
+</html>
