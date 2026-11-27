@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="robots" content="noindex, nofollow, noarchive" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>社交クエスト 〜30秒で不安ゼロ！はじめての入店体験シミュレーター〜</title>
   <meta name="description" content="入店・受付の不安を30秒で解消！指名確認・待ち時間案内・選び直し・前払いお財布ロック・感謝の名刺まで体験できる動的ドット絵RPG" />
   <meta property="og:title" content="社交クエスト 〜30秒で不安ゼロ！はじめての入店体験シミュレーター〜" />
@@ -723,26 +723,59 @@
     }
     .hidden { display: none !important; }
   
+    
     /* === MOBILE CROSS-DEVICE ANTI-BREAK & TYPOGRAPHY HARDENING === */
     html {
       -webkit-text-size-adjust: 100%;
       -moz-text-size-adjust: 100%;
       text-size-adjust: 100%;
-      overflow-x: hidden;
     }
     body {
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif !important;
       line-break: strict;
       overflow-wrap: break-word;
       word-break: normal;
     }
+    /* CRITICAL: Prevent <canvas width="384"> and flex/grid children from forcing min-width > 360px! */
+    .prod-wrap,
+    .max-w-\[620px\],
+    .prod-topbar,
+    .rpg-console,
+    .rpg-console > *,
+    .viewport,
+    .vp-canvas-stage,
+    .px-win,
+    .luxury-panel,
+    .bizcard-paper {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0 !important;
+      box-sizing: border-box;
+    }
+    canvas#gameCanvas {
+      display: block;
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      height: auto !important;
+      aspect-ratio: 16 / 9;
+    }
     .rpg-console {
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif !important;
-      max-width: 100%;
       overflow: hidden;
+    }
+    .prod-footer,
+    .sim-footer-bar {
+      display: flex;
+      flex-wrap: wrap !important;
+      gap: 4px 10px;
+      min-width: 0;
+      max-width: 100%;
     }
     /* Non-overlapping top bar inside viewport */
     .vp-top-strip {
@@ -756,6 +789,8 @@
       border-bottom: 1.5px solid #334155;
       position: relative;
       z-index: 5;
+      width: 100%;
+      min-width: 0;
     }
     .vp-top-strip .vp-badge {
       position: static !important;
@@ -766,7 +801,7 @@
       font-size: clamp(10.5px, 2.9vw, 12px);
       line-height: 1.35;
       min-width: 0;
-      flex: 1 1 180px;
+      flex: 1 1 160px;
     }
     .vp-top-strip .vp-price-tag {
       position: static !important;
@@ -778,6 +813,7 @@
     .vp-canvas-stage {
       position: relative;
       width: 100%;
+      min-width: 0;
     }
     .vp-hotspots {
       inset: 8px !important;
@@ -785,27 +821,24 @@
     .vp-hotspots:empty {
       display: none !important;
     }
-    /* Prevent flex/grid children from overflowing or wrapping Yen numbers mid-token */
     .hud-grid > div,
     .msg-body,
+    .rpg-cmd,
     .rpg-cmd > span:last-child,
     .receipt-row > span:first-child,
     .coupon-toggle-bar > div {
-      min-width: 0;
+      min-width: 0 !important;
     }
     .cmd-arrow {
       flex-shrink: 0;
     }
     .rpg-cmd {
+      width: 100%;
       line-height: 1.42;
       word-break: normal;
       overflow-wrap: break-word;
     }
-    .prod-pill,
-    .time-pill,
-    #meterPct,
-    #applyCouponBtn,
-    #toggleWaitModeBtn {
+    #meterPct {
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -834,59 +867,69 @@
       font-size: clamp(9px, 2.4vw, 10.5px) !important;
     }
     .msg-text {
-      line-height: 1.62;
+      line-height: 1.6;
       line-break: strict;
       overflow-wrap: break-word;
     }
 
-    /* Smartphone-specific responsive adaptations (iPhone SE 320px ~ Pro Max 430px ~ Android) */
+    /* Smartphone-specific responsive adaptations (320px ~ 540px) */
     @media (max-width: 540px) {
       body {
         padding: 8px 6px 26px !important;
       }
       .rpg-console {
-        padding: 9px 8px !important;
+        padding: 8px 7px !important;
         gap: 8px !important;
       }
-      /* Store & time-band tabs neatly aligned without awkward mid-button wrapping */
       #storeTabs {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
         width: 100%;
         gap: 4px !important;
       }
       #storeTabs .prod-pill,
       #storeTabs .store-tab {
+        width: 100%;
+        min-width: 0 !important;
         text-align: center;
         padding: 6px 2px !important;
         font-size: clamp(9.5px, 2.75vw, 11.5px) !important;
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
       #timeTabs {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
         width: 100%;
         gap: 4px !important;
       }
       #timeTabs .time-pill {
+        width: 100%;
+        min-width: 0 !important;
         text-align: center;
-        padding: 5px 3px !important;
+        padding: 5px 2px !important;
         font-size: clamp(10px, 2.8vw, 11.5px) !important;
+        white-space: nowrap;
       }
-      /* 6 steps -> clean 3x2 grid so no step title ever breaks mid-word */
+      /* 6 steps -> clean 3x2 grid using minmax(0, 1fr) so zero horizontal overflow and zero clipping */
       .step-strip {
-        grid-template-columns: repeat(3, 1fr) !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
         gap: 4px !important;
       }
       .step-node {
-        font-size: clamp(9.5px, 2.65vw, 10.5px) !important;
+        min-width: 0 !important;
+        font-size: clamp(9px, 2.6vw, 10.5px) !important;
         padding: 4px 2px !important;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        line-height: 1.25;
+        white-space: normal !important;
       }
-      /* Allow HUD labels/badges to wrap cleanly instead of clipping or overflowing */
+      /* HUD grid: 2 clean columns with minmax(0, 1fr) and full wrapping (stack on <=380px for spacious wallet badge) */
+      .hud-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        padding: 7px 8px !important;
+      }
       .hud-val {
         font-size: 13px !important;
         white-space: normal !important;
@@ -901,11 +944,13 @@
         line-height: 1.32;
       }
       .wallet-badge {
+        display: inline-block !important;
         white-space: normal !important;
         line-height: 1.3;
         font-size: 10px !important;
+        max-width: 100%;
       }
-      /* Dock interactive thought bubbles cleanly below canvas so they NEVER clip off right edge! */
+      /* Dock interactive thought bubbles cleanly below canvas */
       .vp-hotspots {
         position: static !important;
         inset: auto !important;
@@ -933,14 +978,13 @@
       .hotspot-chip.promo {
         animation: pulseGlow 2.2s infinite !important;
       }
-      /* Dialogue window compact avatar so text gets maximum line width */
       .msg-window {
         padding: 8px 9px !important;
         gap: 8px !important;
       }
       .speaker-face-box {
-        width: 52px !important;
-        height: 52px !important;
+        width: 50px !important;
+        height: 50px !important;
         align-self: flex-start !important;
         margin-top: 2px;
       }
@@ -952,40 +996,31 @@
         font-size: 12.5px !important;
         line-height: 1.58 !important;
       }
-      /* Luxury cast panel header & card badges */
-      .lp-brand-title {
-        font-size: 14px !important;
+      .lp-filter-bar,
+      .lp-cards-grid,
+      .hp-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
       }
-      .lp-price-main {
-        font-size: 16px !important;
-        white-space: nowrap;
+      .cmd-grid,
+      .cta-grid,
+      .lp-bottom-row {
+        grid-template-columns: minmax(0, 1fr) !important;
       }
-      .lp-nom-ribbon {
-        white-space: nowrap;
-        font-size: 9.5px !important;
-        padding: 1.5px 7px !important;
-      }
-      .rank-badge {
-        font-size: 10px !important;
-        padding: 1px 4px !important;
-      }
-      .status-pill {
-        font-size: 8.8px !important;
-        padding: 1.5px 5px !important;
-      }
-      .coupon-toggle-bar {
-        flex-direction: column;
-        align-items: stretch !important;
-      }
-      #applyCouponBtn {
-        width: 100%;
-        text-align: center;
-      }
-      .bizcard-top {
-        flex-wrap: wrap;
-      }
-      .bizcard-tag {
-        white-space: nowrap;
+      .lp-brand-title { font-size: 14px !important; }
+      .lp-price-main { font-size: 16px !important; white-space: nowrap; }
+      .lp-nom-ribbon { white-space: nowrap; font-size: 9.5px !important; padding: 1.5px 7px !important; }
+      .rank-badge { font-size: 10px !important; padding: 1px 4px !important; }
+      .status-pill { font-size: 8.8px !important; padding: 1.5px 5px !important; }
+      .coupon-toggle-bar { flex-direction: column; align-items: stretch !important; }
+      #applyCouponBtn { width: 100%; text-align: center; }
+      .groom-bar { flex-direction: column; align-items: stretch !important; }
+      #toggleWaitModeBtn { width: 100%; text-align: center; }
+      .bizcard-top { flex-wrap: wrap; }
+      .bizcard-tag { white-space: nowrap; }
+    }
+    @media (max-width: 380px) {
+      .hud-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
       }
     }
   </style>
