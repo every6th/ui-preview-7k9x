@@ -739,7 +739,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif !important;
       line-break: strict;
       overflow-wrap: break-word;
-      word-break: normal;
+      word-break: auto-phrase;
     }
     /* CRITICAL: Prevent <canvas width="384"> and flex/grid children from forcing min-width > 360px! */
     .prod-wrap,
@@ -835,7 +835,7 @@
     .rpg-cmd {
       width: 100%;
       line-height: 1.42;
-      word-break: normal;
+      word-break: auto-phrase;
       overflow-wrap: break-word;
     }
     #meterPct {
@@ -1664,7 +1664,7 @@
       document.getElementById("meterPct").textContent = `安心納得度 ${pct}%`;
       document.getElementById("meterTitle").textContent = pct >= 85
         ? "🛡️ 不安ゼロ達成！明朗会計＆入店の仕組みを完全把握！"
-        : `💓 初来店の安心納得メーター（検証済みギモン：${clearedFears.size}個）`;
+        : `💓 初来店の安心納得メーター（検証済：${clearedFears.size}個）`;
       document.getElementById("meterTitle").style.color = pct >= 85 ? "#6ee7b7" : "#fda4af";
 
       // Receipt Box Update
@@ -2530,7 +2530,7 @@
       const p = calcPriceBreakdown();
       vpBadge.textContent = "不安ゼロへ！入店〜退店・HP活用シミュレーター";
       typeWrite(
-        `🎮 社交クエスト 〜${st.name} 動的体験版〜`,
+        `🎮 社交クエスト｜${st.name}`,
         `「店員が怖そう…」「待ち時間が長かったら選び直せる？」「後から高額請求されない？」という初来店の不安を、リアルな受付対話＆お財布ロックで100%解消！（現在選択中の基本料金：${fmtYen(p.base)}）`,
         false,
         null,
