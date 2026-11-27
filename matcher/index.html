@@ -4,499 +4,337 @@
   <meta charset="UTF-8" />
   <meta name="robots" content="noindex, nofollow, noarchive" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>16タイプ精密解析｜あなたの隠れ甘え度＆相性98%の実在キャスト診断</title>
-    <style>
+  <title>16タイプ精密解析｜あなたの隠れ甘え度＆相性98%の実在キャスト診断（3店舗HP連動）</title>
+  <style>
     :root {
-      --background: #0b1120;
+      --bg: #0b1120;
       --card: #151f32;
-      --foreground: #f8fafc;
-      --muted-foreground: #94a3b8;
+      --surface: #0f172a;
+      --fg: #f8fafc;
+      --muted: #94a3b8;
       --border: #293548;
-      --card-border: #293548;
-      --link: #f472b6;
+      --pink: #f472b6;
+      --purple: #c084fc;
+      --emerald: #34d399;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html, body {
-      margin: 0;
-      background-color: var(--background);
-      color: var(--foreground);
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+      margin: 0; padding: 0;
+      height: 100vh; height: 100dvh; max-height: 100dvh;
+      overflow: hidden;
+      background: var(--bg); color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
       -webkit-font-smoothing: antialiased;
-      -webkit-text-size-adjust: 100%;
-      -moz-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-      overflow-x: hidden;
-      width: 100%;
-      max-width: 100vw;
-      line-break: strict;
-      overflow-wrap: break-word;
-      word-break: auto-phrase;
+      -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+      line-break: strict; overflow-wrap: break-word; word-break: auto-phrase;
     }
-    body { padding: 12px; min-height: 100vh; }
-    @media (min-width: 640px) { body { padding: 20px; } }
-    h1, h2, h3, h4, p, ul, li { margin: 0; padding: 0; }
-    ul { list-style: none; }
+    button, select { font-family: inherit; color: inherit; }
     a { color: inherit; text-decoration: none; }
-    button, select { font-family: inherit; color: inherit; background: none; }
-
-    /* Layout & Spacing Utilities */
     .hidden { display: none !important; }
-    .block { display: block; }
-    .inline-block { display: inline-block; }
-    .inline-flex { display: inline-flex; }
-    .flex { display: flex; }
-    .flex-col { flex-direction: column; }
-    .flex-wrap { flex-wrap: wrap; }
-    .flex-1 { flex: 1 1 0%; min-width: 0; }
-    .shrink-0 { flex-shrink: 0; }
-    .min-w-0 { min-width: 0; }
-    .items-center { align-items: center; }
-    .items-start { align-items: flex-start; }
-    .justify-between { justify-content: space-between; }
-    .justify-center { justify-content: center; }
-    .grid { display: grid; }
-    .grid-cols-1 { grid-template-columns: minmax(0, 1fr); }
 
-    .max-w-3xl { max-width: 48rem; }
-    .max-w-xl { max-width: 36rem; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .w-full { width: 100%; }
-    .w-20 { width: 5rem; }
-    .w-32 { width: 8rem; }
-    .w-2\.5 { width: 0.625rem; }
-    .h-2\.5 { height: 0.625rem; }
-    .h-2 { height: 0.5rem; }
-    .h-1\.5 { height: 0.375rem; }
-    .h-full { height: 100%; }
-
-    .gap-1 { gap: 0.25rem; }
-    .gap-1\.5 { gap: 0.375rem; }
-    .gap-2 { gap: 0.5rem; }
-    .gap-2\.5 { gap: 0.625rem; }
-    .gap-3 { gap: 0.75rem; }
-    .gap-3\.5 { gap: 0.875rem; }
-
-    .space-y-0\.5 > * + * { margin-top: 0.125rem; }
-    .space-y-1 > * + * { margin-top: 0.25rem; }
-    .space-y-1\.5 > * + * { margin-top: 0.375rem; }
-    .space-y-2 > * + * { margin-top: 0.5rem; }
-    .space-y-2\.5 > * + * { margin-top: 0.625rem; }
-    .space-y-3 > * + * { margin-top: 0.75rem; }
-    .space-y-4 > * + * { margin-top: 1rem; }
-    .space-y-5 > * + * { margin-top: 1.25rem; }
-
-    .p-2\.5 { padding: 0.625rem; }
-    .p-3 { padding: 0.75rem; }
-    .p-3\.5 { padding: 0.875rem; }
-    .p-4 { padding: 1rem; }
-    .p-5 { padding: 1.25rem; }
-    .px-1\.5 { padding-left: 0.375rem; padding-right: 0.375rem; }
-    .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
-    .px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
-    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
-    .px-3\.5 { padding-left: 0.875rem; padding-right: 0.875rem; }
-    .px-4 { padding-left: 1rem; padding-right: 1rem; }
-    .px-8 { padding-left: 2rem; padding-right: 2rem; }
-    .py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
-    .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
-    .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
-    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-    .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
-    .py-3\.5 { padding-top: 0.875rem; padding-bottom: 0.875rem; }
-    .pt-0\.5 { padding-top: 0.125rem; }
-    .pt-1 { padding-top: 0.25rem; }
-    .pt-2 { padding-top: 0.5rem; }
-    .pb-3 { padding-bottom: 0.75rem; }
-    .pb-3\.5 { padding-bottom: 0.875rem; }
-    .mt-0\.5 { margin-top: 0.125rem; }
-
-    /* Positioning */
-    .relative { position: relative; }
-    .absolute { position: absolute; }
-    .top-1\.5 { top: 0.375rem; }
-    .left-1\.5 { left: 0.375rem; }
-    .top-2 { top: 0.5rem; }
-    .left-2 { left: 0.5rem; }
-    .right-2 { right: 0.5rem; }
-    .bottom-2 { bottom: 0.5rem; }
-
-    /* Borders & Radius */
-    .border { border: 1px solid var(--border); }
-    .border-t { border-top: 1px solid var(--border); }
-    .border-b { border-bottom: 1px solid var(--border); }
-    .border-\[var\(--border\)\] { border-color: var(--border); }
-    .border-pink-500\/30 { border-color: rgba(236, 72, 153, 0.35); }
-    .border-purple-500\/40 { border-color: rgba(168, 85, 247, 0.45); }
-    .rounded { border-radius: 0.25rem; }
-    .rounded-md { border-radius: 0.375rem; }
-    .rounded-lg { border-radius: 0.5rem; }
-    .rounded-xl { border-radius: 0.75rem; }
-    .rounded-2xl { border-radius: 1rem; }
-    .rounded-full { border-radius: 9999px; }
-    .overflow-hidden { overflow: hidden; }
-
-    /* Colors & Surfaces */
-    .bg-\[var\(--background\)\] { background-color: var(--background); }
-    .bg-\[var\(--card\)\] { background-color: var(--card); }
-    .bg-emerald-500 { background-color: #10b981; }
-    .bg-sky-600 { background-color: #0284c7; }
-    .bg-slate-600 { background-color: #475569; }
-    .bg-amber-500 { background-color: #f59e0b; }
-    .bg-slate-500\/20 { background-color: rgba(100, 116, 139, 0.25); }
-
-    .text-\[var\(--foreground\)\] { color: var(--foreground); }
-    .text-\[var\(--muted-foreground\)\] { color: var(--muted-foreground); }
-    .text-\[var\(--link\)\] { color: var(--link); }
-    .text-white { color: #ffffff; }
-    .text-pink-500 { color: #f472b6; }
-    .text-purple-500 { color: #c084fc; }
-    .text-emerald-500 { color: #34d399; }
-    .text-sky-500 { color: #38bdf8; }
-
-    /* Typography */
-    .text-\[11px\] { font-size: 11px; line-height: 1.35; }
-    .text-xs { font-size: 12px; line-height: 1.45; }
-    .text-sm { font-size: 13.5px; line-height: 1.5; }
-    .text-base { font-size: 15.5px; line-height: 1.45; }
-    .text-lg { font-size: 17.5px; line-height: 1.4; }
-    .text-xl { font-size: 19.5px; line-height: 1.35; }
-    .text-2xl { font-size: 24px; line-height: 1.25; }
-    .font-semibold { font-weight: 600; }
-    .font-bold { font-weight: 700; }
-    .font-extrabold { font-weight: 800; }
-    .font-black { font-weight: 900; }
-    .leading-none { line-height: 1; }
-    .leading-snug { line-height: 1.38; }
-    .leading-relaxed { line-height: 1.62; }
-    .tracking-tight { letter-spacing: -0.015em; }
-    .text-center { text-align: center; }
-    .text-left { text-align: left; }
-    .underline { text-decoration: underline; }
-    .tabular-nums { font-variant-numeric: tabular-nums; }
-    .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .line-clamp-2 {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+    .app-shell {
+      height: 100%; max-height: 100%;
+      max-width: 560px; margin: 0 auto;
+      padding: 6px 8px;
+      display: flex; flex-direction: column; gap: 6px;
       overflow: hidden;
     }
 
-    .shadow-sm { box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); }
-    .shadow-md { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); }
-    .shadow { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); }
-    .cursor-pointer { cursor: pointer; }
-    .transition { transition: all 0.18s ease; }
-    .transition-all { transition: all 0.3s ease; }
+    /* Top Bar */
+    .top-bar {
+      flex: 0 0 auto;
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 6px 7px; display: flex; flex-direction: column; gap: 5px;
+    }
+    .top-row { display: flex; align-items: center; gap: 4px; }
+    .store-grid {
+      flex: 1 1 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px;
+    }
+    .store-pill {
+      padding: 5px 2px; border-radius: 6px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--fg); font-size: 11px; font-weight: 800;
+      text-align: center; white-space: nowrap; cursor: pointer;
+    }
+    .store-pill.active-gotanda { background: linear-gradient(135deg, #6d28d9, #9333ea); border-color: #a855f7; color: #fff; }
+    .store-pill.active-tachikawa { background: linear-gradient(135deg, #1d4ed8, #0284c7); border-color: #38bdf8; color: #fff; }
+    .store-pill.active-hachioji { background: linear-gradient(135deg, #be185d, #ec4899); border-color: #f472b6; color: #fff; }
+    .mini-btn {
+      flex-shrink: 0; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--border);
+      background: var(--surface); font-size: 11px; font-weight: 800; white-space: nowrap; cursor: pointer;
+    }
+    .sync-line {
+      display: flex; align-items: center; justify-content: space-between; gap: 6px;
+      font-size: 10.5px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 4px;
+    }
+    .sync-line span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    /* Responsive Breakpoints (sm: >= 640px) */
-    @media (min-width: 640px) {
-      .sm\:hidden { display: none !important; }
-      .sm\:w-auto { width: auto; }
-      .sm\:w-36 { width: 9rem; }
-      .sm\:mx-0 { margin-left: 0; margin-right: 0; }
-      .sm\:p-4 { padding: 1rem; }
-      .sm\:p-5 { padding: 1.25rem; }
-      .sm\:p-6 { padding: 1.5rem; }
-      .sm\:p-7 { padding: 1.75rem; }
-      .sm\:text-sm { font-size: 14px; line-height: 1.55; }
-      .sm\:text-base { font-size: 16px; }
-      .sm\:text-lg { font-size: 18px; }
-      .sm\:text-xl { font-size: 20px; }
-      .sm\:text-2xl { font-size: 24px; }
-      .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .sm\:flex-row { flex-direction: row; }
+    /* Main Panel Container (fills remaining 100dvh cleanly) */
+    .screen-card {
+      flex: 1 1 0%; min-height: 0;
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 12px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px;
+      overflow-y: auto; overflow-x: hidden;
     }
 
-    .fade-in { animation: fadeIn 0.28s ease-out; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Intro View */
+    .hero-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 99px;
+      background: linear-gradient(135deg, #7c3aed, #ec4899); color: #fff;
+      font-size: 10.5px; font-weight: 800;
     }
-    .opt-card {
-      transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
+    .feat-list { display: flex; flex-direction: column; gap: 6px; }
+    .feat-item {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 8px 10px; font-size: 11.5px; line-height: 1.4;
     }
-    .opt-card:hover {
-      transform: translateY(-1px);
-      border-color: #ec4899;
-      box-shadow: 0 6px 18px rgba(236, 72, 153, 0.18);
+    .primary-cta {
+      width: 100%; padding: 12px; border: none; border-radius: 10px;
+      background: linear-gradient(135deg, #7c3aed, #db2777); color: #fff;
+      font-size: 13.5px; font-weight: 900; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(219, 39, 119, 0.35);
     }
-    .opt-card:active { transform: scale(0.99); }
-    .store-pill { background-color: var(--background); color: var(--foreground); }
-    .store-pill.active-gotanda {
-      background: linear-gradient(135deg, #6d28d9, #9333ea);
-      color: #ffffff;
-      border-color: #a855f7;
+
+    /* Quiz View */
+    .prog-track {
+      width: 100%; height: 6px; border-radius: 99px; background: var(--surface);
+      border: 1px solid var(--border); overflow: hidden;
     }
-    .store-pill.active-tachikawa {
-      background: linear-gradient(135deg, #1d4ed8, #0284c7);
-      color: #ffffff;
-      border-color: #38bdf8;
+    .prog-fill { height: 100%; background: linear-gradient(90deg, #7c3aed, #ec4899); transition: width 0.25s ease; }
+    .opts-stack { display: flex; flex-direction: column; gap: 6px; flex: 1 1 auto; justify-content: center; }
+    .opt-btn {
+      width: 100%; text-align: left; padding: 9px 10px; border-radius: 9px;
+      border: 1px solid var(--border); background: var(--surface);
+      display: flex; align-items: center; gap: 9px; cursor: pointer;
+      transition: border-color 0.14s ease, transform 0.1s ease;
     }
-    .store-pill.active-hachioji {
-      background: linear-gradient(135deg, #be185d, #ec4899);
-      color: #ffffff;
-      border-color: #f472b6;
+    .opt-btn:hover { border-color: #ec4899; }
+    .opt-btn:active { transform: scale(0.99); }
+
+    /* Result View (3 Zero-Scroll Tabs!) */
+    .res-header {
+      flex: 0 0 auto;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 9px;
+      padding: 7px 9px; display: flex; align-items: center; justify-content: space-between; gap: 8px;
     }
-    .cast-photo-frame {
-      aspect-ratio: 3 / 4;
-      overflow: hidden;
-      background: rgba(148, 163, 184, 0.15);
+    .spoil-box {
+      flex-shrink: 0; text-align: center; padding: 3px 9px; border-radius: 8px;
+      border: 1px solid rgba(236,72,153,0.4); background: rgba(236,72,153,0.1);
     }
-    .cast-photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
+    .res-tabs {
+      flex: 0 0 auto;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px;
     }
-    #qStepBadge, #prevQBtn, #resUserTypeBadge, #resIdealPartnerBadge, #toggleCatalogBtn, #restartTopBtn {
-      white-space: nowrap;
+    .res-tab-btn {
+      padding: 6px 3px; border-radius: 7px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--muted); font-size: 11px; font-weight: 800;
+      cursor: pointer; white-space: nowrap; text-align: center;
     }
-    @media (max-width: 540px) {
-      #storeSwitchBar {
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        width: 100%;
-        gap: 4px !important;
-      }
-      #storeSwitchBar .store-pill {
-        width: 100%;
-        min-width: 0 !important;
-        padding: 6px 2px !important;
-        font-size: clamp(9.5px, 2.65vw, 11.5px) !important;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+    .res-tab-btn.active {
+      background: linear-gradient(135deg, #6d28d9, #db2777); color: #fff; border-color: #f472b6;
+    }
+    .res-pane {
+      flex: 1 1 0%; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 6px;
+    }
+
+    /* Compact Horizontal Cast Row (fits 3 casts in 1 screen!) */
+    .cast-row-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 9px;
+      padding: 6px 8px; display: flex; align-items: center; gap: 8px;
+    }
+    .cast-thumb {
+      width: 48px; height: 64px; border-radius: 6px; overflow: hidden;
+      flex-shrink: 0; background: #1e293b; border: 1px solid var(--border);
+    }
+    .cast-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .cast-detail-photo {
+      width: 82px; height: 110px; border-radius: 8px; overflow: hidden;
+      flex-shrink: 0; background: #1e293b; border: 1px solid var(--border);
+    }
+    .cast-detail-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+    .rank-sub-pills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+    .rank-sub-btn {
+      padding: 4.5px 4px; border-radius: 6px; border: 1px solid var(--border);
+      background: var(--surface); font-size: 11px; font-weight: 800; cursor: pointer; white-space: nowrap;
+    }
+    .rank-sub-btn.active { border-color: #fde047; background: #3b0764; color: #fde047; }
+
+    /* Catalog 2x2 Pager */
+    .cat-grid-2x2 {
+      flex: 1 1 0%; min-height: 0;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 6px;
+    }
+    .cat-mini-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 6px; display: flex; gap: 6px; align-items: center; min-width: 0; overflow: hidden;
     }
   </style>
 </head>
-<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-3 sm:p-5">
-  <div class="max-w-3xl mx-auto space-y-4">
+<body>
+  <div class="app-shell">
 
-    <!-- Top Store Selector & Live Sync Bar -->
-    <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-3 space-y-2.5 shadow-sm">
-      <div class="flex flex-wrap items-center justify-between gap-2">
-        <div class="flex flex-wrap items-center gap-1.5" id="storeSwitchBar">
-          <button type="button" data-store="gotanda" class="store-pill px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] transition cursor-pointer">
-            🍇 五反田シンデレラ
-          </button>
-          <button type="button" data-store="tachikawa" class="store-pill px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] transition cursor-pointer">
-            🌊 立川ビッグラブ
-          </button>
-          <button type="button" data-store="hachioji" class="store-pill px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] transition cursor-pointer">
-            🌸 八王子アリス
-          </button>
+    <!-- Compact Top Bar -->
+    <div class="top-bar">
+      <div class="top-row">
+        <div class="store-grid" id="storeSwitchBar">
+          <button type="button" data-store="gotanda" class="store-pill">🍇 五反田</button>
+          <button type="button" data-store="tachikawa" class="store-pill">🌊 立川</button>
+          <button type="button" data-store="hachioji" class="store-pill">🌸 八王子</button>
         </div>
-        <div class="flex items-center gap-1.5">
-          <button type="button" id="toggleCatalogBtn" class="px-2.5 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] hover:opacity-80 transition cursor-pointer">
-            🗂️ 在籍MBTI図鑑を見る
-          </button>
-          <button type="button" id="restartTopBtn" class="hidden px-2.5 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition cursor-pointer">
-            ↺ もう一度診断
-          </button>
-        </div>
+        <button type="button" id="toggleCatalogBtn" class="mini-btn">🗂️ 図鑑</button>
+        <button type="button" id="restartTopBtn" class="mini-btn hidden">↺</button>
       </div>
-
-      <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border)] text-xs text-[var(--muted-foreground)]">
-        <span id="syncStatusLine">🔄 公式HPデータ自動同期済</span>
-        <span id="storeMetaLine" class="font-semibold"></span>
+      <div class="sync-line">
+        <span id="syncStatusLine">🔄 HPデータ同期済</span>
+        <span id="storeMetaLine" style="font-weight:700;color:#e2e8f0;"></span>
       </div>
     </div>
 
-    <!-- VIEW 1: INTRO SCREEN -->
-    <div id="introView" class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 sm:p-7 space-y-5 shadow-sm fade-in">
-      <div class="space-y-2 text-center">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold text-white" style="background:linear-gradient(135deg,#7c3aed,#ec4899);">
-          🧬 公式HPプロフィール × 出勤表 リアルタイム連動
-        </div>
-        <h1 class="text-xl sm:text-2xl font-black tracking-tight leading-snug">
-          あなたの『隠れ甘え度』＆<br class="sm:hidden" />相性98%の実在キャスト精密診断
+    <!-- VIEW 1: 1-SCREEN INTRO -->
+    <div id="introView" class="screen-card">
+      <div style="text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center;">
+        <span class="hero-badge">🧬 公式HPプロフィール × 出勤表 連動</span>
+        <h1 style="margin:0;font-size:18px;font-weight:900;line-height:1.35;">
+          あなたの『隠れ甘え度』＆<br />相性98%の実在キャスト精密診断
         </h1>
-        <p class="text-xs sm:text-sm text-[var(--muted-foreground)] max-w-xl mx-auto leading-relaxed">
-          「在籍が多くて誰を指名すればいいか分からない…」を25秒で解決！<br />
-          7つの質問からあなたの<b class="text-[var(--foreground)]">16タイプ恋愛気質・隠れ甘え度（%）</b>を解析し、公式HPの<b class="text-[var(--foreground)]">スリーサイズ・紹介文・本人Q&amp;A・本日の出勤枠</b>から最高相性の実在キャストを導き出します。
+        <p style="margin:0;font-size:11.5px;color:var(--muted);line-height:1.45;">
+          7つの質問（約25秒）で16タイプ恋愛気質と隠れ甘え度を解析！<br />
+          実測スリーサイズ・Q&amp;A・紹介文・本日の出勤枠からベストな1人を導きます。
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
-        <div class="p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
-          <div class="font-extrabold text-pink-500">① 隠れ甘え度＆16タイプ判定</div>
-          <div class="text-[var(--muted-foreground)]">普段は言えない「甘やかされたい／リードしたい」深層バランスを数値化。</div>
+      <div class="feat-list">
+        <div class="feat-item">
+          <b style="color:var(--pink);">① 隠れ甘え度＆16タイプ判定</b>：甘やかされたい／リードしたい深層バランスを数値化
         </div>
-        <div class="p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
-          <div class="font-extrabold text-purple-500">② 身長・カップ数×性格で照合</div>
-          <div class="text-[var(--muted-foreground)]">HP上の実測スリーサイズ・Q&amp;A・紹介文から全在籍キャストと精密マッチング。</div>
+        <div class="feat-item">
+          <b style="color:var(--purple);">② 身長・カップ数 × 性格で照合</b>：HP上のスリーサイズ・本人Q&amp;A・紹介文と精密照合
         </div>
-        <div class="p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] space-y-1">
-          <div class="font-extrabold text-emerald-500">③ 本日すぐ会える出勤枠も表示</div>
-          <div class="text-[var(--muted-foreground)]">「今日これから出勤している相性No.1」と「全在籍の運命No.1」を両方チェック！</div>
+        <div class="feat-item">
+          <b style="color:var(--emerald);">③ 本日すぐ会える出勤枠も表示</b>：「今日これから会える相性TOP3」と「全在籍TOP3」を即比較
         </div>
       </div>
 
-      <div class="pt-1 text-center space-y-2">
-        <button type="button" id="startQuizBtn" class="w-full sm:w-auto px-8 py-3.5 rounded-xl text-sm font-black text-white shadow-md hover:opacity-95 transition cursor-pointer" style="background:linear-gradient(135deg,#7c3aed,#db2777);">
-          ▶ 精密診断をスタートする（全7問・約25秒）
+      <div style="text-align:center;display:flex;flex-direction:column;gap:4px;">
+        <button type="button" id="startQuizBtn" class="primary-cta">
+          ▶ 精密診断スタート（全7問・スクロール不要）
         </button>
-        <div class="text-xs text-[var(--muted-foreground)]">
-          ※診断結果は後から上部タブで「五反田・立川・八王子」どの店舗にもワンタップ切替できます
+        <span style="font-size:10.5px;color:var(--muted);">※診断後も上部ボタンで3店舗をワンタップ比較できます</span>
+      </div>
+    </div>
+
+    <!-- VIEW 2: 1-SCREEN QUIZ -->
+    <div id="quizView" class="screen-card hidden">
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:800;">
+          <span id="qStepBadge" style="padding:2px 8px;border-radius:99px;background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;">QUESTION 1 / 7</span>
+          <button type="button" id="prevQBtn" style="border:none;background:none;color:var(--muted);cursor:pointer;font-weight:700;">← 前に戻る</button>
+        </div>
+        <div class="prog-track"><div id="qProgressBar" class="prog-fill" style="width:14%;"></div></div>
+        <div id="qCategory" style="font-size:11px;font-weight:800;color:var(--pink);padding-top:2px;"></div>
+        <h2 id="qTitle" style="margin:0;font-size:15px;font-weight:900;line-height:1.35;"></h2>
+      </div>
+
+      <div id="qOptionsList" class="opts-stack"></div>
+    </div>
+
+    <!-- VIEW 3: 1-SCREEN RESULT (3 TABS) -->
+    <div id="resultView" class="screen-card hidden">
+      <div class="res-header">
+        <div style="min-width:0;">
+          <div style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;">
+            <span id="resUserTypeBadge" style="padding:1.5px 6px;border-radius:4px;background:linear-gradient(135deg,#6d28d9,#db2777);color:#fff;font-size:10.5px;font-weight:900;"></span>
+            <span id="resIdealPartnerBadge" style="font-size:10.5px;font-weight:800;color:var(--purple);"></span>
+          </div>
+          <div id="resUserCatch" style="font-size:12.5px;font-weight:900;line-height:1.3;margin-top:3px;"></div>
+        </div>
+        <div class="spoil-box">
+          <div style="font-size:9.5px;font-weight:800;color:var(--pink);white-space:nowrap;">隠れ甘え度</div>
+          <div id="resSpoilPct" style="font-size:18px;font-weight:900;color:var(--pink);">88%</div>
+        </div>
+      </div>
+
+      <div class="res-tabs" id="resTabsBar">
+        <button type="button" data-rtab="today" class="res-tab-btn active">🟢 本日出勤TOP3</button>
+        <button type="button" data-rtab="overall" class="res-tab-btn">👑 全在籍TOP3</button>
+        <button type="button" data-rtab="chart" class="res-tab-btn">🧬 カルテ・店舗</button>
+      </div>
+
+      <!-- Result Tab 1: Working Today / Tomorrow Top 3 -->
+      <div id="resPaneToday" class="res-pane">
+        <div id="todaySecSub" style="font-size:11px;color:var(--muted);"></div>
+        <div id="todayMatchesList" style="display:flex;flex-direction:column;gap:5px;flex:1 1 auto;justify-content:center;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+          <a id="storeScheduleLink" href="#" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:8px;border-radius:7px;background:linear-gradient(135deg,#059669,#10b981);color:#fff;font-size:11.5px;font-weight:900;">
+            📅 公式HP出勤表 ↗
+          </a>
+          <a id="footerTelBtn" href="#" style="text-align:center;padding:8px;border-radius:7px;border:1px solid var(--border);background:var(--surface);font-size:11.5px;font-weight:800;">
+            📞 電話で空き確認
+          </a>
+        </div>
+      </div>
+
+      <!-- Result Tab 2: All-Roster Top 3 (1-tap rank switcher) -->
+      <div id="resPaneOverall" class="res-pane hidden">
+        <div class="rank-sub-pills" id="overallRankPills">
+          <button type="button" data-ridx="0" class="rank-sub-btn active">👑 総合1位</button>
+          <button type="button" data-ridx="1" class="rank-sub-btn">🥈 総合2位</button>
+          <button type="button" data-ridx="2" class="rank-sub-btn">🥉 総合3位</button>
+        </div>
+        <div id="overallSingleMount" style="flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;"></div>
+      </div>
+
+      <!-- Result Tab 3: Detailed User Persona, 4 Axes & Share -->
+      <div id="resPaneChart" class="res-pane hidden">
+        <p id="resUserDesc" style="margin:0;font-size:11.2px;color:#e2e8f0;line-height:1.45;background:var(--surface);padding:7px 9px;border-radius:8px;border:1px solid var(--border);"></p>
+        <div id="resAxisBars" style="display:grid;grid-template-columns:1fr 1fr;gap:5px;"></div>
+        <div id="footerStoreInfo" style="font-size:10.5px;color:var(--muted);line-height:1.38;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+          <a id="shareXBtn" href="#" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:8px;border-radius:7px;background:#fff;color:#0f172a;font-size:11.5px;font-weight:900;">
+            𝕏 診断結果をポスト
+          </a>
+          <a id="footerTopBtn" href="#" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:8px;border-radius:7px;background:linear-gradient(135deg,#6d28d9,#db2777);color:#fff;font-size:11.5px;font-weight:900;">
+            🏰 公式HP・割引 ↗
+          </a>
         </div>
       </div>
     </div>
 
-    <!-- VIEW 2: 7-QUESTION QUIZ SCREEN -->
-    <div id="quizView" class="hidden bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-6 space-y-4 shadow-sm fade-in">
-      <div class="space-y-2">
-        <div class="flex items-center justify-between text-xs font-bold">
-          <span id="qStepBadge" class="px-2.5 py-0.5 rounded-full text-white" style="background:linear-gradient(135deg,#7c3aed,#ec4899);">QUESTION 1 / 7</span>
-          <button type="button" id="prevQBtn" class="text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition cursor-pointer">
-            ← 1つ前の質問に戻る
-          </button>
-        </div>
-        <div class="w-full h-2 rounded-full bg-[var(--background)] overflow-hidden border border-[var(--border)]">
-          <div id="qProgressBar" class="h-full transition-all duration-300" style="width:14%;background:linear-gradient(90deg,#7c3aed,#ec4899);"></div>
-        </div>
+    <!-- VIEW 4: 1-SCREEN PAGINATED MBTI DIRECTORY (2x2 per page, zero scroll!) -->
+    <div id="catalogView" class="screen-card hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">
+        <div id="catTitle" style="font-size:12.5px;font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></div>
+        <button type="button" id="closeCatalogBtn" class="mini-btn">✕ 戻る</button>
       </div>
 
-      <div class="space-y-1 pt-1">
-        <div id="qCategory" class="text-xs font-extrabold text-pink-500"></div>
-        <h2 id="qTitle" class="text-base sm:text-lg font-black leading-snug"></h2>
-      </div>
-
-      <div id="qOptionsList" class="space-y-2.5 pt-1"></div>
-    </div>
-
-    <!-- VIEW 3: DIAGNOSIS RESULT & MATCHED CASTS -->
-    <div id="resultView" class="hidden space-y-4 fade-in">
-
-      <!-- Card A: User's 16-Type & Hidden Spoil-Me Meter -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-6 space-y-4 shadow-sm">
-        <div class="flex flex-wrap items-start justify-between gap-3 border-b border-[var(--border)] pb-3.5">
-          <div class="space-y-1">
-            <div class="flex flex-wrap items-center gap-2">
-              <span id="resUserTypeBadge" class="px-2.5 py-0.5 rounded-md text-xs font-black text-white" style="background:linear-gradient(135deg,#6d28d9,#db2777);"></span>
-              <span id="resIdealPartnerBadge" class="px-2.5 py-0.5 rounded-md text-xs font-bold border border-[var(--border)] bg-[var(--background)]"></span>
-            </div>
-            <h2 id="resUserCatch" class="text-lg sm:text-xl font-black leading-snug pt-0.5"></h2>
-          </div>
-
-          <div class="px-3.5 py-2 rounded-xl border border-pink-500/30 text-center" style="background:rgba(236,72,153,0.08);">
-            <div class="text-xs font-bold text-pink-500">あなたの隠れ甘え度</div>
-            <div id="resSpoilPct" class="text-2xl font-black text-pink-500 tabular-nums">88%</div>
-          </div>
-        </div>
-
-        <p id="resUserDesc" class="text-xs sm:text-sm text-[var(--muted-foreground)] leading-relaxed"></p>
-
-        <!-- 4 Axis Mini Bars -->
-        <div id="resAxisBars" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs"></div>
-
-        <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border)]">
-          <div class="text-xs text-[var(--muted-foreground)]">
-            💡 上の店舗ボタンで、同じ診断結果のまま他店舗の相性キャストも比較できます
-          </div>
-          <a id="shareXBtn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-extrabold text-white transition hover:opacity-90" style="background:#0f172a;">
-            𝕏 診断結果をポストする
-          </a>
-        </div>
-      </div>
-
-      <!-- Card B: Working Today / Tomorrow Top Matches -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 space-y-3 shadow-sm">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <div class="flex items-center gap-1.5">
-              <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-              <h3 id="todaySecTitle" class="text-sm sm:text-base font-black"></h3>
-            </div>
-            <p id="todaySecSub" class="text-xs text-[var(--muted-foreground)] mt-0.5"></p>
-          </div>
-          <a id="storeScheduleLink" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-bold underline text-[var(--link)]">
-            📅 公式HPの出勤表をすべて見る →
-          </a>
-        </div>
-
-        <div id="todayMatchesGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
-      </div>
-
-      <!-- Card C: All-Roster Top 3 Soulmate Matches -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 space-y-3 shadow-sm">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <div>
-            <h3 id="overallSecTitle" class="text-sm sm:text-base font-black"></h3>
-            <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
-              本日の出勤有無にかかわらず、スリーサイズ・紹介文・Q&amp;Aから算出した総合相性トップ3です
-            </p>
-          </div>
-          <a id="storeCastListLink" href="#" target="_blank" rel="noopener noreferrer" class="text-xs font-bold underline text-[var(--link)]">
-            👗 在籍一覧ページへ →
-          </a>
-        </div>
-
-        <div id="overallMatchesList" class="space-y-3"></div>
-      </div>
-
-      <!-- Card D: Store Price & First-Visit Relief Footer -->
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 space-y-2.5 shadow-sm text-xs">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <div class="font-black text-sm" id="footerStoreTitle"></div>
-          <span id="footerPromoBadge" class="px-2.5 py-0.5 rounded-full font-bold text-pink-500 border border-pink-500/30" style="background:rgba(236,72,153,0.08);"></span>
-        </div>
-        <div id="footerStoreInfo" class="text-[var(--muted-foreground)] leading-relaxed"></div>
-        <div class="flex flex-wrap gap-2 pt-1">
-          <a id="footerTelBtn" href="#" class="px-4 py-2.5 rounded-xl font-black text-white text-xs" style="background:linear-gradient(135deg,#059669,#10b981);">
-            📞 空き状況・待ち時間を電話で確認する
-          </a>
-          <a id="footerTopBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl font-black text-white text-xs" style="background:linear-gradient(135deg,#6d28d9,#db2777);">
-            🏰 公式HPトップ・割引イベントを見る
-          </a>
-          <button type="button" id="retryBottomBtn" class="px-4 py-2.5 rounded-xl font-bold border border-[var(--border)] text-[var(--foreground)] text-xs cursor-pointer">
-            ↺ 条件を変えてもう一度診断する
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- VIEW 4: ALL-ROSTER MBTI & SPEC DIRECTORY (Toggleable Inspector) -->
-    <div id="catalogView" class="hidden bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 sm:p-5 space-y-4 shadow-sm fade-in">
-      <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border)] pb-3">
-        <div>
-          <h2 id="catTitle" class="text-base font-black"></h2>
-          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
-            ※現在はHPの紹介文・本人Q&amp;A・スリーサイズから自動推定中（管理画面でプロフィールに「ENFP」等の4文字を入れると自動で『公式MBTI』表記に切り替わります）
-          </p>
-        </div>
-        <button type="button" id="closeCatalogBtn" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-[var(--border)] cursor-pointer">
-          ✕ 診断画面へ戻る
-        </button>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-2 text-xs">
-        <label class="flex items-center gap-1.5 font-bold">
-          <span>絞り込み：</span>
-          <select id="catFilterShift" class="px-2 py-1 rounded border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-            <option value="all">全在籍を表示</option>
-            <option value="today">🟢 本日出勤のみ</option>
-            <option value="tomorrow">📅 明日出勤予定のみ</option>
-          </select>
-        </label>
-        <select id="catFilterCup" class="px-2 py-1 rounded border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-          <option value="all">すべてのカップ数</option>
-          <option value="glamour">Eカップ以上（グラマー）</option>
-          <option value="standard">C〜Dカップ（王道美乳）</option>
-          <option value="slender">A〜Bカップ（スレンダー）</option>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;font-size:10.5px;">
+        <select id="catFilterShift" style="padding:4px;border-radius:5px;border:1px solid var(--border);background:var(--surface);">
+          <option value="all">全在籍</option>
+          <option value="today">🟢本日出勤</option>
+          <option value="tomorrow">📅明日出勤</option>
         </select>
-        <select id="catFilterGroup" class="px-2 py-1 rounded border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
-          <option value="all">すべての性格グループ</option>
-          <option value="E_F">☀️ 陽キャ・愛嬌・恋人系 (ESFP/ENFP/ESFJ/ENFJ)</option>
-          <option value="I_F">🌸 清楚・癒やし・ピュア系 (ISFP/ISFJ/INFP/INFJ)</option>
-          <option value="T">💎 クール・綺麗・モデル系 (ISTP/ISTJ/ESTP/ESTJ/INTP/ENTJ等)</option>
+        <select id="catFilterCup" style="padding:4px;border-radius:5px;border:1px solid var(--border);background:var(--surface);">
+          <option value="all">全カップ</option>
+          <option value="glamour">Ecup〜</option>
+          <option value="standard">C〜Dcup</option>
+          <option value="slender">A〜Bcup</option>
+        </select>
+        <select id="catFilterGroup" style="padding:4px;border-radius:5px;border:1px solid var(--border);background:var(--surface);">
+          <option value="all">全タイプ</option>
+          <option value="E_F">☀️陽キャ愛嬌</option>
+          <option value="I_F">🌸清楚癒やし</option>
+          <option value="T">💎綺麗モデル</option>
         </select>
       </div>
 
-      <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+      <div id="catalogGrid" class="cat-grid-2x2"></div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;">
+        <button type="button" id="catPrevBtn" class="mini-btn">◀ 前へ</button>
+        <span id="catPageIndicator" style="font-weight:800;color:var(--muted);">1 / 1</span>
+        <button type="button" id="catNextBtn" class="mini-btn">次へ ▶</button>
+      </div>
     </div>
 
   </div>
@@ -509,203 +347,88 @@
     const QUESTIONS = [
       {
         cat: "STEP 1 ｜ 初対面の空気感",
-        q: "ブースに入って最初の30秒、一番ホッとする空気感はどれ？",
+        q: "ブースに入って最初の30秒、一番ホッとする空気感は？",
         opts: [
-          {
-            icon: "☀️",
-            title: "向こうからニコッと明るく話しかけて、緊張を吹き飛ばしてほしい",
-            sub: "愛嬌・笑顔・フレンドリーさ重視",
-            eff: { targetE: 85, targetF: 75, spoil: 12, userE: 35 }
-          },
-          {
-            icon: "🌸",
-            title: "おっとり優しい笑顔で、ゆっくり穏やかに距離を縮めたい",
-            sub: "清楚感・落ち着き・聞き上手重視",
-            eff: { targetE: 25, targetF: 82, spoil: 14, userE: 25 }
-          },
-          {
-            icon: "💎",
-            title: "凛とした大人っぽい雰囲気で、スマートに迎えてほしい",
-            sub: "綺麗系・洗練スタイル重視",
-            eff: { targetE: 45, targetF: 35, spoil: 8, userE: 65 }
-          }
+          { icon: "☀️", title: "明るくニコッと話しかけて緊張を吹き飛ばしてほしい", sub: "愛嬌・笑顔・フレンドリー重視", eff: { targetE: 85, targetF: 75, spoil: 12, userE: 35 } },
+          { icon: "🌸", title: "おっとり優しい笑顔で、ゆっくり穏やかに距離を縮めたい", sub: "清楚感・落ち着き・聞き上手重視", eff: { targetE: 25, targetF: 82, spoil: 14, userE: 25 } },
+          { icon: "💎", title: "凛とした大人っぽい雰囲気でスマートに迎えてほしい", sub: "綺麗系・洗練スタイル重視", eff: { targetE: 45, targetF: 35, spoil: 8, userE: 65 } }
         ]
       },
       {
         cat: "STEP 2 ｜ 深層・隠れ甘え度チェック",
-        q: "仕事でクタクタに疲れた夜、本音ではどう過ごしたい？",
+        q: "仕事でクタクタの夜、本音ではどう過ごしたい？",
         opts: [
-          {
-            icon: "🫠",
-            title: "「毎日えらいね」と全肯定されて、とことん甘やかされたい",
-            sub: "包容力・母性・癒やしMAX希望",
-            eff: { targetF: 92, targetJ: 75, spoil: 32, userF: 85 }
-          },
-          {
-            icon: "🐣",
-            title: "守ってあげたくなるピュア・初々しい子を前に自分が癒やされたい",
-            sub: "未経験感・小動物系・あどけなさ希望",
-            eff: { targetF: 72, targetJ: 20, spoil: 8, userF: 60 }
-          },
-          {
-            icon: "💑",
-            title: "気を使わない本当の彼女と会うように、ゼロ距離でイチャイチャしたい",
-            sub: "リアル恋人感・人懐っこさ希望",
-            eff: { targetF: 88, targetN: 25, spoil: 22, userF: 75 }
-          }
+          { icon: "🫠", title: "「毎日えらいね」と全肯定でとことん甘やかされたい", sub: "包容力・母性・癒やしMAX希望", eff: { targetF: 92, targetJ: 75, spoil: 32, userF: 85 } },
+          { icon: "🐣", title: "守ってあげたくなるピュアな子を前に自分が癒やされたい", sub: "未経験感・小動物系希望", eff: { targetF: 72, targetJ: 20, spoil: 8, userF: 60 } },
+          { icon: "💑", title: "気を使わない本当の彼女のようにゼロ距離でイチャイチャ", sub: "リアル恋人感・人懐っこさ希望", eff: { targetF: 88, targetN: 25, spoil: 22, userF: 75 } }
         ]
       },
       {
         cat: "STEP 3 ｜ リード（主導権）の相性",
         q: "2人きりの空間での「主導権バランス」はどれが理想？",
         opts: [
-          {
-            icon: "👑",
-            title: "積極的なお姉さん・小悪魔タイプに身を委ねてリードされたい",
-            sub: "リード上手・S気質寄りの子と高相性",
-            eff: { targetJ: 88, spoil: 26, userP: 80 }
-          },
-          {
-            icon: "🎀",
-            title: "素直に感じてくれる受け身・M気質な子を、自分のペースで愛でたい",
-            sub: "M気質・素直・控えめな子と高相性",
-            eff: { targetJ: 18, spoil: 6, userP: 20 }
-          },
-          {
-            icon: "⚖️",
-            title: "どちらが上でもなく、その場の空気で自然に求め合いたい",
-            sub: "自然体・バランス型の子と高相性",
-            eff: { targetJ: 50, spoil: 16, userP: 50 }
-          }
+          { icon: "👑", title: "積極的なお姉さん・小悪魔タイプに身を委ねたい", sub: "リード上手・S気質寄りと高相性", eff: { targetJ: 88, spoil: 26, userP: 80 } },
+          { icon: "🎀", title: "素直に反応してくれる受け身・M気質な子を愛でたい", sub: "M気質・素直・控えめと高相性", eff: { targetJ: 18, spoil: 6, userP: 20 } },
+          { icon: "⚖️", title: "その場の空気に合わせて自然体で求め合いたい", sub: "自然体・バランス型と高相性", eff: { targetJ: 50, spoil: 16, userP: 50 } }
         ]
       },
       {
         cat: "STEP 4 ｜ 会話と距離感",
         q: "接客中の「会話のテンポ」はどっちが心地いい？",
         opts: [
-          {
-            icon: "😆",
-            title: "冗談を言い合ったり楽しくおしゃべりして、一緒に笑いたい",
-            sub: "トーク力・ノリの良さ重視",
-            eff: { targetE: 88, userE: 75, spoil: 8 }
-          },
-          {
-            icon: "🤫",
-            title: "言葉は少なめでも気まずくならない、密着＆耳元ささやき派",
-            sub: "しっとり密着・ぬくもり重視",
-            eff: { targetE: 22, targetF: 86, userE: 25, spoil: 18 }
-          },
-          {
-            icon: "☕",
-            title: "最初は少し雑談して緊張をほぐし、徐々に甘い雰囲気に入りたい",
-            sub: "丁寧な気遣い・王道進行重視",
-            eff: { targetE: 52, targetN: 30, userE: 50, spoil: 13 }
-          }
+          { icon: "😆", title: "冗談を言い合ったり楽しくおしゃべりして笑いたい", sub: "トーク力・ノリの良さ重視", eff: { targetE: 88, userE: 75, spoil: 8 } },
+          { icon: "🤫", title: "言葉は少なめでも心地いい、密着＆耳元ささやき派", sub: "しっとり密着・ぬくもり重視", eff: { targetE: 22, targetF: 86, userE: 25, spoil: 18 } },
+          { icon: "☕", title: "最初は少し雑談してほぐれ、徐々に甘い雰囲気へ", sub: "丁寧な気遣い・王道進行重視", eff: { targetE: 52, targetN: 30, userE: 50, spoil: 13 } }
         ]
       },
       {
         cat: "STEP 5 ｜ 惹かれるヒロイン像",
-        q: "パネル写真や紹介文を見たとき、一番ドキッとする魅力は？",
+        q: "パネル写真や紹介文で一番ドキッとする魅力は？",
         opts: [
-          {
-            icon: "✨",
-            title: "アイドルや高嶺の花のような「非日常の華やかさ・特別感」",
-            sub: "圧倒的ビジュアル・オーラ系",
-            eff: { targetN: 86, userN: 80 }
-          },
-          {
-            icon: "🍀",
-            title: "休日に一緒に家デートやカフェに行けそうな「素直な親しみやすさ」",
-            sub: "自然体・リアル彼女・安心感系",
-            eff: { targetN: 20, userN: 25 }
-          },
-          {
-            icon: "🔥",
-            title: "清楚でおとなしそうなのに、2人きりだと大胆になる「ギャップ」",
-            sub: "清楚×秘めた色気・沼系",
-            eff: { targetE: 30, targetN: 72, userN: 68 }
-          }
+          { icon: "✨", title: "アイドルや高嶺の花のような「非日常の華やかさ」", sub: "圧倒的ビジュアル・オーラ系", eff: { targetN: 86, userN: 80 } },
+          { icon: "🍀", title: "一緒に家デートやカフェに行けそうな「素直な親しみやすさ」", sub: "自然体・リアル彼女・安心感系", eff: { targetN: 20, userN: 25 } },
+          { icon: "🔥", title: "清楚に見えるのに2人きりだと大胆になる「ギャップ」", sub: "清楚×秘めた色気・沼系", eff: { targetE: 30, targetN: 72, userN: 68 } }
         ]
       },
       {
         cat: "STEP 6 ｜ 好みの身長・シルエット",
         q: "パッと見で一番グッとくる「身長・サイズ感」は？",
         opts: [
-          {
-            icon: "🧸",
-            title: "ぎゅっと抱きしめたくなる『小柄・ミニマム系（〜154cm）』",
-            sub: "小動物感・コンパクトな可愛さ",
-            eff: { prefHeight: "petite" }
-          },
-          {
-            icon: "👗",
-            title: "制服が一番映える王道バランス『ミディアム系（155〜160cm）』",
-            sub: "程よい身長感・彼女感バランス",
-            eff: { prefHeight: "medium" }
-          },
-          {
-            icon: "👠",
-            title: "スラッと脚長・大人っぽい『高身長・モデル系（161cm〜）』",
-            sub: "モデルシルエット・綺麗なお姉さん感",
-            eff: { prefHeight: "tall" }
-          },
-          {
-            icon: "🙌",
-            title: "身長にはこだわらない（性格や雰囲気の相性を最優先！）",
-            sub: "全身長帯からベスト相性を選出",
-            eff: { prefHeight: "any" }
-          }
+          { icon: "🧸", title: "ぎゅっと抱きしめたい『小柄・ミニマム系（〜154cm）』", sub: "コンパクトな可愛さ", eff: { prefHeight: "petite" } },
+          { icon: "👗", title: "王道バランス『ミディアム系（155〜160cm）』", sub: "制服が映える王道身長", eff: { prefHeight: "medium" } },
+          { icon: "👠", title: "スラッと大人っぽい『高身長・モデル系（161cm〜）』", sub: "綺麗なお姉さんシルエット", eff: { prefHeight: "tall" } },
+          { icon: "🙌", title: "身長はこだわらない（性格・雰囲気の相性を最優先！）", sub: "全身長から最高相性を選出", eff: { prefHeight: "any" } }
         ]
       },
       {
         cat: "STEP 7 ｜ プロポーションのこだわり",
-        q: "最後に、スタイル（カップ数・ライン）で一番重視するのは？",
+        q: "最後に、スタイル（カップ数・ライン）の好みは？",
         opts: [
-          {
-            icon: "🍑",
-            title: "やっぱり包容力と迫力のある『グラマー・美巨乳（Eカップ〜）』",
-            sub: "豊かなバスト・女性らしい曲線美",
-            eff: { prefCup: "glamour", spoil: 6 }
-          },
-          {
-            icon: "💖",
-            title: "全体のシルエットが綺麗な『王道美乳バランス（C〜Dカップ）』",
-            sub: "見た目も触れ心地も黄金バランス",
-            eff: { prefCup: "standard", spoil: 4 }
-          },
-          {
-            icon: "🌿",
-            title: "華奢でキュッと引き締まった『スレンダー・美少女体型（A〜B／くびれ）』",
-            sub: "華奢ライン・ウエストの細さ重視",
-            eff: { prefCup: "slender", spoil: 2 }
-          },
-          {
-            icon: "✨",
-            title: "スタイルも問わない（お顔・愛嬌・フィーリング最優先！）",
-            sub: "全タイプから内面シンクロ率で選出",
-            eff: { prefCup: "any", spoil: 4 }
-          }
+          { icon: "🍑", title: "包容力と迫力のある『グラマー・美巨乳（Eカップ〜）』", sub: "豊かなバスト・曲線美", eff: { prefCup: "glamour", spoil: 6 } },
+          { icon: "💖", title: "シルエットが綺麗な『王道美乳バランス（C〜Dカップ）』", sub: "黄金バランスライン", eff: { prefCup: "standard", spoil: 4 } },
+          { icon: "🌿", title: "華奢で引き締まった『スレンダー体型（A〜B／くびれ）』", sub: "華奢・ウエスト重視", eff: { prefCup: "slender", spoil: 2 } },
+          { icon: "✨", title: "スタイルも問わない（愛嬌・フィーリング最優先！）", sub: "内面シンクロ率で選出", eff: { prefCup: "any", spoil: 4 } }
         ]
       }
     ];
 
     const USER_TYPE_PERSONAS = {
-      ENFP: { title: "全肯定されたい『隠れ甘えん坊の情熱ロマンチスト』", desc: "普段は気配り上手で明るく振る舞っていますが、2人きりになると一気に甘えたくなるギャップの持ち主。ノリ良く笑顔で受け止めつつ、ゼロ距離でイチャイチャしてくれる子と組むと幸福度が爆発します。" },
-      ENFJ: { title: "愛し愛されたい『恋人ムード至上主義の共感リーダー』", desc: "相手の反応や笑顔を見るのが好きで、機械的な接客よりも「心の通った恋人感」を重視するタイプ。丁寧なおもてなしと愛情表現が豊かな王道ヒロインと抜群の相性を誇ります。" },
-      ENTP: { title: "ギャップに弱い『刺激と会話を楽しむスマート冒険家』", desc: "退屈な時間よりも、ちょっとした冗談や小悪魔的な駆け引きにグッとくるタイプ。トークセンスが良く愛嬌のある子や、清楚に見えて大胆なギャップを持つ子に深く沼ります。" },
-      ENTJ: { title: "ON/OFF切り替え『日常の鎧を脱ぎたいエリート甘えんぼ』", desc: "普段の仕事や生活で気を張って決断している分、プライベートな30分だけは頭を空っぽにして癒やされたいタイプ。包容力のあるお姉さん系や、気品ある美女と極上の相性です。" },
-      ESFP: { title: "笑顔とノリ重視『今この瞬間を全力で楽しむハッピー気質』", desc: "堅苦しい空気よりも、会った瞬間からニコニコ笑い合える明るい空間が大好きなタイプ。人懐っこくて元気いっぱいな太陽系キャストと入ると、あっという間に時間が溶けます。" },
-      ESFJ: { title: "ぬくもり最優先『リアル彼女感に癒やされる王道ジェントル』", desc: "過激さよりも「一緒にいてホッとする親しみやすさ・礼儀正しさ・優しい密着」に一番満足感を得るタイプ。素直で気遣い上手な子を選ぶと間違いありません。" },
-      ESTP: { title: "直感ド真ん中『華やかビジュアル＆ノリ重視のストレート派』", desc: "理屈よりもパッと見の華やかさやスタイルの良さ、テンポの良い空気感を直感で楽しむタイプ。華のある人気キャストや明るいギャルマインドの子と相性抜群です。" },
-      ESTJ: { title: "ハズレたくない『安心・清潔感・実力重視のスマート紳士』", desc: "礼儀や清潔感、丁寧な対応を大切にする堅実派。お店が太鼓判を押す看板キャストや、上品で落ち着いた綺麗系・清楚系キャストと高いシンクロ率を示します。" },
-      INFP: { title: "優しさ120%『繊細で一途なピュア癒やしハンター』", desc: "ガツガツした空気よりも、穏やかで優しい時間が何よりの栄養になるタイプ。おっとりした清楚系や、初々しくて素直な美少女と2人きりになると最高の癒やしを得られます。" },
-      INFJ: { title: "深い包容を求める『秘密の隠れ家ロマンチスト』", desc: "表面的なノリよりも、目線や指先の優しさなど「丁寧に向き合ってくれる空気感」を敏感に感じ取るタイプ。透明感のある癒やし系や、聞き上手で献身的な子と運命的な相性です。" },
-      INTP: { title: "マイペースに浸りたい『観察眼鋭いギャップ愛好家』", desc: "無理にテンションを合わせる必要がない、自然体で落ち着いた空間を好むタイプ。控えめで透明感のある子や、ふとした瞬間に見せる可愛い素顔がある子に強く惹かれます。" },
-      INTJ: { title: "妥協なき審美眼『ワンランク上の美女を求める孤高タイプ』", desc: "数より質を重視し、シルエットの美しさや上品な佇まい・プロ意識に惹かれるタイプ。モデル系スレンダー美女や、リピート率の高い実力派ランカーと好相性です。" },
-      ISFP: { title: "言葉いらずの密着派『ぬくもりと肌感で癒やされる感覚派』", desc: "おしゃべりを頑張るより、ゆったり寄り添って甘い空気を味わいたいタイプ。小動物のような可愛らしさや、柔らかな包容力を持つキャストと組むと心底リラックスできます。" },
-      ISFJ: { title: "一途に推したい『守ってあげたい庇護欲＆安心感タイプ』", desc: "一生懸命に頑張る素直な子を見ると応援したくなり、一度気に入ると長く指名したくなる一途派。未経験・新人系や、礼儀正しい清楚系キャストと相性98%超えになりやすい気質です。" },
-      ISTP: { title: "気楽さ一番『自然体でスッキリ癒やされたいクール職人肌』", desc: "ベタベタしすぎず、かといって冷たくない「ちょうどいい心地よい距離感」を好むタイプ。自然体で親しみやすい子や、スタイル抜群の綺麗系キャストとスムーズに噛み合います。" },
-      ISTJ: { title: "誠実さ重視『礼儀正しく丁寧な大和撫子に弱い堅実派』", desc: "時間やマナーを大切にし、落ち着いた丁寧な接客をしてくれる女性に最も好感を持つタイプ。育ちの良さがにじみ出る清楚系や、安定感抜群のおすすめキャストがベストマッチです。" }
+      ENFP: { title: "全肯定されたい『隠れ甘えん坊ロマンチスト』", desc: "普段は気配り上手ですが、2人きりになると一気に甘えたくなるギャップの持ち主。笑顔で受け止めゼロ距離でイチャイチャしてくれる子と最高相性です。" },
+      ENFJ: { title: "愛し愛されたい『恋人ムード至上主義リーダー』", desc: "機械的な接客よりも心の通った恋人感を重視するタイプ。丁寧なおもてなしと愛情表現が豊かな王道ヒロインと抜群に噛み合います。" },
+      ENTP: { title: "ギャップに弱い『刺激と会話を楽しむ冒険家』", desc: "トークセンスが良く愛嬌のある子や、清楚に見えて大胆なギャップを持つ小悪魔タイプに深く沼る気質です。" },
+      ENTJ: { title: "ON/OFF切替『日常の鎧を脱ぎたいエリート甘えんぼ』", desc: "普段気を張っている分、30分間は頭を空っぽにして癒やされたいタイプ。包容力のあるお姉さん系や気品ある美女と極上の相性です。" },
+      ESFP: { title: "笑顔とノリ重視『今を全力で楽しむハッピー気質』", desc: "会った瞬間からニコニコ笑い合える明るい空間が大好きなタイプ。人懐っこくて元気な太陽系キャストと入ると一瞬で時間が溶けます。" },
+      ESFJ: { title: "ぬくもり最優先『リアル彼女感に癒やされる紳士』", desc: "一緒にいてホッとする親しみやすさ・礼儀正しさ・優しい密着に最も満足感を得るタイプ。素直で気遣い上手な子がベストです。" },
+      ESTP: { title: "直感ド真ん中『華やかビジュアル＆ノリ重視派』", desc: "パッと見の華やかさやスタイルの良さ、テンポの良い空気感を直感で楽しむタイプ。華のある人気嬢や明るいギャル系と好相性です。" },
+      ESTJ: { title: "ハズレたくない『安心・清潔感・実力重視の紳士』", desc: "礼儀や清潔感、丁寧な対応を大切にする堅実派。お店が太鼓判を押す看板キャストや上品な清楚系と高いシンクロ率を示します。" },
+      INFP: { title: "優しさ120%『繊細で一途なピュア癒やしハンター』", desc: "穏やかで優しい時間が何よりの栄養になるタイプ。おっとりした清楚系や初々しくて素直な美少女と2人きりになると最高の癒やしに。" },
+      INFJ: { title: "深い包容を求める『秘密の隠れ家ロマンチスト』", desc: "丁寧に向き合ってくれる空気感を敏感に感じ取るタイプ。透明感のある癒やし系や聞き上手で献身的な子と運命的な相性です。" },
+      INTP: { title: "マイペースに浸りたい『観察眼鋭いギャップ愛好家』", desc: "無理にテンションを合わせなくていい自然体な空間を好むタイプ。控えめで透明感のある子が見せる可愛い素顔に強く惹かれます。" },
+      INTJ: { title: "妥協なき審美眼『ワンランク上の美女を求める孤高派』", desc: "シルエットの美しさや上品な佇まいに惹かれるタイプ。モデル系スレンダー美女やリピート率の高い実力派ランカーと好相性です。" },
+      ISFP: { title: "言葉いらずの密着派『ぬくもりで癒やされる感覚派』", desc: "ゆったり寄り添って甘い空気を味わいたいタイプ。小動物のような可愛らしさや柔らかな包容力を持つキャストと心底リラックスできます。" },
+      ISFJ: { title: "一途に推したい『守ってあげたい庇護欲＆安心感派』", desc: "一生懸命に頑張る素直な子を応援したくなり長く指名したくなる一途派。未経験・新人系や礼儀正しい清楚系と相性98%超えになりやすい気質です。" },
+      ISTP: { title: "気楽さ一番『自然体でスッキリ癒やされたいクール派』", desc: "ちょうどいい心地よい距離感を好むタイプ。自然体で親しみやすい子やスタイル抜群の綺麗系キャストとスムーズに噛み合います。" },
+      ISTJ: { title: "誠実さ重視『礼儀正しく丁寧な大和撫子に弱い堅実派』", desc: "落ち着いた丁寧な接客をしてくれる女性に最も好感を持つタイプ。育ちの良さがにじみ出る清楚系や安定感抜群のおすすめ嬢がベストです。" }
     };
 
     let db = EMBEDDED_DB;
@@ -713,19 +436,14 @@
     let stepIdx = 0;
     let answers = [];
     let hasFinishedQuiz = false;
+    let currentResTab = "today";
+    let selectedRankIdx = 0;
+    let lastRankedAll = [];
+    let catPage = 0;
 
     async function boot() {
       try { const r = await fetch('./casts_data.json', { cache: 'no-store' }); if (r.ok) db = await r.json(); } catch (_) {}
-      if (!db) {
-        try {
-          const resp = await fetch("./casts_data.json", { cache: "no-store" });
-          if (resp.ok) db = await resp.json();
-        } catch (e) {
-          console.warn("Local fetch fallback:", e);
-        }
-      }
       if (!db || !db.stores) return;
-
       bindEvents();
       refreshTopBar();
     }
@@ -734,58 +452,55 @@
       document.querySelectorAll("#storeSwitchBar button").forEach(btn => {
         btn.addEventListener("click", () => {
           currentStore = btn.dataset.store;
+          catPage = 0;
+          selectedRankIdx = 0;
           refreshTopBar();
-          if (!document.getElementById("catalogView").classList.contains("hidden")) {
-            renderCatalog();
-          } else if (hasFinishedQuiz) {
-            renderResults();
-          }
+          if (!document.getElementById("catalogView").classList.contains("hidden")) renderCatalog();
+          else if (hasFinishedQuiz) renderResults();
         });
       });
 
       document.getElementById("startQuizBtn").addEventListener("click", () => {
-        stepIdx = 0;
-        answers = [];
-        showView("quizView");
-        renderQuestion();
+        stepIdx = 0; answers = [];
+        showView("quizView"); renderQuestion();
       });
 
       document.getElementById("prevQBtn").addEventListener("click", () => {
-        if (stepIdx > 0) {
-          stepIdx--;
-          answers.pop();
-          renderQuestion();
-        } else {
-          showView("introView");
-        }
+        if (stepIdx > 0) { stepIdx--; answers.pop(); renderQuestion(); }
+        else showView("introView");
       });
 
-      const resetFn = () => {
-        hasFinishedQuiz = false;
-        stepIdx = 0;
-        answers = [];
+      document.getElementById("restartTopBtn").addEventListener("click", () => {
+        hasFinishedQuiz = false; stepIdx = 0; answers = [];
         document.getElementById("restartTopBtn").classList.add("hidden");
         showView("introView");
-      };
-      document.getElementById("restartTopBtn").addEventListener("click", resetFn);
-      document.getElementById("retryBottomBtn").addEventListener("click", resetFn);
+      });
+
+      document.querySelectorAll("#resTabsBar .res-tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => switchResTab(btn.dataset.rtab));
+      });
+
+      document.querySelectorAll("#overallRankPills .rank-sub-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          selectedRankIdx = parseInt(btn.dataset.ridx, 10) || 0;
+          renderOverallSingle();
+        });
+      });
 
       document.getElementById("toggleCatalogBtn").addEventListener("click", () => {
-        const catEl = document.getElementById("catalogView");
-        if (catEl.classList.contains("hidden")) {
-          showView("catalogView");
-          renderCatalog();
-        } else {
-          showView(hasFinishedQuiz ? "resultView" : "introView");
-        }
+        const isCat = !document.getElementById("catalogView").classList.contains("hidden");
+        if (isCat) showView(hasFinishedQuiz ? "resultView" : "introView");
+        else { catPage = 0; showView("catalogView"); renderCatalog(); }
       });
       document.getElementById("closeCatalogBtn").addEventListener("click", () => {
         showView(hasFinishedQuiz ? "resultView" : "introView");
       });
 
       ["catFilterShift", "catFilterCup", "catFilterGroup"].forEach(id => {
-        document.getElementById(id).addEventListener("change", renderCatalog);
+        document.getElementById(id).addEventListener("change", () => { catPage = 0; renderCatalog(); });
       });
+      document.getElementById("catPrevBtn").addEventListener("click", () => { if (catPage > 0) { catPage--; renderCatalog(); } });
+      document.getElementById("catNextBtn").addEventListener("click", () => { catPage++; renderCatalog(); });
     }
 
     function showView(viewId) {
@@ -794,26 +509,26 @@
       });
     }
 
+    function switchResTab(tab) {
+      currentResTab = tab;
+      document.querySelectorAll("#resTabsBar .res-tab-btn").forEach(b => b.classList.toggle("active", b.dataset.rtab === tab));
+      document.getElementById("resPaneToday").classList.toggle("hidden", tab !== "today");
+      document.getElementById("resPaneOverall").classList.toggle("hidden", tab !== "overall");
+      document.getElementById("resPaneChart").classList.toggle("hidden", tab !== "chart");
+    }
+
     function refreshTopBar() {
       const st = db.stores[currentStore];
       const casts = st.casts || [];
       const todayCnt = casts.filter(c => c.today_shift).length;
-
       document.querySelectorAll("#storeSwitchBar button").forEach(btn => {
         const k = btn.dataset.store;
-        const sObj = db.stores[k];
         btn.classList.remove("active-gotanda", "active-tachikawa", "active-hachioji");
-        if (k === currentStore) {
-          btn.classList.add("active-" + k);
-        }
-        btn.textContent = `${sObj.meta.emoji} ${sObj.meta.brand}`;
+        if (k === currentStore) btn.classList.add("active-" + k);
       });
-
-      const totalAll = Object.values(db.stores).reduce((acc, s) => acc + s.casts.length, 0);
-      document.getElementById("syncStatusLine").textContent =
-        `🔄 HP自動同期：${db.synced_at} ｜ 3店舗計 ${totalAll}名解析済`;
-      document.getElementById("storeMetaLine").textContent =
-        `${st.meta.emoji} 現在選択中：${st.meta.brand}（在籍${casts.length}名・本日出勤${todayCnt}名）`;
+      const totalAll = Object.values(db.stores).reduce((a, s) => a + s.casts.length, 0);
+      document.getElementById("syncStatusLine").textContent = `🔄 HP同期:${db.synced_at} (全${totalAll}名)`;
+      document.getElementById("storeMetaLine").textContent = `${st.meta.brand}｜在籍${casts.length}名・本日${todayCnt}名`;
     }
 
     function renderQuestion() {
@@ -822,32 +537,29 @@
       document.getElementById("qProgressBar").style.width = `${Math.round(((stepIdx + 1) / QUESTIONS.length) * 100)}%`;
       document.getElementById("qCategory").textContent = item.cat;
       document.getElementById("qTitle").textContent = item.q;
-      document.getElementById("prevQBtn").textContent = stepIdx === 0 ? "← トップへ戻る" : "← 1つ前の質問に戻る";
+      document.getElementById("prevQBtn").textContent = stepIdx === 0 ? "← トップへ" : "← 前の質問へ";
 
       const list = document.getElementById("qOptionsList");
       list.innerHTML = "";
-      item.opts.forEach((opt, oIdx) => {
+      item.opts.forEach(opt => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "opt-card w-full text-left p-3.5 sm:p-4 rounded-xl border border-[var(--border)] bg-[var(--background)] flex items-start gap-3 cursor-pointer";
+        btn.className = "opt-btn";
         btn.innerHTML = `
-          <span class="text-2xl leading-none pt-0.5">${opt.icon}</span>
-          <span class="flex-1 space-y-0.5">
-            <span class="block text-xs sm:text-sm font-extrabold text-[var(--foreground)] leading-snug">${opt.title}</span>
-            <span class="block text-xs text-[var(--muted-foreground)]">${opt.sub}</span>
+          <span style="font-size:20px;line-height:1;flex-shrink:0;">${opt.icon}</span>
+          <span style="min-width:0;">
+            <span style="display:block;font-size:12.5px;font-weight:800;line-height:1.35;">${opt.title}</span>
+            <span style="display:block;font-size:10.5px;color:var(--muted);margin-top:1px;">${opt.sub}</span>
           </span>
         `;
         btn.addEventListener("click", () => {
           answers[stepIdx] = opt.eff;
           if (stepIdx + 1 < QUESTIONS.length) {
-            stepIdx++;
-            renderQuestion();
+            stepIdx++; renderQuestion();
           } else {
-            hasFinishedQuiz = true;
+            hasFinishedQuiz = true; selectedRankIdx = 0;
             document.getElementById("restartTopBtn").classList.remove("hidden");
-            showView("resultView");
-            renderResults();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            showView("resultView"); switchResTab("today"); renderResults();
           }
         });
         list.appendChild(btn);
@@ -855,12 +567,8 @@
     }
 
     function computeUserProfile() {
-      let tE = [], tN = [], tF = [], tJ = [];
-      let uE = [], uN = [], uF = [], uP = [];
-      let spoilSum = 12;
-      let prefHeight = "any";
-      let prefCup = "any";
-
+      let tE = [], tN = [], tF = [], tJ = [], uE = [], uN = [], uF = [], uP = [];
+      let spoilSum = 12, prefHeight = "any", prefCup = "any";
       answers.forEach(ef => {
         if (!ef) return;
         if (ef.targetE !== undefined) tE.push(ef.targetE);
@@ -875,322 +583,179 @@
         if (ef.prefHeight) prefHeight = ef.prefHeight;
         if (ef.prefCup) prefCup = ef.prefCup;
       });
-
-      const avg = (arr, def = 50) => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : def;
-      const target = {
-        e: avg(tE, 50),
-        n: avg(tN, 50),
-        f: avg(tF, 70),
-        j: avg(tJ, 50),
-      };
-      const uScores = {
-        e: avg(uE, 48),
-        n: avg(uN, 52),
-        f: avg(uF, 68),
-        p: avg(uP, 55),
-      };
-
-      const userMbti =
-        (uScores.e >= 50 ? "E" : "I") +
-        (uScores.n >= 50 ? "N" : "S") +
-        (uScores.f >= 50 ? "F" : "T") +
-        (uScores.p >= 50 ? "P" : "J");
-
-      const idealPartnerMbti =
-        (target.e >= 50 ? "E" : "I") +
-        (target.n >= 50 ? "N" : "S") +
-        (target.f >= 50 ? "F" : "T") +
-        (target.j >= 50 ? "J" : "P");
-
-      const spoilPct = Math.max(24, Math.min(98, spoilSum));
-
-      return { userMbti, idealPartnerMbti, spoilPct, target, prefHeight, prefCup };
+      const avg = (arr, d = 50) => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : d;
+      const target = { e: avg(tE, 50), n: avg(tN, 50), f: avg(tF, 70), j: avg(tJ, 50) };
+      const uScores = { e: avg(uE, 48), n: avg(uN, 52), f: avg(uF, 68), p: avg(uP, 55) };
+      const userMbti = (uScores.e >= 50 ? "E" : "I") + (uScores.n >= 50 ? "N" : "S") + (uScores.f >= 50 ? "F" : "T") + (uScores.p >= 50 ? "P" : "J");
+      const idealPartnerMbti = (target.e >= 50 ? "E" : "I") + (target.n >= 50 ? "N" : "S") + (target.f >= 50 ? "F" : "T") + (target.j >= 50 ? "J" : "P");
+      return { userMbti, idealPartnerMbti, spoilPct: Math.max(24, Math.min(98, spoilSum)), target, prefHeight, prefCup };
     }
 
     function scoreCastForUser(cast, up) {
       const ax = cast.axes || { e: 50, n: 50, f: 65, j: 50 };
-      const dE = Math.abs(up.target.e - ax.e);
-      const dN = Math.abs(up.target.n - ax.n);
-      const dF = Math.abs(up.target.f - ax.f);
-      const dJ = Math.abs(up.target.j - ax.j);
-
-      // Personality proximity (0..52 pts)
-      const psychScore = 52 * (1 - (dE * 0.28 + dN * 0.20 + dF * 0.26 + dJ * 0.26) / 100);
-
-      // Height match (0..18 pts)
-      let hScore = 14;
-      let hReason = "";
+      const psychScore = 52 * (1 - (Math.abs(up.target.e - ax.e) * 0.28 + Math.abs(up.target.n - ax.n) * 0.20 + Math.abs(up.target.f - ax.f) * 0.26 + Math.abs(up.target.j - ax.j) * 0.26) / 100);
+      let hScore = 15, hReason = "";
       const h = cast.height;
-      if (up.prefHeight === "any" || !h) {
-        hScore = 15;
-        if (h) hReason = `身長${h}cmのバランスシルエット`;
-      } else if (up.prefHeight === "petite") {
-        if (h <= 154) { hScore = 18; hReason = `希望通りの小柄ミニマム（T${h}cm）`; }
-        else if (h <= 157) { hScore = 12; hReason = `抱き心地の良いT${h}cmサイズ感`; }
-        else { hScore = 5; }
-      } else if (up.prefHeight === "medium") {
-        if (h >= 155 && h <= 160) { hScore = 18; hReason = `希望通りの王道バランス身長（T${h}cm）`; }
-        else if (h >= 152 && h <= 163) { hScore = 12; }
-        else { hScore = 6; }
-      } else if (up.prefHeight === "tall") {
-        if (h >= 161) { hScore = 18; hReason = `希望通りの高身長モデル系（T${h}cm）`; }
-        else if (h >= 158) { hScore = 12; hReason = `スラッと映えるT${h}cmスタイル`; }
-        else { hScore = 5; }
+      if (up.prefHeight !== "any" && h) {
+        if (up.prefHeight === "petite") { hScore = h <= 154 ? 18 : (h <= 157 ? 12 : 5); if (h <= 155) hReason = `小柄T${h}cm`; }
+        else if (up.prefHeight === "medium") { hScore = (h >= 155 && h <= 160) ? 18 : 11; if (h >= 155 && h <= 160) hReason = `王道T${h}cm`; }
+        else if (up.prefHeight === "tall") { hScore = h >= 161 ? 18 : (h >= 158 ? 12 : 5); if (h >= 160) hReason = `長身T${h}cm`; }
       }
-
-      // Cup / Body match (0..20 pts)
-      let cScore = 15;
-      let cReason = "";
-      const cup = (cast.cup || "").toUpperCase();
-      const bust = cast.bust || 0;
-      const waist = cast.waist || 60;
-      const isGlamour = ["E", "F", "G", "H", "I", "J"].includes(cup) || bust >= 88;
-      const isStandard = ["C", "D"].includes(cup);
-      const isSlender = ["A", "B"].includes(cup) || waist <= 55;
-
-      if (up.prefCup === "any" || !cup) {
-        cScore = 16;
-        if (cup) cReason = `${cup}カップ（W${waist || "-"}）の美ボディライン`;
-      } else if (up.prefCup === "glamour") {
-        if (isGlamour) { cScore = 20; cReason = `理想のグラマー美巨乳（B${bust || "-"}・${cup}カップ）`; }
-        else if (cup === "D") { cScore = 13; cReason = `女性らしいDカップ美乳ライン`; }
-        else { cScore = 5; }
-      } else if (up.prefCup === "standard") {
-        if (isStandard) { cScore = 20; cReason = `理想の王道美乳バランス（${cup}カップ・W${waist || "-"}）`; }
-        else { cScore = 11; }
-      } else if (up.prefCup === "slender") {
-        if (isSlender) { cScore = 20; cReason = `理想の華奢スレンダー（W${waist || "-"}cm・${cup}カップ）`; }
-        else if (waist <= 58) { cScore = 13; cReason = `キュッと締まったくびれ（W${waist}cm）`; }
-        else { cScore = 6; }
+      let cScore = 16, cReason = "";
+      const cup = (cast.cup || "").toUpperCase(), bust = cast.bust || 0, waist = cast.waist || 60;
+      const isGlam = ["E", "F", "G", "H", "I", "J"].includes(cup) || bust >= 88;
+      if (up.prefCup !== "any" && cup) {
+        if (up.prefCup === "glamour") { cScore = isGlam ? 20 : (cup === "D" ? 13 : 5); if (isGlam) cReason = `美巨乳${cup}カップ`; }
+        else if (up.prefCup === "standard") { cScore = ["C", "D"].includes(cup) ? 20 : 11; if (["C", "D"].includes(cup)) cReason = `美乳${cup}カップ`; }
+        else if (up.prefCup === "slender") { cScore = (["A", "B"].includes(cup) || waist <= 55) ? 20 : 8; if (waist <= 56) cReason = `くびれW${waist}cm`; }
       }
+      let bonus = 3 + (cast.rank && cast.rank <= 5 ? 3 : 0) + ((cast.badges || []).includes("おすすめ") ? 2 : 0) + ((cast.qa || []).length >= 3 ? 2 : 0);
+      const matchPct = Math.max(78, Math.min(99, Math.round(62 + (psychScore + hScore + cScore + bonus) * 0.38)));
 
-      // Reliability & Q&A richness bonus (0..10 pts)
-      let bonus = 3;
-      if (cast.rank && cast.rank <= 5) bonus += 3;
-      if ((cast.badges || []).includes("おすすめ")) bonus += 2;
-      if ((cast.qa || []).length >= 3) bonus += 2;
-
-      const rawTotal = psychScore + hScore + cScore + bonus;
-      const matchPct = Math.max(78, Math.min(99, Math.round(62 + rawTotal * 0.38)));
-
-      // Build concrete human-readable match reasons grounded in HP data
       const reasons = [];
-      const specParts = [hReason, cReason].filter(Boolean);
-      if (specParts.length) {
-        reasons.push(`📏 ${specParts.join(" × ")}`);
-      } else {
-        reasons.push(`📏 実測スペック：${cast.size_text}`);
-      }
-
-      const mbtiTag = cast.mbti_source === "explicit" ? `公式MBTI:${cast.mbti}` : `推定${cast.mbti}`;
-      reasons.push(`🧬 ${mbtiTag}（${cast.mbti_label}）の気質があなたの理想と高シンクロ`);
-
-      // Pick best Q&A quote if present, else tagline/highlight
-      const qaList = cast.qa || [];
-      const niceQa = qaList.find(([q, a]) =>
-        a && a.length >= 2 && a.length <= 28 &&
-        /(性格|タイプ|フェチ|一言|デート|S|M|チャーム)/.test(q)
-      );
-      if (niceQa) {
-        reasons.push(`💬 本人Q&A『${niceQa[0]}』➔「${niceQa[1]}」`);
-      } else if (cast.tagline) {
-        reasons.push(`✨ 店舗評：「${cast.tagline}」`);
-      } else if (cast.highlight) {
-        reasons.push(`✨ 「${cast.highlight}」`);
-      }
-
+      const sp = [hReason, cReason].filter(Boolean);
+      reasons.push(sp.length ? `📏 理想一致：${sp.join(" × ")}（${cast.size_text}）` : `📏 スペック：${cast.size_text}`);
+      const mTag = cast.mbti_source === "explicit" ? `公式${cast.mbti}` : `推定${cast.mbti}`;
+      reasons.push(`🧬 ${mTag}（${cast.mbti_label}）があなたの理想と高相性`);
+      const niceQa = (cast.qa || []).find(([q, a]) => a && a.length >= 2 && a.length <= 26 && /(性格|タイプ|フェチ|一言|デート|S|M|チャーム)/.test(q));
+      if (niceQa) reasons.push(`💬 Q&A『${niceQa[0]}』➔「${niceQa[1]}」`);
+      else if (cast.tagline) reasons.push(`✨ 特徴：「${cast.tagline}」`);
       return { cast, matchPct, reasons };
     }
 
-    function getPhotoSrc(cast) {
-      return cast.thumb_data || cast.photo_url || "";
-    }
+    function getPhotoSrc(c) { return c.thumb_data || c.photo_url || ""; }
 
-    function buildCompactCastCard(item, rankIdx, isTodayCard) {
-      const c = item.cast;
-      const imgSrc = getPhotoSrc(c);
-      const shiftBadge = c.today_shift
-        ? `<span class="px-2 py-0.5 rounded text-[11px] font-extrabold bg-emerald-500 text-white">🟢 本日 ${c.today_shift}</span>`
-        : (c.tomorrow_shift
-            ? `<span class="px-2 py-0.5 rounded text-[11px] font-bold bg-sky-600 text-white">📅 明日 ${c.tomorrow_shift}</span>`
-            : `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-600 text-white">次回出勤はHP確認</span>`);
-
-      const mbtiBadgeTxt = c.mbti_source === "explicit" ? `公式 ${c.mbti}` : `推定 ${c.mbti}`;
-
-      if (isTodayCard) {
-        return `
-          <div class="rounded-xl border border-[var(--border)] bg-[var(--background)] overflow-hidden flex flex-col justify-between shadow-sm">
-            <div>
-              <div class="relative cast-photo-frame">
-                <img src="${imgSrc}" data-live="${c.photo_url}" alt="${c.name}" loading="lazy" />
-                <div class="absolute top-2 left-2 px-2 py-0.5 rounded-md text-xs font-black text-white shadow" style="background:linear-gradient(135deg,#db2777,#7c3aed);">
-                  相性 ${item.matchPct}%
-                </div>
-                <div class="absolute bottom-2 left-2 right-2 flex flex-wrap gap-1">
-                  ${shiftBadge}
-                </div>
-              </div>
-              <div class="p-3 space-y-1.5">
-                <div class="flex items-center justify-between gap-1">
-                  <div class="font-black text-sm truncate">${c.disp_no} ${c.name}</div>
-                  <span class="px-1.5 py-0.5 rounded text-[11px] font-extrabold border border-purple-500/40 text-purple-500">${mbtiBadgeTxt}</span>
-                </div>
-                <div class="text-xs font-bold text-[var(--muted-foreground)]">${c.size_text}</div>
-                <div class="text-xs text-[var(--foreground)] leading-snug line-clamp-2">${item.reasons[1]}</div>
-              </div>
-            </div>
-            <div class="px-3 pb-3">
-              <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2 rounded-lg text-xs font-extrabold text-white transition hover:opacity-90" style="background:linear-gradient(135deg,#059669,#10b981);">
-                👤 プロフィール・空き確認
-              </a>
-            </div>
-          </div>
-        `;
-      }
-
-      const rankMedal = rankIdx === 0 ? "👑 総合相性 No.1" : (rankIdx === 1 ? "🥈 総合相性 No.2" : "🥉 総合相性 No.3");
-      const tagsHtml = (c.feature_tags || []).map(t =>
-        `<span class="px-2 py-0.5 rounded-full text-[11px] font-bold border border-[var(--border)] bg-[var(--card)]">${t}</span>`
-      ).join("");
-
-      return `
-        <div class="rounded-xl border border-[var(--border)] bg-[var(--background)] p-3 sm:p-4 flex flex-col sm:flex-row gap-3.5 shadow-sm">
-          <div class="w-32 sm:w-36 shrink-0 mx-auto sm:mx-0">
-            <div class="relative cast-photo-frame rounded-lg border border-[var(--border)]">
-              <img src="${imgSrc}" data-live="${c.photo_url}" alt="${c.name}" loading="lazy" />
-              <div class="absolute top-1.5 left-1.5 px-2 py-0.5 rounded text-xs font-black text-white" style="background:linear-gradient(135deg,#7c3aed,#db2777);">
-                ${item.matchPct}%
-              </div>
-            </div>
-          </div>
-          <div class="flex-1 space-y-2">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="text-xs font-black text-pink-500">${rankMedal}</span>
-                <h4 class="text-base font-black">${c.disp_no} ${c.name}</h4>
-                ${c.rank ? `<span class="px-2 py-0.5 rounded text-[11px] font-black bg-amber-500 text-white">人気No.${c.rank}</span>` : ""}
-              </div>
-              ${shiftBadge}
-            </div>
-
-            <div class="flex flex-wrap items-center gap-2 text-xs">
-              <span class="font-extrabold text-[var(--foreground)]">${c.size_text}</span>
-              <span class="px-2 py-0.5 rounded font-bold border border-purple-500/40 text-purple-500">${mbtiBadgeTxt}｜${c.mbti_label}</span>
-            </div>
-
-            ${tagsHtml ? `<div class="flex flex-wrap gap-1.5">${tagsHtml}</div>` : ""}
-
-            <ul class="space-y-1 text-xs text-[var(--muted-foreground)] bg-[var(--card)] p-2.5 rounded-lg border border-[var(--border)]">
-              ${item.reasons.map(r => `<li class="leading-relaxed">${r}</li>`).join("")}
-            </ul>
-
-            <div class="flex flex-wrap gap-2 pt-1">
-              <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-lg text-xs font-extrabold text-white transition hover:opacity-90" style="background:linear-gradient(135deg,#6d28d9,#db2777);">
-                👤 公式HPプロフィール＆週間シフトを見る
-              </a>
-              ${c.detail_url && c.detail_url !== c.profile_url ? `
-                <a href="${c.detail_url}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg text-xs font-bold border border-[var(--border)] bg-[var(--card)] text-[var(--foreground)] hover:opacity-80">
-                  📹 動画・写メ日記を見る
-                </a>
-              ` : ""}
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function upgradeLivePhotos(container) {
-      // When opened in a standard browser with internet access, smoothly upgrade thumbnails to full-res HP photos
-      container.querySelectorAll("img[data-live]").forEach(img => {
-        const liveUrl = img.getAttribute("data-live");
-        if (!liveUrl || img.src === liveUrl) return;
-        const probe = new Image();
-        probe.onload = () => { img.src = liveUrl; };
-        probe.src = liveUrl;
+    function upgradeLivePhotos(root) {
+      root.querySelectorAll("img[data-live]").forEach(img => {
+        const u = img.getAttribute("data-live");
+        if (!u || img.src === u) return;
+        const p = new Image();
+        p.onload = () => { img.src = u; };
+        p.src = u;
       });
     }
 
+    function renderOverallSingle() {
+      const item = lastRankedAll[selectedRankIdx] || lastRankedAll[0];
+      if (!item) return;
+      document.querySelectorAll("#overallRankPills .rank-sub-btn").forEach((b, i) => {
+        const it = lastRankedAll[i];
+        const medal = i === 0 ? "👑1位" : (i === 1 ? "🥈2位" : "🥉3位");
+        b.textContent = it ? `${medal} ${it.cast.name}(${it.matchPct}%)` : medal;
+        b.classList.toggle("active", i === selectedRankIdx);
+      });
+      const c = item.cast;
+      const mTag = c.mbti_source === "explicit" ? `公式 ${c.mbti}` : `推定 ${c.mbti}`;
+      const shiftTxt = c.today_shift ? `<span style="color:var(--emerald);font-weight:900;">🟢 本日 ${c.today_shift}</span>` : (c.tomorrow_shift ? `<span style="color:#38bdf8;font-weight:800;">📅 明日 ${c.tomorrow_shift}</span>` : `<span style="color:var(--muted);">シフトはHP確認</span>`);
+
+      const mount = document.getElementById("overallSingleMount");
+      mount.innerHTML = `
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <div class="cast-detail-photo">
+              <img src="${getPhotoSrc(c)}" data-live="${c.photo_url}" alt="${c.name}" />
+            </div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;">
+                <span style="padding:2px 7px;border-radius:5px;background:linear-gradient(135deg,#7c3aed,#db2777);color:#fff;font-size:11px;font-weight:900;">相性 ${item.matchPct}%</span>
+                <span style="font-size:11px;">${shiftTxt}</span>
+              </div>
+              <div style="font-size:16px;font-weight:900;">${c.disp_no} ${c.name}</div>
+              <div style="font-size:11.5px;font-weight:800;color:#e2e8f0;">${c.size_text}</div>
+              <div style="font-size:10.5px;font-weight:800;color:var(--purple);">${mTag}｜${c.mbti_label}</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px;font-size:11px;color:#cbd5e1;background:var(--card);padding:7px 8px;border-radius:7px;border:1px solid var(--border);">
+            ${item.reasons.map(r => `<div>${r}</div>`).join("")}
+          </div>
+          <div style="display:grid;grid-template-columns:${c.detail_url && c.detail_url !== c.profile_url ? "1.3fr 1fr" : "1fr"};gap:5px;">
+            <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:8.5px;border-radius:7px;background:linear-gradient(135deg,#6d28d9,#db2777);color:#fff;font-size:11.5px;font-weight:900;">
+              👤 公式プロフィール＆出勤 ↗
+            </a>
+            ${c.detail_url && c.detail_url !== c.profile_url ? `
+              <a href="${c.detail_url}" target="_blank" rel="noopener noreferrer" style="text-align:center;padding:8.5px;border-radius:7px;border:1px solid var(--border);background:var(--card);font-size:11px;font-weight:800;">
+                📹 動画・日記 ↗
+              </a>` : ""}
+          </div>
+        </div>
+      `;
+      upgradeLivePhotos(mount);
+    }
+
     function renderResults() {
-      const st = db.stores[currentStore];
-      const meta = st.meta;
+      const st = db.stores[currentStore], meta = st.meta;
       const up = computeUserProfile();
       const persona = USER_TYPE_PERSONAS[up.userMbti] || USER_TYPE_PERSONAS.ENFP;
 
-      document.getElementById("resUserTypeBadge").textContent = `あなたの気質：${up.userMbti}型`;
-      document.getElementById("resIdealPartnerBadge").textContent = `最高相性ヒロイン：${up.idealPartnerMbti}系`;
+      document.getElementById("resUserTypeBadge").textContent = `${up.userMbti}型`;
+      document.getElementById("resIdealPartnerBadge").textContent = `理想相性：${up.idealPartnerMbti}系`;
       document.getElementById("resUserCatch").textContent = persona.title;
       document.getElementById("resSpoilPct").textContent = `${up.spoilPct}%`;
       document.getElementById("resUserDesc").textContent = persona.desc;
 
+      lastRankedAll = (st.casts || []).map(c => scoreCastForUser(c, up)).sort((a, b) => b.matchPct - a.matchPct);
+      const topM = lastRankedAll[0];
+
+      // Tab 1: Today / Tomorrow top 3 compact horizontal rows
+      const todayList = lastRankedAll.filter(x => x.cast.today_shift);
+      const tmrList = lastRankedAll.filter(x => !x.cast.today_shift && x.cast.tomorrow_shift);
+      const pickList = todayList.length ? todayList.slice(0, 3) : tmrList.slice(0, 3);
+      document.getElementById("todaySecSub").textContent = todayList.length
+        ? `${meta.emoji} ${meta.brand}｜本日出勤${todayList.length}名から高相性TOP${pickList.length}を選出`
+        : `${meta.emoji} ${meta.brand}｜明日出勤予定から高相性TOP${pickList.length}を選出`;
+
+      const tEl = document.getElementById("todayMatchesList");
+      tEl.innerHTML = pickList.map(it => {
+        const c = it.cast;
+        const sh = c.today_shift ? `🟢${c.today_shift}` : `📅明日 ${c.tomorrow_shift}`;
+        return `
+          <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" class="cast-row-card">
+            <div class="cast-thumb"><img src="${getPhotoSrc(c)}" data-live="${c.photo_url}" alt="${c.name}" /></div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;">
+                <span style="font-size:13px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.disp_no} ${c.name}</span>
+                <span style="padding:1px 6px;border-radius:4px;background:linear-gradient(135deg,#db2777,#7c3aed);color:#fff;font-size:10.5px;font-weight:900;white-space:nowrap;">相性${it.matchPct}%</span>
+              </div>
+              <div style="font-size:10.5px;color:#cbd5e1;font-weight:700;">${c.size_text} ｜ <span style="color:var(--purple);">推定${c.mbti}</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;font-size:10.5px;">
+                <span style="color:var(--emerald);font-weight:800;">${sh}</span>
+                <span style="color:var(--pink);font-weight:800;">詳細を見る ↗</span>
+              </div>
+            </div>
+          </a>
+        `;
+      }).join("");
+      upgradeLivePhotos(tEl);
+
+      document.getElementById("storeScheduleLink").href = `${meta.base_url}/schedule.php`;
+      document.getElementById("footerTelBtn").href = `tel:${meta.tel}`;
+
+      // Tab 2: Overall Top 3 single-card switcher
+      renderOverallSingle();
+
+      // Tab 3: Axes & Share
       const bars = [
-        { lbl: "求めるテンション（おっとり清楚 ⇔ 陽キャ愛嬌）", val: up.target.e, col: "#ec4899" },
-        { lbl: "求める距離感（スマート綺麗 ⇔ 密着甘やかし）", val: up.target.f, col: "#8b5cf6" },
-        { lbl: "主導権の好み（自分が愛でたい ⇔ リードされたい）", val: up.target.j, col: "#06b6d4" },
-        { lbl: "世界観の好み（自然体リアル彼女 ⇔ アイドル特別感）", val: up.target.n, col: "#f59e0b" },
+        { lbl: "陽キャ愛嬌度", val: up.target.e, col: "#ec4899" },
+        { lbl: "密着甘やかし度", val: up.target.f, col: "#8b5cf6" },
+        { lbl: "リード委ね度", val: up.target.j, col: "#06b6d4" },
+        { lbl: "アイドル特別感", val: up.target.n, col: "#f59e0b" },
       ];
       document.getElementById("resAxisBars").innerHTML = bars.map(b => `
-        <div class="p-2.5 rounded-lg border border-[var(--border)] bg-[var(--background)] space-y-1">
-          <div class="flex justify-between font-bold">
-            <span class="text-[var(--muted-foreground)]">${b.lbl}</span>
-            <span class="tabular-nums">${b.val}%</span>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:6px 8px;font-size:10.5px;">
+          <div style="display:flex;justify-content:space-between;font-weight:800;margin-bottom:3px;">
+            <span style="color:var(--muted);">${b.lbl}</span><span>${b.val}%</span>
           </div>
-          <div class="w-full h-1.5 rounded-full bg-slate-500/20 overflow-hidden">
-            <div class="h-full rounded-full" style="width:${b.val}%;background:${b.col};"></div>
+          <div style="height:5px;border-radius:99px;background:#1e293b;overflow:hidden;">
+            <div style="height:100%;width:${b.val}%;background:${b.col};"></div>
           </div>
         </div>
       `).join("");
 
-      const rankedAll = (st.casts || [])
-        .map(c => scoreCastForUser(c, up))
-        .sort((a, b) => b.matchPct - a.matchPct);
-
-      const topMatch = rankedAll[0];
-      const shareText = `私の隠れ甘え度は【${up.spoilPct}%】（${up.userMbti}型：${persona.title}）でした！\n${meta.brand}で一番相性が良いタイプは『${up.idealPartnerMbti}系（相性${topMatch ? topMatch.matchPct : 98}%）』✨\n#16タイプ相性診断 #${meta.brand}`;
-      document.getElementById("shareXBtn").href =
-        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(meta.base_url + "/top.php")}`;
-
-      // Today / Tomorrow working matches
-      const todayList = rankedAll.filter(x => x.cast.today_shift);
-      const tomorrowList = rankedAll.filter(x => !x.cast.today_shift && x.cast.tomorrow_shift);
-      const todayEl = document.getElementById("todayMatchesGrid");
-
-      document.getElementById("storeScheduleLink").href = `${meta.base_url}/schedule.php`;
-      document.getElementById("storeCastListLink").href = `${meta.base_url}/cast.php`;
-
-      if (todayList.length > 0) {
-        document.getElementById("todaySecTitle").textContent =
-          `${meta.emoji} ${meta.brand}｜本日これから会える高相性キャスト TOP${Math.min(3, todayList.length)}`;
-        document.getElementById("todaySecSub").textContent =
-          `本日出勤中の ${todayList.length}名 の中から、あなたと最も相性が高い順に表示しています`;
-        todayEl.innerHTML = todayList.slice(0, 3).map((it, idx) => buildCompactCastCard(it, idx, true)).join("");
-      } else if (tomorrowList.length > 0) {
-        document.getElementById("todaySecTitle").textContent =
-          `${meta.emoji} ${meta.brand}｜明日出勤予定の高相性キャスト TOP${Math.min(3, tomorrowList.length)}`;
-        document.getElementById("todaySecSub").textContent =
-          `本日の出勤枠終了のため、明日出勤予定のキャストから相性順に表示しています`;
-        todayEl.innerHTML = tomorrowList.slice(0, 3).map((it, idx) => buildCompactCastCard(it, idx, true)).join("");
-      } else {
-        document.getElementById("todaySecTitle").textContent = `${meta.emoji} ${meta.brand}｜最新の出勤情報`;
-        document.getElementById("todaySecSub").textContent = `最新のリアルタイム出勤枠は公式HPスケジュールをご確認ください`;
-        todayEl.innerHTML = "";
-      }
-
-      // Overall Top 3
-      document.getElementById("overallSecTitle").textContent =
-        `👑 ${meta.brand} 全在籍${st.casts.length}名から厳選！運命の相性ランキング TOP3`;
-      const overallEl = document.getElementById("overallMatchesList");
-      overallEl.innerHTML = rankedAll.slice(0, 3).map((it, idx) => buildCompactCastCard(it, idx, false)).join("");
-
-      // Footer
-      document.getElementById("footerStoreTitle").textContent = `${meta.emoji} ${meta.brand}（${meta.access}）`;
-      document.getElementById("footerPromoBadge").textContent = `🎁 ${meta.line_promo}`;
       document.getElementById("footerStoreInfo").textContent =
-        `営業時間 10:00〜24:00 ｜ 料金目安：${meta.price_note}（受付完全前払い制・追加料金一切なし）。気になった子がいたら、お電話または受付で「${topMatch ? topMatch.cast.disp_no + "の" + topMatch.cast.name + "ちゃん" : "指名"}」とお伝えいただくだけでスムーズにご案内可能です。`;
-      document.getElementById("footerTelBtn").href = `tel:${meta.tel}`;
-      document.getElementById("footerTelBtn").textContent = `📞 電話で空き確認（${meta.tel}）`;
+        `${meta.emoji} ${meta.brand}（${meta.access}）｜${meta.price_note}・完全前払い制。🎁 ${meta.line_promo}`;
+      const shareText = `私の隠れ甘え度は【${up.spoilPct}%】（${up.userMbti}型：${persona.title}）！\n${meta.brand}で最高相性は『${up.idealPartnerMbti}系（相性${topM ? topM.matchPct : 98}%）』✨\n#16タイプ相性診断 #${meta.brand}`;
+      document.getElementById("shareXBtn").href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(meta.base_url + "/top.php")}`;
       document.getElementById("footerTopBtn").href = `${meta.base_url}/top.php`;
-
-      upgradeLivePhotos(document.getElementById("resultView"));
     }
 
     function renderCatalog() {
@@ -1202,46 +767,38 @@
       const filtered = (st.casts || []).filter(c => {
         if (fShift === "today" && !c.today_shift) return false;
         if (fShift === "tomorrow" && !c.tomorrow_shift) return false;
-
         const cup = (c.cup || "").toUpperCase();
         if (fCup === "glamour" && !(["E", "F", "G", "H", "I", "J"].includes(cup) || (c.bust || 0) >= 88)) return false;
         if (fCup === "standard" && !["C", "D"].includes(cup)) return false;
         if (fCup === "slender" && !(["A", "B"].includes(cup) || (c.waist || 99) <= 55)) return false;
-
         if (fGrp === "E_F" && !(c.mbti.startsWith("E") && c.mbti.includes("F"))) return false;
         if (fGrp === "I_F" && !(c.mbti.startsWith("I") && c.mbti.includes("F"))) return false;
         if (fGrp === "T" && !c.mbti.includes("T")) return false;
         return true;
       });
 
-      document.getElementById("catTitle").textContent =
-        `${st.meta.emoji} ${st.meta.brand}｜在籍キャスト 自動推定MBTI＆スペック図鑑（該当 ${filtered.length} / 全${st.casts.length}名）`;
+      const perPage = 4;
+      const maxPage = Math.max(1, Math.ceil(filtered.length / perPage));
+      if (catPage >= maxPage) catPage = maxPage - 1;
+      const slice = filtered.slice(catPage * perPage, (catPage + 1) * perPage);
+
+      document.getElementById("catTitle").textContent = `${st.meta.emoji} ${st.meta.brand} 図鑑（${filtered.length}名）`;
+      document.getElementById("catPageIndicator").textContent = `${catPage + 1} / ${maxPage} ページ`;
+      document.getElementById("catPrevBtn").disabled = (catPage === 0);
+      document.getElementById("catNextBtn").disabled = (catPage >= maxPage - 1);
 
       const grid = document.getElementById("catalogGrid");
-      grid.innerHTML = filtered.map(c => {
-        const imgSrc = getPhotoSrc(c);
-        const qaSample = (c.qa || []).slice(0, 2).map(([q, a]) => `${q}「${a}」`).join(" ／ ");
-        return `
-          <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl border border-[var(--border)] bg-[var(--background)] flex gap-3 hover:border-pink-500 transition">
-            <div class="w-20 shrink-0 cast-photo-frame rounded-lg border border-[var(--border)]">
-              <img src="${imgSrc}" data-live="${c.photo_url}" alt="${c.name}" loading="lazy" />
-            </div>
-            <div class="flex-1 min-w-0 space-y-1 text-xs">
-              <div class="flex items-center justify-between gap-1">
-                <span class="font-black text-sm truncate">${c.disp_no} ${c.name}</span>
-                <span class="px-1.5 py-0.5 rounded font-extrabold border border-purple-500/40 text-purple-500 shrink-0">
-                  ${c.mbti_source === "explicit" ? "公式 " : "推定 "}${c.mbti}
-                </span>
-              </div>
-              <div class="font-bold text-[var(--muted-foreground)]">${c.size_text}</div>
-              <div class="text-[11px] font-bold text-pink-500">${c.mbti_label}</div>
-              ${c.today_shift ? `<div class="text-[11px] font-extrabold text-emerald-500">🟢 本日出勤：${c.today_shift}</div>` : (c.tomorrow_shift ? `<div class="text-[11px] font-bold text-sky-500">📅 明日：${c.tomorrow_shift}</div>` : "")}
-              ${qaSample ? `<div class="text-[11px] text-[var(--muted-foreground)] truncate">💬 ${qaSample}</div>` : (c.tagline ? `<div class="text-[11px] text-[var(--muted-foreground)] truncate">✨ ${c.tagline}</div>` : "")}
-            </div>
-          </a>
-        `;
-      }).join("");
-
+      grid.innerHTML = slice.map(c => `
+        <a href="${c.profile_url}" target="_blank" rel="noopener noreferrer" class="cat-mini-card">
+          <div class="cast-thumb" style="width:42px;height:56px;"><img src="${getPhotoSrc(c)}" data-live="${c.photo_url}" alt="${c.name}" /></div>
+          <div style="flex:1;min-width:0;font-size:10.5px;line-height:1.3;">
+            <div style="font-weight:900;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.disp_no} ${c.name}</div>
+            <div style="color:var(--purple);font-weight:800;">${c.mbti_source === "explicit" ? "公式" : "推定"} ${c.mbti}</div>
+            <div style="color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">T${c.height || "-"} ${c.cup || "-"}cup</div>
+            <div style="color:var(--emerald);font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.today_shift ? "🟢" + c.today_shift : ""}</div>
+          </div>
+        </a>
+      `).join("");
       upgradeLivePhotos(grid);
     }
 

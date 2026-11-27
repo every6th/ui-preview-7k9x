@@ -1023,6 +1023,629 @@
         grid-template-columns: minmax(0, 1fr) !important;
       }
     }
+
+    /* === 100dvh ZERO-SCROLL SINGLE-PAGE GAME APP LAYOUT === */
+    html, body {
+      height: 100vh !important;
+      height: 100dvh !important;
+      max-height: 100dvh !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    .prod-wrap,
+    body > .max-w-\[620px\] {
+      height: 100% !important;
+      max-height: 100% !important;
+      max-width: 560px !important;
+      margin: 0 auto !important;
+      padding: 5px 6px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+      overflow: hidden !important;
+    }
+    .prod-footer,
+    .sim-footer-bar,
+    #openHpDrawerBtn {
+      display: none !important;
+    }
+
+    /* Ultra-compact 2-row Top Bar (~54px) */
+    .prod-topbar,
+    body > .max-w-\[620px\] > div:first-child {
+      flex: 0 0 auto !important;
+      padding: 5px 6px !important;
+      gap: 4px !important;
+      margin: 0 !important;
+      border-radius: 7px !important;
+    }
+    .prod-topbar .prod-row:first-child,
+    body > .max-w-\[620px\] > div:first-child > div:first-child {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      gap: 4px !important;
+    }
+    #storeTabs {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      flex: 1 1 auto !important;
+      gap: 3px !important;
+      width: auto !important;
+    }
+    #storeTabs button {
+      padding: 4px 2px !important;
+      font-size: 11px !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+    }
+    #soundBtn, #resetBtn {
+      padding: 4px 7px !important;
+      font-size: 11px !important;
+      flex-shrink: 0 !important;
+    }
+    .prod-row-div,
+    body > .max-w-\[620px\] > div:first-child > div:nth-child(2) {
+      padding-top: 4px !important;
+      margin: 0 !important;
+      display: block !important;
+    }
+    .prod-row-div > span:first-child,
+    body > .max-w-\[620px\] > div:first-child > div:nth-child(2) > span:first-child {
+      display: none !important;
+    }
+    #timeTabs {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      width: 100% !important;
+      gap: 4px !important;
+    }
+    #timeTabs .time-pill {
+      padding: 3.5px 2px !important;
+      font-size: 11px !important;
+      text-align: center !important;
+    }
+
+    /* Main Console fills remaining 100dvh cleanly */
+    .rpg-console {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      padding: 6px 7px !important;
+      gap: 5px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+    }
+
+    /* 1-Row 6-Step Strip (~21px) */
+    .step-strip {
+      flex: 0 0 auto !important;
+      display: grid !important;
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      gap: 2.5px !important;
+    }
+    .step-node {
+      font-size: 9.5px !important;
+      padding: 2.5px 1px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      line-height: 1.15 !important;
+    }
+
+    /* Compact Single-Row HUD + Mini Meter (~48px combined!) */
+    .hud-grid {
+      flex: 0 0 auto !important;
+      display: grid !important;
+      grid-template-columns: auto 1fr auto !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 4px 7px !important;
+    }
+    .hud-lbl, #hudPriceSub, #walletSub, #hudGroomSub {
+      display: none !important;
+    }
+    .hud-span-mob {
+      grid-column: auto !important;
+      text-align: right !important;
+    }
+    #hudPrice {
+      font-size: 14px !important;
+    }
+    .wallet-badge {
+      font-size: 9.5px !important;
+      padding: 2px 5px !important;
+      white-space: nowrap !important;
+    }
+    #hudPlan {
+      font-size: 10.5px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .meter-wrap {
+      flex: 0 0 auto !important;
+      padding: 3px 7px !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 7px !important;
+    }
+    .meter-wrap > div:first-child {
+      flex: 0 0 auto !important;
+      gap: 4px !important;
+      align-items: center !important;
+    }
+    #meterTitle {
+      display: none !important;
+    }
+    #meterPct {
+      font-size: 10.5px !important;
+    }
+    .meter-track {
+      flex: 1 1 auto !important;
+      height: 7px !important;
+    }
+
+    /* Dynamic Viewport scales automatically to available dvh so buttons never get pushed off! */
+    .viewport {
+      flex: 0 1 auto !important;
+      min-height: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .vp-top-strip {
+      padding: 3.5px 7px !important;
+      gap: 4px !important;
+    }
+    .vp-top-strip .vp-badge {
+      font-size: 10.5px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .vp-top-strip .vp-price-tag {
+      font-size: 10px !important;
+      padding: 1px 5px !important;
+    }
+    .vp-canvas-stage {
+      background: #05070f;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 0 !important;
+    }
+    canvas#gameCanvas {
+      width: auto !important;
+      max-width: 100% !important;
+      max-height: 23dvh !important;
+      aspect-ratio: 16 / 9 !important;
+      height: auto !important;
+      margin: 0 auto !important;
+    }
+    body[data-stage-view="card"] canvas#gameCanvas {
+      max-height: 15dvh !important;
+    }
+    /* Hide viewport when full interactive sub-panels are open so zero scrolling is needed! */
+    body[data-stage-view="panel"] .viewport,
+    body[data-stage-view="receipt"] .viewport {
+      display: none !important;
+    }
+    body[data-stage-view="clear"] .viewport,
+    body[data-stage-view="clear"] #msgBox {
+      display: none !important;
+    }
+    body[data-stage-view="clear"][data-clear-tab="scene"] .viewport,
+    body[data-stage-view="clear"][data-clear-tab="scene"] #msgBox {
+      display: flex !important;
+    }
+
+    /* Hotspot chips docked compactly */
+    .vp-hotspots {
+      position: static !important;
+      inset: auto !important;
+      width: 100% !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 4px !important;
+      padding: 4px 6px !important;
+      background: rgba(9, 13, 26, 0.96) !important;
+      border-top: 1px solid #334155 !important;
+      pointer-events: auto !important;
+    }
+    .vp-hotspots:empty {
+      display: none !important;
+    }
+    .hotspot-chip {
+      position: static !important;
+      white-space: normal !important;
+      font-size: 10.5px !important;
+      padding: 3.5px 7px !important;
+      border-radius: 5px !important;
+      line-height: 1.25 !important;
+      animation: none !important;
+    }
+
+    /* Compact Groom Bar (Stage 4) */
+    .groom-bar {
+      flex: 0 0 auto !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 4px 6px !important;
+      gap: 4px !important;
+    }
+    .groom-chip {
+      font-size: 10px !important;
+      padding: 2px 5px !important;
+      white-space: nowrap !important;
+    }
+    #toggleWaitModeBtn {
+      width: auto !important;
+      font-size: 10px !important;
+      padding: 3px 6px !important;
+    }
+
+    /* Compact Dialogue Box */
+    .msg-window {
+      flex: 0 0 auto !important;
+      min-height: 62px !important;
+      padding: 6px 8px !important;
+      gap: 7px !important;
+    }
+    .speaker-face-box {
+      width: 44px !important;
+      height: 44px !important;
+      align-self: center !important;
+      margin-top: 0 !important;
+    }
+    .msg-speaker {
+      font-size: 11px !important;
+      margin-bottom: 1px !important;
+    }
+    .msg-text {
+      font-size: 11.5px !important;
+      line-height: 1.42 !important;
+    }
+    .msg-next {
+      font-size: 10.5px !important;
+      margin-top: 2px !important;
+    }
+
+    /* Command Buttons: smart 2-col grid so 3~4 buttons take only 2 rows! */
+    .cmd-grid {
+      flex: 0 0 auto !important;
+      margin-top: auto !important;
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 5px !important;
+    }
+    .cmd-grid > button:only-child {
+      grid-column: 1 / -1 !important;
+    }
+    .rpg-cmd {
+      padding: 7px 8px !important;
+      font-size: 11.2px !important;
+      line-height: 1.3 !important;
+      gap: 5px !important;
+    }
+    .rpg-cmd.span-2 {
+      grid-column: 1 / -1 !important;
+    }
+
+    /* Stage 2 Luxury Panel: Compact 2x2 Horizontal Cast Cards */
+    .luxury-panel {
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      padding: 7px 8px !important;
+      gap: 5px !important;
+      justify-content: space-between !important;
+    }
+    .lp-header { padding: 0 2px 4px !important; }
+    .lp-brand-title { font-size: 13.5px !important; }
+    .lp-brand-sub { font-size: 8px !important; }
+    .lp-price-main { font-size: 15px !important; }
+    .lp-nom-ribbon { font-size: 9px !important; padding: 1px 6px !important; }
+    .luxury-panel > div:nth-child(2) {
+      display: none !important;
+    }
+    .lp-filter-bar {
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 3px !important;
+    }
+    .lp-filter-btn {
+      padding: 4px 2px !important;
+      font-size: 9.8px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .lp-cards-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 5px !important;
+    }
+    .cast-card {
+      border-width: 2px !important;
+    }
+    .cast-mini-row {
+      display: flex !important;
+      align-items: stretch !important;
+      background: #ffffff;
+    }
+    .cast-mini-row .cast-portrait-wrap {
+      width: 48px !important;
+      height: 66px !important;
+      aspect-ratio: auto !important;
+      flex-shrink: 0 !important;
+    }
+    .cast-mini-row .rank-badge {
+      font-size: 8.5px !important;
+      padding: 0 3px !important;
+      top: 2px !important;
+      left: 2px !important;
+    }
+    .cast-mini-row .cast-footer {
+      flex: 1 1 0% !important;
+      min-width: 0 !important;
+      padding: 3px 5px !important;
+      text-align: left !important;
+      justify-content: space-between !important;
+      gap: 1px !important;
+    }
+    .cast-mini-row .cast-name {
+      font-size: 10.5px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .status-pill-inline {
+      font-size: 8.5px !important;
+      font-weight: 800;
+      padding: 0.5px 4px;
+      border-radius: 3px;
+      color: #fff;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cast-mini-row .cast-spec {
+      font-size: 8.8px !important;
+      padding: 0 !important;
+    }
+    .cast-mini-row .cast-select-btn {
+      margin-top: 1px !important;
+      padding: 2px 4px !important;
+      font-size: 9.5px !important;
+      text-align: center !important;
+    }
+    .lp-bottom-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 4px !important;
+    }
+    .lp-free-btn {
+      padding: 5.5px 4px !important;
+      font-size: 10.5px !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+    }
+
+    /* Stage 3 Receipt Box Compact */
+    .receipt-box {
+      padding: 7px 9px !important;
+      font-size: 11px !important;
+      gap: 3.5px !important;
+    }
+    .coupon-toggle-bar {
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      padding: 5px 8px !important;
+      gap: 6px !important;
+    }
+    #couponSubDesc { display: none !important; }
+    #applyCouponBtn {
+      width: auto !important;
+      padding: 5px 8px !important;
+      font-size: 10.5px !important;
+    }
+    .vip-seat-note {
+      padding: 4px 7px !important;
+      font-size: 10px !important;
+      line-height: 1.32 !important;
+    }
+    .receipt-total {
+      font-size: 13.5px !important;
+      padding-top: 4px !important;
+    }
+
+    /* Stage 6 & Clear Business Card Compact */
+    .bizcard-paper {
+      padding: 7px 9px !important;
+    }
+    .bizcard-top {
+      padding-bottom: 4px !important;
+      margin-bottom: 5px !important;
+    }
+    .bizcard-photo {
+      width: 48px !important;
+      height: 62px !important;
+    }
+    .bizcard-msg-box {
+      padding: 5px 7px !important;
+    }
+    .bizcard-msg-text {
+      font-size: 10.8px !important;
+      line-height: 1.4 !important;
+    }
+    .bizcard-tip {
+      margin-top: 4px !important;
+      padding-top: 3px !important;
+      font-size: 9.5px !important;
+      line-height: 1.3 !important;
+    }
+
+    /* Clear Screen 3-Tab Single-Page Console */
+    .clear-console {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 5px !important;
+    }
+    .clear-hdr-card {
+      border-color: #34d399 !important;
+      padding: 6px 8px !important;
+    }
+    .clear-hdr-title {
+      font-size: 12.5px;
+      font-weight: 900;
+      color: #fde047;
+    }
+    .clear-hdr-receipt {
+      font-size: 10.8px;
+      font-weight: 800;
+      color: #6ee7b7;
+      margin-top: 2px;
+    }
+    .clear-hdr-sub {
+      font-size: 10px;
+      color: #cbd5e1;
+      margin-top: 1px;
+    }
+    .clear-tabs-bar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 4px;
+    }
+    .clear-tab-btn {
+      padding: 6px 4px;
+      border-radius: 5px;
+      border: 1.5px solid #475569;
+      background: #0f172a;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .clear-tab-btn.active {
+      background: linear-gradient(135deg, #6d28d9, #db2777);
+      color: #ffffff;
+      border-color: #fde047;
+    }
+    .clear-tab-pane {
+      flex: 1 1 0%;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 5px;
+    }
+    .hp-explorer {
+      padding: 7px 8px !important;
+      gap: 5px !important;
+    }
+    #hpEventPromoLine {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hp-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 4.5px !important;
+    }
+    .hp-card {
+      padding: 5px 6px !important;
+      gap: 2px !important;
+    }
+    .cta-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 5px !important;
+    }
+    .cta-btn {
+      padding: 8.5px 8px !important;
+      font-size: 11.5px !important;
+      white-space: nowrap !important;
+    }
+
+    /* === FLEX-AUTO-FIT CANVAS & ZERO-OVERFLOW PATCH === */
+    .rpg-console {
+      overflow: hidden !important;
+    }
+    .hud-grid {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 6px !important;
+      padding: 4px 8px !important;
+    }
+    .hud-span-mob {
+      display: none !important;
+    }
+    .vp-top-strip {
+      flex-wrap: nowrap !important;
+      padding: 3px 7px !important;
+    }
+    .vp-top-strip .vp-badge {
+      flex: 1 1 0% !important;
+      min-width: 0 !important;
+    }
+    .viewport {
+      flex: 1 1 0% !important;
+      min-height: 90px !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .vp-canvas-stage {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      overflow: hidden !important;
+    }
+    canvas#gameCanvas {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      height: 100% !important;
+      max-height: 100% !important;
+      width: auto !important;
+      max-width: 100% !important;
+      aspect-ratio: 16 / 9 !important;
+      object-fit: contain !important;
+    }
+    .vp-hotspots {
+      flex: 0 0 auto !important;
+      padding: 3px 5px !important;
+      gap: 3px !important;
+    }
+    .hotspot-chip {
+      font-size: 10px !important;
+      padding: 3px 6px !important;
+    }
+    body[data-stage-view="panel"] .viewport,
+    body[data-stage-view="receipt"] .viewport {
+      display: none !important;
+    }
+    body[data-stage-view="clear"] .viewport,
+    body[data-stage-view="clear"] #msgBox {
+      display: none !important;
+    }
+    body[data-stage-view="clear"][data-clear-tab="scene"] .viewport,
+    body[data-stage-view="clear"][data-clear-tab="scene"] #msgBox {
+      display: flex !important;
+    }
+    #receiptBox {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      justify-content: space-between !important;
+    }
   </style>
 </head>
 <body data-band="night">
@@ -1031,13 +1654,13 @@
     <div class="prod-topbar">
       <div class="prod-row">
         <div class="prod-grp" id="storeTabs">
-          <button data-store="gotanda" class="store-tab prod-pill">🍇 五反田シンデレラ</button>
-          <button data-store="tachikawa" class="store-tab prod-pill">🌊 立川ビッグラブ</button>
-          <button data-store="hachioji" class="store-tab prod-pill">🌸 八王子アリス</button>
+          <button data-store="gotanda" class="store-tab prod-pill">🍇 五反田</button>
+          <button data-store="tachikawa" class="store-tab prod-pill">🌊 立川</button>
+          <button data-store="hachioji" class="store-tab prod-pill">🌸 八王子</button>
         </div>
         <div class="prod-grp">
           <button id="soundBtn" class="prod-pill">🔊 ON</button>
-          <button id="resetBtn" class="prod-pill">↺ 最初から</button>
+          <button id="resetBtn" class="prod-pill">↺</button>
         </div>
       </div>
       <div class="prod-row prod-row-div">
@@ -1054,12 +1677,12 @@
     <div class="rpg-console">
       <!-- 6-Step Visual Journey Bar -->
       <div id="stepStrip" class="step-strip">
-        <div class="step-node active">①入口・不安検証</div>
-        <div class="step-node">②指名・待ち時間</div>
-        <div class="step-node">③HP割・前払ロック</div>
-        <div class="step-node">④待合・爪切り</div>
-        <div class="step-node">⑤ブース対面</div>
-        <div class="step-node">⑥感謝の名刺・図鑑</div>
+        <div class="step-node active">①入口</div>
+        <div class="step-node">②指名</div>
+        <div class="step-node">③前払</div>
+        <div class="step-node">④身支度</div>
+        <div class="step-node">⑤対面</div>
+        <div class="step-node">⑥名刺</div>
       </div>
 
       <!-- 3-Column Live Pricing, Wallet Lock & Plan HUD -->
@@ -1156,12 +1779,10 @@
         <div id="castCardsGrid" class="lp-cards-grid"></div>
 
         <div class="lp-bottom-row">
-          <button id="btnFreeNow" class="lp-free-btn">
-            💴 指名せず「フリー（指名料0円）」で即案内へ
-          </button>
-          <button id="btnFreeWait" class="lp-free-btn" style="border-color:#10b981;color:#a7f3d0;">
-            ⏳ フリーで「混雑・15分待ちパターン」を体験
-          </button>
+          <button id="btnFreeNow" class="lp-free-btn">💴 フリー(¥0)即案内</button>
+          <button id="btnFreeWait" class="lp-free-btn" style="border-color:#10b981;color:#a7f3d0;">⏳ フリー15分待ち体験</button>
+          <button type="button" id="btnPanelWalkout" class="lp-free-btn" style="border-color:#fb7185;color:#fecdd3;">🚪 会計前0円退店を試す</button>
+          <button type="button" id="btnPanelFirstWord" class="lp-free-btn" style="border-color:#facc15;color:#fef08a;">💬 受付の第一声は？</button>
         </div>
       </div>
 
@@ -1220,48 +1841,58 @@
       <!-- Command Buttons -->
       <div id="cmdGrid" class="cmd-grid"></div>
 
-      <!-- Clear Screen Goal Panel -->
-      <div id="clearPanel" class="space-y-2.5 hidden">
-        <div class="px-win receipt-box" style="border-color:#34d399;">
-          <div id="clearTitle" style="font-weight:900;color:#fde047;font-size:14px;"></div>
-          <div id="clearSummary" style="color:#e2e8f0;line-height:1.6;font-size:12px;"></div>
-          <div id="clearReceiptLine" style="margin-top:4px;padding:6px 8px;background:rgba(0,0,0,0.5);border:1px solid #475569;border-radius:4px;color:#fef08a;font-weight:800;font-size:12px;"></div>
-          <div style="color:#6ee7b7;font-weight:800;font-size:11.5px;margin-top:2px;">
-            ✅ 会計前は選び直し・0円退店OK ／ ✅ 前払いでお財布ロック（後出し請求0円） ／ ✅ お見送りで感謝の名刺ゲット！
-          </div>
+      <!-- Clear Screen Goal Panel (3-Tab Single-Screen Console) -->
+      <div id="clearPanel" class="clear-console hidden">
+        <div class="px-win clear-hdr-card">
+          <div id="clearTitle" class="clear-hdr-title"></div>
+          <div id="clearReceiptLine" class="clear-hdr-receipt"></div>
+          <div id="clearSummary" class="clear-hdr-sub"></div>
         </div>
 
-        <!-- Keepsake Cast Thank-You Business Card -->
-        <div id="clearBizCardMount"></div>
+        <div class="clear-tabs-bar" id="clearTabsBar">
+          <button type="button" data-ctab="hp" class="clear-tab-btn active">🗺️ 公式HP 6大図鑑</button>
+          <button type="button" data-ctab="card" class="clear-tab-btn">💌 感謝の名刺</button>
+          <button type="button" data-ctab="scene" class="clear-tab-btn">🎬 退店シーン</button>
+        </div>
 
-        <!-- Clear-Screen Exclusive Official HP 6-Page Complete Guide -->
-        <div id="hpExplorerBox" class="px-win hp-explorer">
-          <div>
-            <div style="font-size:12.5px;font-weight:900;color:#fde047;" id="hpExpTitle">
-              🗺️ 公式HP 6大コンテンツ図鑑（タップで実ページが開きます）
+        <!-- TAB 1: Official HP 6-Page Complete Guide + Primary CTAs -->
+        <div id="clearTabHp" class="clear-tab-pane">
+          <div id="hpExplorerBox" class="px-win hp-explorer">
+            <div>
+              <div style="font-size:11.5px;font-weight:900;color:#fde047;" id="hpExpTitle">
+                🗺️ 公式HP 6大コンテンツ図鑑（タップで実ページへ）
+              </div>
+              <div style="font-size:10px;color:#cbd5e1;margin-top:1px;" id="hpEventPromoLine"></div>
             </div>
-            <div style="font-size:11px;color:#cbd5e1;margin-top:2px;" id="hpEventPromoLine"></div>
+            <div id="hpCardsGrid" class="hp-grid"></div>
           </div>
-          <div id="hpCardsGrid" class="hp-grid"></div>
+          <div class="cta-grid">
+            <a id="scheduleLink" href="https://gotanda-cinderella.com/schedule.php" target="_blank" rel="noopener noreferrer" class="cta-btn">
+              📅 本日の出勤表 ↗
+            </a>
+            <a id="topEventLink" href="https://gotanda-cinderella.com/top.php" target="_blank" rel="noopener noreferrer" class="cta-btn" style="background:linear-gradient(135deg,#d97706,#b45309);border-color:#fde68a;">
+              🎁 割引イベント ↗
+            </a>
+          </div>
         </div>
 
-        <!-- Primary Goal Buttons -->
-        <div class="cta-grid">
-          <a id="scheduleLink" href="https://gotanda-cinderella.com/schedule.php" target="_blank" rel="noopener noreferrer" class="cta-btn">
-            📅 本日の出勤表を見る ↗
-          </a>
-          <a id="topEventLink" href="https://gotanda-cinderella.com/top.php" target="_blank" rel="noopener noreferrer" class="cta-btn" style="background:linear-gradient(135deg,#d97706,#b45309);border-color:#fde68a;">
-            🎁 開催中の割引イベントを見る ↗
-          </a>
+        <!-- TAB 2: Cast Thank-You Business Card + Share -->
+        <div id="clearTabCard" class="clear-tab-pane hidden">
+          <div id="clearBizCardMount"></div>
+          <div class="cta-grid">
+            <a id="xShareLink" href="#" target="_blank" rel="noopener noreferrer" class="cta-btn" style="background:#ffffff;color:#0f172a;font-size:11.5px;padding:9px 10px;">
+              𝕏 体験結果をポスト
+            </a>
+            <button type="button" id="copyShareBtn" class="cta-btn" style="background:#1e293b;color:#e2e8f0;border-color:#64748b;font-size:11.5px;padding:9px 10px;">
+              📋 シェア文コピー
+            </button>
+          </div>
         </div>
 
-        <!-- X Share & Replay -->
-        <div class="cta-grid">
-          <a id="xShareLink" href="#" target="_blank" rel="noopener noreferrer" class="cta-btn" style="background:#ffffff;color:#0f172a;font-size:12px;padding:10px 12px;">
-            𝕏 体験結果をXでポストする
-          </a>
-          <button id="copyShareBtn" class="cta-btn" style="background:#1e293b;color:#e2e8f0;border-color:#64748b;font-size:12px;padding:10px 12px;">
-            📋 シェア文をコピー
+        <!-- TAB 3: Replay / Scene Controls -->
+        <div id="clearTabScene" class="clear-tab-pane hidden">
+          <button type="button" id="clearReplayBtn" class="rpg-cmd primary-go span-2" style="justify-content:center;">
+            ↺ 時間帯（朝・夕・夜）や店舗を変えてもう一度体験する
           </button>
         </div>
       </div>
@@ -1601,6 +2232,7 @@
     }
 
     function updateHUD() {
+      if (typeof syncZeroScrollStageMode === 'function') syncZeroScrollStageMode();
       const st = STORES[currentStoreKey];
       const p = calcPriceBreakdown();
       targetPrice = p.total;
@@ -1608,7 +2240,7 @@
       document.body.dataset.band = timeBand;
       const bandTag = timeBand === "day" ? "☀️朝" : (timeBand === "eve" ? "🌆夕" : "🌙夜");
       document.getElementById("vpPriceTag").textContent =
-        `${bandTag} 30分 ${fmtYen(p.base)} / 指名 +${fmtYen(st.nominationFee)}`;
+        `${bandTag}${fmtYen(p.base)}/指名+${fmtYen(st.nominationFee)}`;
 
       const discBadge = document.getElementById("hudDiscountBadge");
       discBadge.classList.toggle("hidden", !couponApplied);
@@ -2069,7 +2701,69 @@
         ctx.globalAlpha = 1;
       }
 
-      requestAnimationFrame(renderFrame);
+  
+    /* === 100dvh ZERO-SCROLL VIEW CONTROLLER (TOP-LEVEL) === */
+    let currentClearTab = "hp";
+    function switchClearTab(tabName) {
+      currentClearTab = tabName;
+      document.querySelectorAll("#clearTabsBar .clear-tab-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.ctab === tabName);
+      });
+      const elHp = document.getElementById("clearTabHp");
+      const elCard = document.getElementById("clearTabCard");
+      const elScene = document.getElementById("clearTabScene");
+      if (elHp) elHp.classList.toggle("hidden", tabName !== "hp");
+      if (elCard) elCard.classList.toggle("hidden", tabName !== "card");
+      if (elScene) elScene.classList.toggle("hidden", tabName !== "scene");
+      document.body.dataset.clearTab = tabName;
+    }
+
+    function syncZeroScrollStageMode() {
+      const pOpen = !document.getElementById("panelBoard")?.classList.contains("hidden");
+      const rOpen = !document.getElementById("receiptBox")?.classList.contains("hidden");
+      const cOpen = !document.getElementById("clearPanel")?.classList.contains("hidden");
+      const bOpen = !document.getElementById("stageBizCardBox")?.classList.contains("hidden");
+      let mode = "scene";
+      if (cOpen || screenMode === "clear") mode = "clear";
+      else if (pOpen) mode = "panel";
+      else if (rOpen && !walletLocked) mode = "receipt";
+      else if (bOpen) mode = "card";
+      document.body.dataset.stageView = mode;
+    }
+
+    const _panelObserver = new MutationObserver(syncZeroScrollStageMode);
+    ["panelBoard", "receiptBox", "stageBizCardBox", "clearPanel"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) _panelObserver.observe(el, { attributes: true, attributeFilter: ["class"] });
+    });
+
+    document.querySelectorAll("#clearTabsBar .clear-tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        sfx.select();
+        switchClearTab(btn.dataset.ctab);
+      });
+    });
+    document.getElementById("clearReplayBtn")?.addEventListener("click", () => {
+      sfx.select();
+      switchClearTab("hp");
+      startTitle();
+    });
+    document.getElementById("btnPanelWalkout")?.addEventListener("click", () => {
+      showStage2WalkoutDemo();
+    });
+    document.getElementById("btnPanelFirstWord")?.addEventListener("click", () => {
+      sfx.select();
+      clearedFears.add("first_word");
+      updateHUD();
+      typeWrite(
+        "💡 最強の第一声は『初めて来ました！』",
+        "通ぶる必要はゼロ！「初めてです、予算○円くらいで」と伝えればスタッフが丁寧に案内してくれます！",
+        false, "face_staff"
+      );
+    });
+    syncZeroScrollStageMode();
+
+    requestAnimationFrame(renderFrame);
     }
 
     /* =========================================================================
@@ -2099,18 +2793,20 @@
         const portSrc = (typeof PX_ASSETS === "object" && PX_ASSETS["port_" + c.id]) ? PX_ASSETS["port_" + c.id] : "";
 
         card.innerHTML = `
-          <div class="cast-portrait-wrap">
-            <img src="${portSrc}" class="px-img" alt="${c.name}" />
-            <div class="rank-badge">No.${c.rank}</div>
-            <div class="status-pill ${c.statusClass}">${c.statusText}</div>
-            ${c.hasSeal ? `<div class="seal-badge">人気<br>No.級</div>` : ""}
-            <div class="type-chip">${c.typeLabel}</div>
-          </div>
-          <div class="cast-footer">
-            <div class="cast-name">${c.no} ${c.name}</div>
-            <div class="cast-spec ${selectedCriteria === "size" ? "spec-glow" : ""}">${c.spec}</div>
-            ${waitHtml}
-            <button type="button" class="cast-select-btn">指名する (+¥2,000)</button>
+          <div class="cast-mini-row">
+            <div class="cast-portrait-wrap">
+              <img src="${portSrc}" class="px-img" alt="${c.name}" />
+              <div class="rank-badge">No.${c.rank}</div>
+            </div>
+            <div class="cast-footer">
+              <div class="flex items-center justify-between gap-1">
+                <span class="cast-name">${c.no} ${c.name}</span>
+                <span class="status-pill-inline ${c.statusClass}">${c.typeLabel}</span>
+              </div>
+              <div class="cast-spec ${selectedCriteria === "size" ? "spec-glow" : ""}">${c.spec}</div>
+              ${waitHtml}
+              <div class="cast-select-btn">▶ 指名 (+¥2,000)</div>
+            </div>
           </div>
         `;
         card.addEventListener("click", () => chooseCastFromPanel(c));
@@ -3010,6 +3706,7 @@
       spawnBurst(192, 80, "#fde047", 28);
       hideStagePanels();
       clearPanel.classList.remove("hidden");
+      if (typeof switchClearTab === "function") switchClearTab("hp");
 
       const c = selectedCast || CAST_LIST[0];
       document.getElementById("clearBizCardMount").innerHTML = buildBizCardHtml(c);
@@ -3098,7 +3795,8 @@
       btn.addEventListener("click", () => {
         sfx.select();
         currentStoreKey = btn.dataset.store;
-        updateStoreTheme();
+
+    updateStoreTheme();
         if (screenMode === "title") startTitle();
         else if (screenMode === "clear") showClearScreen();
         else if (stageIdx === 5) loadStage(5);
