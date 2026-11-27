@@ -1378,7 +1378,7 @@
       background: #ffffff;
     }
     .cast-mini-row .cast-portrait-wrap {
-      width: 48px !important;
+      width: 42px !important;
       height: 66px !important;
       aspect-ratio: auto !important;
       flex-shrink: 0 !important;
@@ -1646,6 +1646,107 @@
       min-height: 0 !important;
       justify-content: space-between !important;
     }
+
+    /* === FINAL HIDDEN PRIORITY & ZERO-SCROLL TIGHT FIT === */
+    .clear-console:not(.hidden) {
+      display: flex !important;
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      gap: 4px !important;
+    }
+    .clear-tab-pane:not(.hidden) {
+      display: flex !important;
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      gap: 4px !important;
+    }
+    #panelBoard:not(.hidden) {
+      display: flex !important;
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      padding: 6px 7px !important;
+      gap: 4px !important;
+    }
+    #receiptBox:not(.hidden) {
+      display: flex !important;
+      flex: 0 0 auto !important;
+      min-height: 0 !important;
+      flex-direction: column !important;
+      padding: 6px 8px !important;
+      gap: 2.5px !important;
+      font-size: 10.5px !important;
+    }
+    #groomBar:not(.hidden) {
+      display: flex !important;
+    }
+    /* Tighten Clear Screen HP cards & headers so even 640px height has 0px overflow */
+    .clear-hdr-card {
+      padding: 5px 7px !important;
+    }
+    .clear-hdr-title {
+      font-size: 11.5px !important;
+      line-height: 1.25 !important;
+    }
+    .clear-hdr-receipt {
+      font-size: 10px !important;
+      line-height: 1.25 !important;
+      margin-top: 1px !important;
+    }
+    .clear-hdr-sub {
+      font-size: 9.5px !important;
+      line-height: 1.25 !important;
+    }
+    .clear-tab-btn {
+      padding: 4.5px 3px !important;
+      font-size: 10.5px !important;
+    }
+    .hp-explorer {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      padding: 5px 7px !important;
+      gap: 4px !important;
+      justify-content: space-between !important;
+    }
+    .hp-grid {
+      flex: 1 1 0% !important;
+      min-height: 0 !important;
+      gap: 3.5px !important;
+    }
+    .hp-card {
+      padding: 4px 5px !important;
+      gap: 1px !important;
+      justify-content: center !important;
+    }
+    .cta-btn {
+      padding: 7px 6px !important;
+      font-size: 11px !important;
+    }
+    /* Tighten Stage 2 Panel slightly so msgBox + panelBoard fit <= 640px with 0px overflow */
+    body[data-stage-view="panel"] #msgBox,
+    body[data-stage-view="receipt"] #msgBox {
+      min-height: 50px !important;
+      padding: 5px 7px !important;
+    }
+    body[data-stage-view="panel"] .speaker-face-box,
+    body[data-stage-view="receipt"] .speaker-face-box {
+      width: 36px !important;
+      height: 36px !important;
+    }
+    body[data-stage-view="panel"] .msg-text,
+    body[data-stage-view="receipt"] .msg-text {
+      font-size: 10.8px !important;
+      line-height: 1.32 !important;
+    }
+    /* CRITICAL: .hidden MUST always win at the very bottom of <style>! */
+    .hidden {
+      display: none !important;
+    }
   </style>
 </head>
 <body data-band="night">
@@ -1792,7 +1893,7 @@
         <div class="coupon-toggle-bar">
           <div style="flex:1;min-width:180px;">
             <div style="font-size:11.5px;font-weight:900;color:#fef08a;" id="couponHeadline">
-              🎁 公式HPイベント・LINE新規割を適用してみる！
+              🎁 HP・LINE割引を試す
             </div>
             <div style="font-size:10.5px;color:#fce7f3;" id="couponSubDesc">
               HPトップの曜日割やLINE登録画面を受付で見せるだけでお会計が割引に！
@@ -1803,7 +1904,7 @@
           </button>
         </div>
 
-        <div style="font-weight:900;color:#fde047;font-size:12px;margin-top:2px;">🧾 受付・完全前払い明細（ここ以降の支払いは物理的に0円！）</div>
+        <div style="font-weight:900;color:#fde047;font-size:12px;margin-top:2px;">🧾 受付・完全前払い明細（以降の追加請求 ¥0）</div>
         <div class="receipt-row"><span id="rcBaseLbl">30分基本料金</span><span id="rcBaseVal">¥9,000</span></div>
         <div class="receipt-row"><span id="rcNomLbl">ご指名料</span><span id="rcNomVal">¥0</span></div>
         <div class="receipt-row"><span id="rcOptLbl">シートオプション（通常シート）</span><span id="rcOptVal">¥0</span></div>
@@ -1815,7 +1916,7 @@
           <span id="rcDiscVal">-¥2,000</span>
         </div>
         <div class="receipt-row" style="color:#6ee7b7;font-weight:900;">
-          <span>🛡️ 勝手な自動延長・強制オーダー・退店時の後出し請求</span>
+          <span>🛡️ 自動延長・後出し請求</span>
           <span>¥0（完全前払い制）</span>
         </div>
         <div class="receipt-total">
@@ -3414,7 +3515,7 @@
 
         typeWrite(
           `【受付お会計 ｜ ${nomSummary}】`,
-          `下の【🎫 割引(-¥2,000)を試す！】でイベント割を体験したり、通常シートと『通常より広めのVIPシート(+¥1,000)』を選べます！\n（※お会計前なので、ここからパネルに戻って選び直すことも可能です）`,
+          `【🎫割引】の適用体験や、広めの『VIPシート(+¥1,000)』を選べます！（会計前ならパネルへ選び直しもOK）`,
           false, "face_staff"
         );
 
