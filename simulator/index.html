@@ -1082,10 +1082,11 @@
       text-align: center !important;
       white-space: nowrap !important;
     }
-    #soundBtn, #resetBtn {
-      padding: 4px 7px !important;
-      font-size: 11px !important;
+    #simBackBtn, #soundBtn, #resetBtn {
+      padding: 4px 6px !important;
+      font-size: 10.5px !important;
       flex-shrink: 0 !important;
+      white-space: nowrap !important;
     }
     .prod-row-div,
     body > .max-w-\[620px\] > div:first-child > div:nth-child(2) {
@@ -1760,8 +1761,9 @@
           <button data-store="hachioji" class="store-tab prod-pill">🌸 八王子</button>
         </div>
         <div class="prod-grp">
-          <button id="soundBtn" class="prod-pill">🔊 ON</button>
-          <button id="resetBtn" class="prod-pill">↺</button>
+          <button type="button" id="simBackBtn" class="prod-pill hidden">‹ 戻る</button>
+          <button type="button" id="soundBtn" class="prod-pill">🔊</button>
+          <button type="button" id="resetBtn" class="prod-pill" title="最初へ">↺</button>
         </div>
       </div>
       <div class="prod-row prod-row-div">
@@ -2994,6 +2996,7 @@
       setupStage2Hotspots();
       updateHUD();
       typeWrite(speakerTitle, bodyText, false, "face_staff");
+      if (typeof onSimStepChanged === "function") onSimStepChanged();
     }
 
     function chooseCastFromPanel(castObj) {
@@ -3061,10 +3064,13 @@
         b.onclick = opt.run;
         grid.appendChild(b);
       });
+      if (typeof onSimStepChanged === "function") onSimStepChanged();
     }
 
     function showCastSlotStep(castObj, waitMinOverride) {
       stage2SubState = "slot_cast";
+      document.getElementById("panelBoard").classList.add("hidden");
+      renderHotspots([]);
       waitingNext = false;
       isNomination = true;
       selectedCast = castObj;
@@ -3155,6 +3161,7 @@
         b.onclick = opt.run;
         grid.appendChild(b);
       });
+      if (typeof onSimStepChanged === "function") onSimStepChanged();
     }
 
     function chooseFreeFromPanel(withWait, switchedFromCast = false) {
@@ -3248,11 +3255,14 @@
         b.onclick = opt.run;
         grid.appendChild(b);
       });
+      if (typeof onSimStepChanged === "function") onSimStepChanged();
     }
 
     function showStage2WalkoutDemo() {
       sfx.relief();
       stage2SubState = "walkout";
+      document.getElementById("panelBoard").classList.add("hidden");
+      renderHotspots([]);
       clearedFears.add("walkout_ok");
       focusCamera(1.28, 295, 86, "#a7f3d0");
       spawnBurst(250, 90, "#34d399", 18);
@@ -3275,6 +3285,7 @@
         "0円でいつでも帰れることが分かったので安心！気になるキャストまたはフリーを選んで先へ進もう！"
       );
       grid.appendChild(bBack);
+      if (typeof onSimStepChanged === "function") onSimStepChanged();
     }
 
     /* =========================================================================
@@ -3343,6 +3354,7 @@
         loadStage(0);
       };
       cmdGrid.appendChild(btn);
+      if (typeof onSimStepChanged === "function") onSimStepChanged();
     }
 
     function triggerDoorWalkInTransition() {
@@ -3668,6 +3680,7 @@
         };
         cmdGrid.appendChild(b);
       }
+      if (typeof onSimStepChanged === "function") onSimStepChanged();
     }
 
     function completePrePayAndLock() {
@@ -3851,6 +3864,7 @@
       document.getElementById("xShareLink").href = shareUrl;
 
       const copyBtn = document.getElementById("copyShareBtn");
+      if (typeof onSimStepChanged === "function") onSimStepChanged();
       copyBtn.onclick = async () => {
         try {
           await navigator.clipboard.writeText(`${shareText}\n${st.baseUrl}/top.php`);
@@ -3902,6 +3916,7 @@
         else if (screenMode === "clear") showClearScreen();
         else if (stageIdx === 5) loadStage(5);
         else if (stageIdx !== 1 && stageIdx !== 3 && !waitingNext) loadStage(stageIdx);
+        if (typeof replaceSimCurrentState === "function") replaceSimCurrentState();
       });
     });
 
@@ -3925,6 +3940,7 @@
         } else if (stageIdx === 2 && !waitingNext && window._rebuildStage3Cmds) {
           window._rebuildStage3Cmds();
         }
+        if (typeof replaceSimCurrentState === "function") replaceSimCurrentState();
       });
     });
 
@@ -3948,17 +3964,224 @@
 
     document.getElementById("soundBtn").addEventListener("click", (e) => {
       soundEnabled = !soundEnabled;
-      e.currentTarget.textContent = soundEnabled ? "🔊 ON" : "🔇 OFF";
+      e.currentTarget.textContent = soundEnabled ? "🔊" : "🔇";
       if (soundEnabled) sfx.select();
     });
+
+    /* === STEP-BY-STEP BROWSER HISTORY & SESSION PERSISTENCE === */
+    const SIM_STORAGE_KEY = "sim_state_v2";
+    let simNavDepth = 0;
+    let _suppressSimHistory = false;
+    let _simBooting = true;
+
+    function makeSimSnap(depthOverride) {
+      return {
+        app: "sim_v2",
+        depth: typeof depthOverride === "number" ? depthOverride : simNavDepth,
+        store: currentStoreKey,
+        band: timeBand,
+        mode: screenMode,
+        stageIdx,
+        sub: stage2SubState,
+        isNom: isNomination,
+        nomType: nominationType,
+        castId: selectedCast ? selectedCast.id : null,
+        crit: selectedCriteria,
+        slot: confirmedSlotStr,
+        waitM: confirmedWaitMin,
+        vip: isVipSeat,
+        coup: couponApplied,
+        locked: walletLocked,
+        waitPat: isWaitingPattern,
+        nail: groomNailDone,
+        wash: groomWashDone,
+        fears: Array.from(clearedFears),
+        tags: Array.from(unlockedTags)
+      };
+    }
+
+    function saveSimSession(snap) {
+      try { sessionStorage.setItem(SIM_STORAGE_KEY, JSON.stringify(snap)); } catch (_) {}
+    }
+
+    function syncSimBackBtn() {
+      const btn = document.getElementById("simBackBtn");
+      if (btn) btn.classList.toggle("hidden", screenMode === "title");
+    }
+
+    function isSameSimStep(a, b) {
+      if (!a || !b) return false;
+      if (a.mode !== b.mode) return false;
+      if (a.mode !== "play") return true;
+      if (a.stageIdx !== b.stageIdx) return false;
+      if (a.stageIdx === 1) {
+        return a.sub === b.sub && a.castId === b.castId && a.waitM === b.waitM;
+      }
+      return true;
+    }
+
+    function onSimStepChanged() {
+      syncSimBackBtn();
+      if (_suppressSimHistory || _simBooting) return;
+      const curState = history.state && history.state.app === "sim_v2" ? history.state : null;
+      const nextPreview = makeSimSnap(simNavDepth);
+      if (curState && isSameSimStep(curState, nextPreview)) {
+        try { history.replaceState(nextPreview, ""); } catch (_) {}
+        saveSimSession(nextPreview);
+        return;
+      }
+      simNavDepth++;
+      const pushed = makeSimSnap(simNavDepth);
+      try { history.pushState(pushed, ""); } catch (_) {}
+      saveSimSession(pushed);
+    }
+
+    function replaceSimCurrentState() {
+      if (_suppressSimHistory || _simBooting) return;
+      const snap = makeSimSnap(simNavDepth);
+      try { history.replaceState(snap, ""); } catch (_) {}
+      saveSimSession(snap);
+    }
+
+    function applySimSnap(s) {
+      if (!s) return;
+      _suppressSimHistory = true;
+      try {
+        simNavDepth = typeof s.depth === "number" ? s.depth : 0;
+        currentStoreKey = (s.store && STORES[s.store]) ? s.store : "gotanda";
+        timeBand = ["day", "eve", "night"].includes(s.band) ? s.band : "night";
+        document.body.dataset.band = timeBand;
+        document.querySelectorAll(".time-pill").forEach(b => b.classList.toggle("active", b.dataset.band === timeBand));
+        updateStoreTheme();
+
+        isNomination = !!s.isNom;
+        nominationType = s.nomType || "free";
+        selectedCast = (s.castId && CAST_LIST.find(c => c.id === s.castId)) || null;
+        selectedCriteria = s.crit || "";
+        confirmedSlotStr = s.slot || "";
+        confirmedWaitMin = typeof s.waitM === "number" ? s.waitM : 0;
+        isVipSeat = !!s.vip;
+        couponApplied = !!s.coup;
+        walletLocked = !!s.locked;
+        isWaitingPattern = !!s.waitPat;
+        groomNailDone = !!s.nail;
+        groomWashDone = !!s.wash;
+        clearedFears.clear(); (s.fears || []).forEach(x => clearedFears.add(x));
+        unlockedTags.clear(); (s.tags || []).forEach(x => unlockedTags.add(x));
+
+        if (s.mode === "title") {
+          startTitle();
+        } else if (s.mode === "clear") {
+          showClearScreen();
+        } else {
+          screenMode = "play";
+          const stIdx = typeof s.stageIdx === "number" ? s.stageIdx : 0;
+          loadStage(stIdx);
+          if (stIdx === 1) {
+            if (s.sub === "ask_visit" && selectedCast) chooseCastFromPanel(selectedCast);
+            else if (s.sub === "slot_cast" && selectedCast) showCastSlotStep(selectedCast, confirmedWaitMin);
+            else if (s.sub === "slot_free") chooseFreeFromPanel(isWaitingPattern, false);
+            else if (s.sub === "walkout") showStage2WalkoutDemo();
+          }
+        }
+        syncSimBackBtn();
+        saveSimSession(makeSimSnap(simNavDepth));
+      } finally {
+        _suppressSimHistory = false;
+      }
+    }
+
+    function simStepBackOne() {
+      sfx.select();
+      if (simNavDepth > 0) {
+        history.back();
+        return;
+      }
+      _suppressSimHistory = true;
+      try {
+        if (screenMode === "clear") {
+          screenMode = "play";
+          loadStage(5);
+        } else if (screenMode === "play") {
+          if (stageIdx === 1 && stage2SubState !== "panel") {
+            if (stage2SubState === "slot_cast" && selectedCast) chooseCastFromPanel(selectedCast);
+            else loadStage(1);
+          } else if (stageIdx > 0) {
+            if (stageIdx <= 3) walletLocked = false;
+            loadStage(stageIdx - 1);
+          } else {
+            startTitle();
+          }
+        }
+      } finally {
+        _suppressSimHistory = false;
+      }
+      syncSimBackBtn();
+      replaceSimCurrentState();
+    }
+
+    window.addEventListener("popstate", (e) => {
+      if (e.state && e.state.app === "sim_v2") {
+        applySimSnap(e.state);
+      } else {
+        _suppressSimHistory = true;
+        try {
+          simNavDepth = 0;
+          startTitle();
+        } finally {
+          _suppressSimHistory = false;
+        }
+        syncSimBackBtn();
+        saveSimSession(makeSimSnap(0));
+      }
+    });
+
+    document.getElementById("simBackBtn").addEventListener("click", simStepBackOne);
 
     document.getElementById("resetBtn").addEventListener("click", () => {
       sfx.select();
       startTitle();
     });
 
-    updateStoreTheme();
-    startTitle();
+    (function initSimBoot() {
+      updateStoreTheme();
+      if (history.state && history.state.app === "sim_v2") {
+        _simBooting = false;
+        applySimSnap(history.state);
+        return;
+      }
+      let saved = null;
+      try {
+        const raw = sessionStorage.getItem(SIM_STORAGE_KEY);
+        if (raw) saved = JSON.parse(raw);
+      } catch (_) {}
+
+      if (saved && saved.app === "sim_v2" && saved.mode && saved.mode !== "title") {
+        const baseTitle = { ...saved, mode: "title", stageIdx: 0, sub: "panel", depth: 0 };
+        try { history.replaceState(baseTitle, ""); } catch (_) {}
+        let d = 0;
+        const maxStage = saved.mode === "clear" ? 5 : Math.max(0, Math.min(5, saved.stageIdx || 0));
+        for (let st = 0; st <= maxStage; st++) {
+          if (saved.mode === "play" && st === maxStage) break;
+          d++;
+          try { history.pushState({ ...saved, mode: "play", stageIdx: st, sub: "panel", locked: st >= 3, depth: d }, ""); } catch (_) {}
+        }
+        d++;
+        saved.depth = d;
+        try { history.pushState({ ...saved, depth: d }, ""); } catch (_) {}
+        _simBooting = false;
+        applySimSnap(saved);
+        return;
+      }
+
+      startTitle();
+      _simBooting = false;
+      simNavDepth = 0;
+      const initSnap = makeSimSnap(0);
+      try { history.replaceState(initSnap, ""); } catch (_) {}
+      saveSimSession(initSnap);
+      syncSimBackBtn();
+    })();
     requestAnimationFrame(renderFrame);
   </script>
 </body>

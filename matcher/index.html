@@ -693,8 +693,8 @@
           <button type="button" data-store="tachikawa" class="store-tab">立川</button>
           <button type="button" data-store="hachioji" class="store-tab">八王子</button>
         </div>
+        <button type="button" id="stepBackTopBtn" class="nav-util-btn hidden">‹ 戻る</button>
         <button type="button" id="toggleCatalogBtn" class="nav-util-btn">在籍一覧</button>
-        <button type="button" id="restartTopBtn" class="nav-util-btn hidden">最初へ</button>
       </div>
       <div class="brand-status-row">
         <div class="brand-crest">
@@ -771,6 +771,7 @@
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:5px;">
             <span id="resUserTypeBadge" class="type-pill"></span>
             <span id="resIdealPartnerBadge" style="font-size:10px;font-weight:700;color:var(--gold-ink);"></span>
+            <button type="button" id="restartTopBtn" style="border:none;background:none;padding:0 2px;font-size:9.8px;color:var(--ink-muted);text-decoration:underline;cursor:pointer;margin-left:auto;">最初からやり直す</button>
           </div>
           <div id="resUserCatch" style="font-size:11.8px;font-weight:700;color:var(--ink);line-height:1.35;margin-top:3px;"></div>
         </div>
@@ -981,8 +982,12 @@
       ISTJ: { title: "落ち着きと誠実さを大切にする「王道清楚・大和撫子タイプ」", desc: "丁寧な言葉遣いや上品な振る舞いに安心感を覚えるタイプです。清楚系キャストや安定感のあるおすすめキャストが最適です。" }
     };
 
+    const STORAGE_KEY = "matcher_state_v2";
     let db = EMBEDDED_DB;
     let currentStore = "gotanda";
+    let activeView = "introView";
+    let prevNonCatView = "introView";
+    let navDepth = 0;
     let stepIdx = 0;
     let answers = [];
     let hasFinishedQuiz = false;
@@ -991,6 +996,170 @@
     let lastRankedAll = [];
     let catPage = 0;
 
+    function makeSnap(viewOverride, depthOverride) {
+      return {
+        app: "matcher_v2",
+        depth: typeof depthOverride === "number" ? depthOverride : navDepth,
+        store: currentStore,
+        view: viewOverride || activeView,
+        prevNonCatView,
+        stepIdx,
+        answers: answers.slice(),
+        hasFinishedQuiz,
+        resTab: currentResTab,
+        rankIdx: selectedRankIdx,
+        catPage
+      };
+    }
+
+    function saveSession(snap) {
+      try {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(snap));
+      } catch (_) {}
+    }
+
+    function showViewUI(viewId) {
+      activeView = viewId;
+      if (viewId !== "catalogView") prevNonCatView = viewId;
+      ["introView", "quizView", "resultView", "catalogView"].forEach(id => {
+        document.getElementById(id).classList.toggle("hidden", id !== viewId);
+      });
+      document.getElementById("stepBackTopBtn").classList.toggle("hidden", viewId === "introView");
+      document.getElementById("toggleCatalogBtn").textContent =
+        viewId === "catalogView" ? (prevNonCatView === "resultView" ? "診断結果へ" : "診断へ戻る") : "在籍一覧";
+    }
+
+    function pushAppState(viewId) {
+      showViewUI(viewId);
+      navDepth++;
+      const s = makeSnap(viewId, navDepth);
+      try { history.pushState(s, ""); } catch (_) {}
+      saveSession(s);
+    }
+
+    function replaceAppState(viewId) {
+      if (viewId) showViewUI(viewId);
+      const s = makeSnap(activeView, navDepth);
+      try { history.replaceState(s, ""); } catch (_) {}
+      saveSession(s);
+    }
+
+    function applySnapshot(s) {
+      if (!s) return;
+      currentStore = (s.store && db.stores[s.store]) ? s.store : "gotanda";
+      navDepth = typeof s.depth === "number" ? s.depth : 0;
+      prevNonCatView = s.prevNonCatView || "introView";
+      stepIdx = Math.max(0, Math.min(QUESTIONS.length - 1, s.stepIdx || 0));
+      answers = Array.isArray(s.answers) ? s.answers.slice() : [];
+      hasFinishedQuiz = !!s.hasFinishedQuiz;
+      currentResTab = s.resTab || "today";
+      selectedRankIdx = s.rankIdx || 0;
+      catPage = s.catPage || 0;
+
+      refreshTopBar();
+      const targetView = s.view || "introView";
+      showViewUI(targetView);
+      if (targetView === "quizView") {
+        renderQuestion();
+      } else if (targetView === "resultView") {
+        switchResTabUI(currentResTab);
+        renderResults();
+      } else if (targetView === "catalogView") {
+        renderCatalog();
+      }
+      saveSession(makeSnap(targetView, navDepth));
+    }
+
+    function stepBackOne() {
+      if (navDepth > 0) {
+        history.back();
+        return;
+      }
+      if (activeView === "catalogView") {
+        const dest = prevNonCatView || (hasFinishedQuiz ? "resultView" : "introView");
+        showViewUI(dest);
+        if (dest === "quizView") renderQuestion();
+        else if (dest === "resultView") { switchResTabUI(currentResTab); renderResults(); }
+        replaceAppState(dest);
+      } else if (activeView === "resultView") {
+        stepIdx = QUESTIONS.length - 1;
+        answers = answers.slice(0, stepIdx);
+        showViewUI("quizView");
+        renderQuestion();
+        replaceAppState("quizView");
+      } else if (activeView === "quizView") {
+        if (stepIdx > 0) {
+          stepIdx--;
+          answers = answers.slice(0, stepIdx);
+          renderQuestion();
+          replaceAppState("quizView");
+        } else {
+          replaceAppState("introView");
+        }
+      }
+    }
+
+    function restoreOrInitHistory() {
+      if (history.state && history.state.app === "matcher_v2") {
+        applySnapshot(history.state);
+        return;
+      }
+      let saved = null;
+      try {
+        const raw = sessionStorage.getItem(STORAGE_KEY);
+        if (raw) saved = JSON.parse(raw);
+      } catch (_) {}
+
+      if (saved && saved.app === "matcher_v2" && saved.view && saved.view !== "introView") {
+        const baseIntro = {
+          app: "matcher_v2", depth: 0, store: saved.store || "gotanda",
+          view: "introView", prevNonCatView: "introView", stepIdx: 0,
+          answers: [], hasFinishedQuiz: false, resTab: "today", rankIdx: 0, catPage: 0
+        };
+        try { history.replaceState(baseIntro, ""); } catch (_) {}
+        let d = 0;
+        const ansArr = Array.isArray(saved.answers) ? saved.answers : [];
+        if (saved.view === "quizView") {
+          const maxS = Math.max(0, Math.min(QUESTIONS.length - 1, saved.stepIdx || 0));
+          for (let i = 0; i <= maxS; i++) {
+            d++;
+            const st = { ...baseIntro, depth: d, view: "quizView", prevNonCatView: "quizView", stepIdx: i, answers: ansArr.slice(0, i) };
+            try { history.pushState(st, ""); } catch (_) {}
+          }
+          saved.depth = d;
+        } else if (saved.view === "resultView") {
+          for (let i = 0; i < QUESTIONS.length; i++) {
+            d++;
+            const st = { ...baseIntro, depth: d, view: "quizView", prevNonCatView: "quizView", stepIdx: i, answers: ansArr.slice(0, i) };
+            try { history.pushState(st, ""); } catch (_) {}
+          }
+          d++;
+          saved.depth = d;
+          try { history.pushState({ ...saved, depth: d }, ""); } catch (_) {}
+        } else if (saved.view === "catalogView") {
+          if (saved.hasFinishedQuiz) {
+            for (let i = 0; i < QUESTIONS.length; i++) {
+              d++;
+              const st = { ...baseIntro, depth: d, view: "quizView", prevNonCatView: "quizView", stepIdx: i, answers: ansArr.slice(0, i) };
+              try { history.pushState(st, ""); } catch (_) {}
+            }
+            d++;
+            try { history.pushState({ ...saved, view: "resultView", prevNonCatView: "resultView", depth: d }, ""); } catch (_) {}
+          }
+          d++;
+          saved.depth = d;
+          try { history.pushState({ ...saved, depth: d }, ""); } catch (_) {}
+        }
+        applySnapshot(saved);
+        return;
+      }
+
+      refreshTopBar();
+      showViewUI("introView");
+      navDepth = 0;
+      replaceAppState("introView");
+    }
+
     async function boot() {
       try {
         const r = await fetch("./casts_data.json", { cache: "no-store" });
@@ -998,76 +1167,82 @@
       } catch (_) {}
       if (!db || !db.stores) return;
       bindEvents();
-      refreshTopBar();
+      restoreOrInitHistory();
     }
 
     function bindEvents() {
+      window.addEventListener("popstate", (e) => {
+        if (e.state && e.state.app === "matcher_v2") {
+          applySnapshot(e.state);
+        } else {
+          navDepth = 0;
+          showViewUI("introView");
+          saveSession(makeSnap("introView", 0));
+        }
+      });
+
       document.querySelectorAll("#storeSwitchBar button").forEach(btn => {
         btn.addEventListener("click", () => {
           currentStore = btn.dataset.store;
           catPage = 0;
           selectedRankIdx = 0;
           refreshTopBar();
-          if (!document.getElementById("catalogView").classList.contains("hidden")) renderCatalog();
-          else if (hasFinishedQuiz) renderResults();
+          if (activeView === "catalogView") renderCatalog();
+          else if (activeView === "resultView") renderResults();
+          replaceAppState();
         });
       });
 
       document.getElementById("startQuizBtn").addEventListener("click", () => {
         stepIdx = 0;
         answers = [];
-        showView("quizView");
+        hasFinishedQuiz = false;
         renderQuestion();
+        pushAppState("quizView");
       });
 
-      document.getElementById("prevQBtn").addEventListener("click", () => {
-        if (stepIdx > 0) {
-          stepIdx--;
-          answers.pop();
-          renderQuestion();
-        } else {
-          showView("introView");
-        }
-      });
+      document.getElementById("prevQBtn").addEventListener("click", () => stepBackOne());
+      document.getElementById("stepBackTopBtn").addEventListener("click", () => stepBackOne());
 
       document.getElementById("restartTopBtn").addEventListener("click", () => {
         hasFinishedQuiz = false;
         stepIdx = 0;
         answers = [];
-        document.getElementById("restartTopBtn").classList.add("hidden");
-        showView("introView");
+        pushAppState("introView");
       });
 
       document.querySelectorAll("#resTabsBar .res-tab-btn").forEach(btn => {
-        btn.addEventListener("click", () => switchResTab(btn.dataset.rtab));
+        btn.addEventListener("click", () => {
+          switchResTabUI(btn.dataset.rtab);
+          replaceAppState();
+        });
       });
 
       document.querySelectorAll("#overallRankPills .rank-pill-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           selectedRankIdx = parseInt(btn.dataset.ridx, 10) || 0;
           renderOverallSingle();
+          replaceAppState();
         });
       });
 
       document.getElementById("toggleCatalogBtn").addEventListener("click", () => {
-        const isCat = !document.getElementById("catalogView").classList.contains("hidden");
-        if (isCat) {
-          showView(hasFinishedQuiz ? "resultView" : "introView");
+        if (activeView === "catalogView") {
+          stepBackOne();
         } else {
           catPage = 0;
-          showView("catalogView");
           renderCatalog();
+          pushAppState("catalogView");
         }
       });
 
-      document.getElementById("closeCatalogBtn").addEventListener("click", () => {
-        showView(hasFinishedQuiz ? "resultView" : "introView");
-      });
+      document.getElementById("closeCatalogBtn").addEventListener("click", () => stepBackOne());
 
       ["catFilterShift", "catFilterCup", "catFilterGroup"].forEach(id => {
         document.getElementById(id).addEventListener("change", () => {
           catPage = 0;
           renderCatalog();
+          replaceAppState();
         });
       });
 
@@ -1075,23 +1250,17 @@
         if (catPage > 0) {
           catPage--;
           renderCatalog();
+          replaceAppState();
         }
       });
       document.getElementById("catNextBtn").addEventListener("click", () => {
         catPage++;
         renderCatalog();
+        replaceAppState();
       });
     }
 
-    function showView(viewId) {
-      ["introView", "quizView", "resultView", "catalogView"].forEach(id => {
-        document.getElementById(id).classList.toggle("hidden", id !== viewId);
-      });
-      document.getElementById("toggleCatalogBtn").textContent =
-        viewId === "catalogView" ? (hasFinishedQuiz ? "診断結果へ" : "トップへ") : "在籍一覧";
-    }
-
-    function switchResTab(tab) {
+    function switchResTabUI(tab) {
       currentResTab = tab;
       document.querySelectorAll("#resTabsBar .res-tab-btn").forEach(b => {
         b.classList.toggle("is-active", b.dataset.rtab === tab);
@@ -1143,17 +1312,19 @@
           <span class="opt-chevron">›</span>
         `;
         btn.addEventListener("click", () => {
+          answers = answers.slice(0, stepIdx);
           answers[stepIdx] = opt.eff;
           if (stepIdx + 1 < QUESTIONS.length) {
             stepIdx++;
             renderQuestion();
+            pushAppState("quizView");
           } else {
             hasFinishedQuiz = true;
             selectedRankIdx = 0;
-            document.getElementById("restartTopBtn").classList.remove("hidden");
-            showView("resultView");
-            switchResTab("today");
+            currentResTab = "today";
+            switchResTabUI("today");
             renderResults();
+            pushAppState("resultView");
           }
         });
         list.appendChild(btn);
